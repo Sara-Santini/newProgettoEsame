@@ -10,7 +10,9 @@ package it.bonfire.ProjectOOP.Filters;
 /**
  * Description of FilterImageName.
  * 
- * @author arian
+ * @author Arianna Nazzarelli
+ * @author Sara Santini
+ * @author Francesco Voto
  */
 public class FilterImageName {
 	// Start of user code (user defined attributes for FilterImageName)

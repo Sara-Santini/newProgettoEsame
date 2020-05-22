@@ -9,7 +9,9 @@
 /**
  * Description of Main_App.
  * 
- * @author arian
+ * @author Arianna Nazzarelli
+ * @author Francesco Voto
+ * @author Sara Santini
  */
 public class Main_App {
 	// Start of user code (user defined attributes for Main_App)

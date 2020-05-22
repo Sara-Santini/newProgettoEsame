@@ -10,7 +10,9 @@ package it.bonfire.ProjectOOP.Model;
 /**
  * Description of Fotografia.
  * 
- * @author arian
+ * @author Arianna Nazzarelli
+ * @author Francesco Voto
+ * @author Sara Santini
  */
 public class Fotografia {
 	/**

@@ -10,7 +10,9 @@ package it.bonfire.ProjectOOP.Model;
 /**
  * Description of API_Instagram.
  * 
- * @author arian
+ * @author Arianna Nazzarelli
+ * @author Francesco Voto
+ * @author sara Santini
  */
 public abstract class API_Instagram {
 	/**

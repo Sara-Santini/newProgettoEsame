@@ -10,7 +10,9 @@ package it.bonfire.ProjectOOP.Others;
 /**
  * Description of Parsing.
  * 
- * @author arian
+ * @author Arianna Nazzarell
+ * @author Sara Santini
+ * @author Francesco Voto
  */
 public class Parsing {
 	// Start of user code (user defined attributes for Parsing)

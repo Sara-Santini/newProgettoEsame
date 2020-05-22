@@ -6,7 +6,9 @@ package it.bonfire.ProjectOOP.Model;
 /**
  * Description of Image.
  * 
- * @author arian
+ * @author Arianna Nazzarelli
+ * @author Frncesco Voto
+ * @author Sara Santini
  */
 public class Image extends API_Instagram {
 	/**

@@ -10,7 +10,9 @@ package it.bonfire.ProjectOOP.Statistics;
 /**
  * Description of StatsResolutionImage.
  * 
- * @author arian
+ * @author Arianna Nazzarelli
+ * @author Francesco Voto
+ * @author Sara Santini
  */
 public class StatsResolutionImage {
 	// Start of user code (user defined attributes for StatsResolutionImage)
