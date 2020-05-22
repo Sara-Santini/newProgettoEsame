@@ -30,7 +30,7 @@ public class Image extends API_Instagram {
 	}
 	
 
-	public Image(int id, String caption, String media_type, Fotografia fotografias) {
+	public Image(String id, String caption, String media_type, Fotografia fotografias) {
 		super(id, caption, media_type);
 		this.fotografias = fotografias;
 	}

@@ -18,17 +18,17 @@ public abstract class API_Instagram {
 	/**
 	 * Description of the property id.
 	 */
-	private int id = 0;
+	private String id = null;
 
 	/**
 	 * Description of the property caption.
 	 */
-	private String caption = "";
+	private String caption = null;
 
 	/**
 	 * Description of the property media_type.
 	 */
-	private String media_type = "";
+	private String media_type = null;
 
 	// Start of user code (user defined attributes for API_Instagram)
 
@@ -38,7 +38,7 @@ public abstract class API_Instagram {
 	 * The constructor.
 	 */
 	
-	public API_Instagram(int id, String caption, String media_type) {
+	public API_Instagram(String id, String caption, String media_type) {
 		// Start of user code constructor for API_Instagram)
 		super();
 		this.id = id;
@@ -105,7 +105,7 @@ public abstract class API_Instagram {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 

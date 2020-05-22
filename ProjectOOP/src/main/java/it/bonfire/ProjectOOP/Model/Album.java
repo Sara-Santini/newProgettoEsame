@@ -31,7 +31,7 @@ public class Album extends API_Instagram {
 	 * @param media_type
 	 * @param fotografias
 	 */
-	public Album(int id, String caption, String media_type, HashSet<Fotografia> fotografias) {
+	public Album(String id, String caption, String media_type, HashSet<Fotografia> fotografias) {
 		super(id, caption, media_type);
 		this.fotografias = fotografias;
 	}

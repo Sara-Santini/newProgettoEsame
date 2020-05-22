@@ -33,7 +33,7 @@ public class Fotografia {
 	/**
 	 * Description of the property id_photos.
 	 */
-	private int id_photos = 0;
+	private String id_photos = null;
 
 	/**
 	 * Description of the property pixelWeight.
@@ -57,7 +57,7 @@ public class Fotografia {
 	/**
 	 * The constructor.
 	 */
-	public Fotografia(int id_photos) {
+	public Fotografia(String id_photos) {
 		// Start of user code constructor for Fotografia)
 		this.id_photos=id_photos;
 		// End of user code
@@ -68,9 +68,10 @@ public class Fotografia {
 	 * @param media_url
 	 * @param id_photos
 	 */
-	public Fotografia(String media_url, int id_photos) {
-		this.media_url = media_url;
+	public Fotografia(String id_photos,String media_url) {
+		
 		this.id_photos = id_photos;
+		this.media_url = media_url;
 	}
 
 
@@ -130,10 +131,7 @@ public class Fotografia {
 	 * @param newImages 
 	 */
 	public void setImages(Image newImages) {
-		if (this.images != null) {
-			this.images.setId(id_photos);
-		}
-		this.images.setId(0);
+	this.images=newImages;
 	}
 
 	/**
@@ -156,7 +154,7 @@ public class Fotografia {
 	 * Returns id_photos.
 	 * @return id_photos 
 	 */
-	public int getId_photos() {
+	public String getId_photos() {
 		return this.id_photos;
 	}
 
@@ -164,7 +162,7 @@ public class Fotografia {
 	 * Sets a value to attribute id_photos. 
 	 * @param newId_photos 
 	 */
-	public void setId_photos(int newId_photos) {
+	public void setId_photos(String newId_photos) {
 		this.id_photos = newId_photos;
 	}
 
