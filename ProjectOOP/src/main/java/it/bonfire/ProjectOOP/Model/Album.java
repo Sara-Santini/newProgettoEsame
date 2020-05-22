@@ -25,12 +25,18 @@ public class Album extends API_Instagram {
 	/**
 	 * The constructor.
 	 */
-		// Start of user code constructor for Album)
-	public Album(HashSet<Fotografia> fotografias) {
-		super();
+	/**
+	 * @param id
+	 * @param caption
+	 * @param media_type
+	 * @param fotografias
+	 */
+	public Album(int id, String caption, String media_type, HashSet<Fotografia> fotografias) {
+		super(id, caption, media_type);
 		this.fotografias = fotografias;
-		// End of user code
 	}
+
+
 
 	// Start of user code (user defined methods for Album)
 
@@ -42,6 +48,7 @@ public class Album extends API_Instagram {
 	public HashSet<Fotografia> getFotografias() {
 		return this.fotografias;
 	}
+
 
 	/**
 	 * @param fotografias the fotografias to set

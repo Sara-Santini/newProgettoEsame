@@ -57,11 +57,22 @@ public class Fotografia {
 	/**
 	 * The constructor.
 	 */
-	public Fotografia() {
+	public Fotografia(int id_photos) {
 		// Start of user code constructor for Fotografia)
-		super();
+		this.id_photos=id_photos;
 		// End of user code
 	}
+
+
+	/**
+	 * @param media_url
+	 * @param id_photos
+	 */
+	public Fotografia(String media_url, int id_photos) {
+		this.media_url = media_url;
+		this.id_photos = id_photos;
+	}
+
 
 	/**
 	 * Description of the method getMedia_url.

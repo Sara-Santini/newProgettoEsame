@@ -47,15 +47,12 @@ public class Image extends API_Instagram {
 		return this.fotografias;
 	}
 
+
 	/**
-	 * Sets a value to attribute fotografias. 
-	 * @param newFotografias 
+	 * @param fotografias the fotografias to set
 	 */
-	public void setFotografias(Fotografia newFotografias) {
-		if (this.fotografias != null) {
-			this.fotografias.set(null);
-		}
-		this.fotografias.set(this);
+	public void setFotografias(Fotografia fotografias) {
+		this.fotografias = fotografias;
 	}
 
 }
