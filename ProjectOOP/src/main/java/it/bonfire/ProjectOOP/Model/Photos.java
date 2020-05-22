@@ -1,7 +1,7 @@
 /*******************************************************************************
  * 2020, All rights reserved.
  *******************************************************************************/
-package Model;
+package it.bonfire.ProjectOOP.Model;
 
 // Start of user code (user defined imports)
 
@@ -10,7 +10,9 @@ package Model;
 /**
  * Description of Photos.
  * 
- * @author arian
+ * @author Arianna Nazzarelli
+ * @author Francesco Voto
+ * @author Sara Santini
  */
 public abstract class Photos {
 	/**
@@ -38,69 +40,6 @@ public abstract class Photos {
 	public Photos() {
 		// Start of user code constructor for Photos)
 		super();
-		// End of user code
-	}
-
-	/**
-	 * Description of the method getId.
-	 * @return 
-	 */
-	public String getId() {
-		// Start of user code for method getId
-		String getId = "";
-		return getId;
-		// End of user code
-	}
-
-	/**
-	 * Description of the method setId.
-	 * @param id 
-	 * @return 
-	 */
-	public String setId(int id) {
-		// Start of user code for method setId
-		String setId = "";
-		return setId;
-		// End of user code
-	}
-
-	/**
-	 * Description of the method getCaption.
-	 * @return 
-	 */
-	public String getCaption() {
-		// Start of user code for method getCaption
-		String getCaption = "";
-		return getCaption;
-		// End of user code
-	}
-
-	/**
-	 * Description of the method setCaption.
-	 * @param caption 
-	 */
-	public void setCaption(String caption) {
-		// Start of user code for method setCaption
-		// End of user code
-	}
-
-	/**
-	 * Description of the method getMedia_type.
-	 * @return 
-	 */
-	public String getMedia_type() {
-		// Start of user code for method getMedia_type
-		String getMedia_type = "";
-		return getMedia_type;
-		// End of user code
-	}
-
-	/**
-	 * Description of the method setMedia_type.
-	 * @param media_type 
-	 */
-	public void setMedia_type(String media_type) {
-		// Start of user code for method setMedia_type
 		// End of user code
 	}
 

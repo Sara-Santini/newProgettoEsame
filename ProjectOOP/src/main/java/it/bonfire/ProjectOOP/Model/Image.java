@@ -1,12 +1,7 @@
 /*******************************************************************************
  * 2020, All rights reserved.
  *******************************************************************************/
-package Model;
-
-import Model.API_Instagram;
-// Start of user code (user defined imports)
-
-// End of user code
+package it.bonfire.ProjectOOP.Model;
 
 /**
  * Description of Image.
@@ -17,7 +12,7 @@ public class Image extends API_Instagram {
 	/**
 	 * Description of the property fotografias.
 	 */
-	public Fotografia fotografias = null;
+	private Fotografia fotografias = null;
 
 	// Start of user code (user defined attributes for Image)
 
@@ -31,6 +26,13 @@ public class Image extends API_Instagram {
 		super();
 		// End of user code
 	}
+	
+
+	public Image(int id, String caption, String media_type, Fotografia fotografias) {
+		super(id, caption, media_type);
+		this.fotografias = fotografias;
+	}
+
 
 	// Start of user code (user defined methods for Image)
 

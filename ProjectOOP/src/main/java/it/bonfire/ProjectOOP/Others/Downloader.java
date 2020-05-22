@@ -1,10 +1,11 @@
-package it.bonfire.ProjectOOP;
+package it.bonfire.ProjectOOP.Others;
 
 
 
 import java.io.*;
 import java.net.URL;
 
+import javax.imageio.stream.ImageOutputStream;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -35,6 +36,8 @@ public class Downloader {
 			
 				obj = (JSONObject) JSONValue.parseWithException(data);
 	            return obj;
+	         
+	           
 		
         
     }

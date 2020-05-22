@@ -1,7 +1,7 @@
 /*******************************************************************************
  * 2020, All rights reserved.
  *******************************************************************************/
-package Others;
+package it.bonfire.ProjectOOP.Others;
 
 // Start of user code (user defined imports)
 

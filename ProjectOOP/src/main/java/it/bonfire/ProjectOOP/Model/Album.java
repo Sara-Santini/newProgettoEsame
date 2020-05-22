@@ -1,10 +1,9 @@
 /*******************************************************************************
  * 2020, All rights reserved.
  *******************************************************************************/
-package Model;
+package it.bonfire.ProjectOOP.Model;
 
-import Model.API_Instagram;
-// Start of user code (user defined imports)
+import java.util.HashSet;
 
 // End of user code
 
@@ -17,7 +16,7 @@ public class Album extends API_Instagram {
 	/**
 	 * Description of the property fotografias.
 	 */
-	public HashSet<Fotografia> fotografias = new HashSet<Fotografia>();
+	private HashSet<Fotografia> fotografias;
 
 	// Start of user code (user defined attributes for Album)
 
@@ -26,9 +25,10 @@ public class Album extends API_Instagram {
 	/**
 	 * The constructor.
 	 */
-	public Album() {
 		// Start of user code constructor for Album)
+	public Album(HashSet<Fotografia> fotografias) {
 		super();
+		this.fotografias = fotografias;
 		// End of user code
 	}
 
@@ -41,6 +41,13 @@ public class Album extends API_Instagram {
 	 */
 	public HashSet<Fotografia> getFotografias() {
 		return this.fotografias;
+	}
+
+	/**
+	 * @param fotografias the fotografias to set
+	 */
+	public void setFotografias(HashSet<Fotografia> fotografias) {
+		this.fotografias = fotografias;
 	}
 
 }

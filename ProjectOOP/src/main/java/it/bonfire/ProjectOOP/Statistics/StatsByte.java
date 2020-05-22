@@ -1,7 +1,7 @@
 /*******************************************************************************
  * 2020, All rights reserved.
  *******************************************************************************/
-package Statistics;
+package it.bonfire.ProjectOOP.Statistics;
 
 // Start of user code (user defined imports)
 

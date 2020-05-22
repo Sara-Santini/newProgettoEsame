@@ -1,7 +1,7 @@
 /*******************************************************************************
  * 2020, All rights reserved.
  *******************************************************************************/
-package Filters;
+package it.bonfire.ProjectOOP.Filters;
 
 // Start of user code (user defined imports)
 

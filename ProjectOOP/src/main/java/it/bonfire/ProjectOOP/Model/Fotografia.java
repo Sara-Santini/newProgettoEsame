@@ -1,7 +1,7 @@
 /*******************************************************************************
  * 2020, All rights reserved.
  *******************************************************************************/
-package Model;
+package it.bonfire.ProjectOOP.Model;
 
 // Start of user code (user defined imports)
 
@@ -16,37 +16,37 @@ public class Fotografia {
 	/**
 	 * Description of the property pixelHeight.
 	 */
-	public int pixelHeight = 0;
+	private int pixelHeight = 0;
 
 	/**
 	 * Description of the property images.
 	 */
-	public Image images = null;
+	private Image images = null;
 
 	/**
 	 * Description of the property media_url.
 	 */
-	public String media_url = "";
+	private String media_url = "";
 
 	/**
 	 * Description of the property id_photos.
 	 */
-	public int id_photos = 0;
+	private int id_photos = 0;
 
 	/**
 	 * Description of the property pixelWeight.
 	 */
-	public int pixelWeight = 0;
+	private int pixelWeight = 0;
 
 	/**
 	 * Description of the property byte.
 	 */
-	public int byte=0;
+	private int nbyte =0;
 
 	/**
 	 * Description of the property albums.
 	 */
-	public Album albums = null;
+	private Album albums = null;
 
 	// Start of user code (user defined attributes for Fotografia)
 
@@ -65,22 +65,6 @@ public class Fotografia {
 	 * Description of the method getMedia_url.
 	 * @return 
 	 */
-	public String getMedia_url() {
-		// Start of user code for method getMedia_url
-		String getMedia_url = "";
-		return getMedia_url;
-		// End of user code
-	}
-
-	/**
-	 * Description of the method setMedia_url.
-	 * @param media_url 
-	 */
-	public void setMedia_url(String media_url) {
-		// Start of user code for method setMedia_url
-		// End of user code
-	}
-
 	/**
 	 * Description of the method getId_Photos.
 	 * @return 
@@ -134,9 +118,9 @@ public class Fotografia {
 	 */
 	public void setImages(Image newImages) {
 		if (this.images != null) {
-			this.images.set(null);
+			this.images.setId(id_photos);
 		}
-		this.images.set(this);
+		this.images.setId(0);
 	}
 
 	/**
@@ -191,16 +175,16 @@ public class Fotografia {
 	 * Returns byte.
 	 * @return byte 
 	 */
-	public int getByte() {
-		return this.byte;
+	public int getnByte() {
+		return this.nbyte;
 	}
 
 	/**
 	 * Sets a value to attribute byte. 
 	 * @param newByte 
 	 */
-	public void setByte(int newByte) {
-	    this.byte = newByte;
+	public void setnByte(int newByte) {
+	    this.nbyte = newByte;
 	}
 
 	/**

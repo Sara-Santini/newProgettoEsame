@@ -1,7 +1,7 @@
 /*******************************************************************************
  * 2020, All rights reserved.
  *******************************************************************************/
-package Model;
+package it.bonfire.ProjectOOP.Model;
 
 // Start of user code (user defined imports)
 
@@ -35,10 +35,17 @@ public abstract class API_Instagram {
 	/**
 	 * The constructor.
 	 */
-	public API_Instagram() {
+	
+	public API_Instagram(int id, String caption, String media_type) {
 		// Start of user code constructor for API_Instagram)
 		super();
+		this.id = id;
+		this.caption = caption;
+		this.media_type = media_type;
 		// End of user code
+	}
+	public API_Instagram() {
+		
 	}
 
 	/**
@@ -94,65 +101,12 @@ public abstract class API_Instagram {
 	}
 
 	/**
-	 * Description of the method getId.
-	 * @return 
-	 */
-	public String getId() {
-		// Start of user code for method getId
-		String getId = "";
-		return getId;
-		// End of user code
-	}
-
-	// Start of user code (user defined methods for API_Instagram)
-
-	// End of user code
-	/**
-	 * Returns id.
-	 * @return id 
+	 * @return the id
 	 */
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
-	/**
-	 * Sets a value to attribute id. 
-	 * @param newId 
-	 */
-	public void setId(int newId) {
-		this.id = newId;
-	}
 
-	/**
-	 * Returns caption.
-	 * @return caption 
-	 */
-	public String getCaption() {
-		return this.caption;
-	}
-
-	/**
-	 * Sets a value to attribute caption. 
-	 * @param newCaption 
-	 */
-	public void setCaption(String newCaption) {
-		this.caption = newCaption;
-	}
-
-	/**
-	 * Returns media_type.
-	 * @return media_type 
-	 */
-	public String getMedia_type() {
-		return this.media_type;
-	}
-
-	/**
-	 * Sets a value to attribute media_type. 
-	 * @param newMedia_type 
-	 */
-	public void setMedia_type(String newMedia_type) {
-		this.media_type = newMedia_type;
-	}
-
+	
 }
