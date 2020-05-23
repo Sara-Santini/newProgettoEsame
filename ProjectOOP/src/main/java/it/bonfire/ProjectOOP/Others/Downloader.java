@@ -47,6 +47,8 @@ public class Downloader {
 			return jsonObject;}
 
 		}
+	
+	
 	public void getImageAlbumUrl (HashSet<API_Instagram> collezione) throws IOException, ParseException {
 		Iterator<API_Instagram> r=collezione.iterator();
 		while (r.hasNext()) {

@@ -18,12 +18,12 @@ public abstract class API_Instagram {
 	/**
 	 * Description of the property id.
 	 */
-	private String id = null;
+	private String id;
 
 	/**
 	 * Description of the property caption.
 	 */
-	private String caption = null;
+	private String caption;
 
 	/**
 	 * Description of the property media_type.
@@ -89,7 +89,7 @@ public abstract class API_Instagram {
 	public String getMedia_type() {
 	
 		return media_type;
-		// End of user code
+		
 	}
 
 	/**

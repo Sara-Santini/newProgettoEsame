@@ -24,6 +24,8 @@ public class Prova {
 		   Parsing gatto=new Parsing();
 		    HashSet<API_Instagram> topo= gatto.GetAPIInstagramFromJson(cane);
 		   ciao.getImageAlbumUrl(topo);
+		   
+		   
 		
 		} catch (IOException | ParseException e) {
 			// TODO Auto-generated catch block

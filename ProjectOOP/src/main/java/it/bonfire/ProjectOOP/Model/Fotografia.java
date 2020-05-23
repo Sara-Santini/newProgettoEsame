@@ -75,20 +75,7 @@ public class Fotografia {
 	}
 
 
-	/**
-	 * Description of the method getMedia_url.
-	 * @return 
-	 */
-	/**
-	 * Description of the method getId_Photos.
-	 * @return 
-	 */
-	public int getId_Photos() {
-		// Start of user code for method getId_Photos
-		int getId_Photos = 0;
-		return getId_Photos;
-		// End of user code
-	}
+
 
 	/**
 	 * Description of the method setId_Photos.

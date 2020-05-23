@@ -4,7 +4,17 @@
 package it.bonfire.ProjectOOP.Others;
 
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashSet;
+import java.util.Iterator;
+import it.bonfire.ProjectOOP.Others.Downloader;
+
+import javax.imageio.ImageIO;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
@@ -18,7 +28,7 @@ import it.bonfire.ProjectOOP.Model.Image;
  * @author arian
  */
 public class Parsing {
-
+	 public static int N=0;
 	/**
 	 * Description of the method GetJSONFromUrl.
 	 */
@@ -55,9 +65,43 @@ public class Parsing {
 					}}
 					return collezione;
 			}
-
-	}
-
+	
+	
+	 public void DownloadImage(HashSet<API_Instagram> collezione) throws IOException {       
+		
+		 try {
+			 Iterator<API_Instagram> l= collezione.iterator();
+			 while(l.hasNext()) {
+				 API_Instagram appoggio=l.next();
+				URL url=new URL(getURL(appoggio.getId()));
+	            BufferedImage image = ImageIO.read(url);
+	        	
+	        if(appoggio.getMedia_type().equals("CAROUSEL_ALBUM")) {
+	       File file = new File("C:\\Users\\arian\\Pictures\\Album"+N);
+	       Album ricerca=(Album) appoggio;
+	      
+	       Iterator<Fotografia> p= ricerca.getFotografias().iterator();
+			while(p.hasNext())
+			{    Fotografia a=p.next();
+				String id=a.getId_photos();
+	   File file1=new File("C:\\Users\\arian\\Pictures\\AlbumN\\" + id  +".jpg");
+	        	  ImageIO.write(image, "jpg", file1);
+	          }
+	            
+	            } }}catch (MalformedURLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+	       
+	        
+	    }
+	
+	 
+	 public String getURL (String id)
+{ String url= "https://graph.instagram.com/" + id +"?fields=media_url&access_token=IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD";
+return url;
+}
+}
 
 
 
