@@ -4,9 +4,14 @@ package it.bonfire.ProjectOOP.Others;
 
 import java.io.*;
 import java.net.URL;
- import org.json.simple.JSONObject;
+import java.util.HashSet;
+
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import it.bonfire.ProjectOOP.Model.API_Instagram;
+import it.bonfire.ProjectOOP.Model.Album;
 
 
    
@@ -37,6 +42,17 @@ public class Downloader {
 			Object obj = parser.parse(totdata);
 
 			JSONObject jsonObject = (JSONObject) obj;
-			return jsonObject;
+			return jsonObject;}
 
-		}}}
+		}
+	public String getImageAlbumUrl (HashSet<API_Instagram> collezione) {
+		while (collezione.iterator().hasNext()) {
+			API_Instagram appoggio =collezione.iterator().next();
+			if (appoggio.getMedia_type().equals("CAROUSEL_ALBUM")) {
+				Album ricerca= (Album) appoggio;
+				
+			}
+		}
+	
+	}
+	}
