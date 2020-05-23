@@ -55,7 +55,13 @@ public class Parsing {
 					}}
 					return collezione;
 			}
+	public String urlAlbum(JSONObject jsonObject) {
+		  
+		
+		
 	}
+	}
+
 
 
 

@@ -5,6 +5,7 @@ package it.bonfire.ProjectOOP.Others;
 import java.io.*;
 import java.net.URL;
 import java.util.HashSet;
+import java.util.Iterator;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -12,6 +13,7 @@ import org.json.simple.parser.ParseException;
 
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
+import it.bonfire.ProjectOOP.Model.Fotografia;
 
 
    
@@ -45,14 +47,32 @@ public class Downloader {
 			return jsonObject;}
 
 		}
-	public String getImageAlbumUrl (HashSet<API_Instagram> collezione) {
+	public void getImageAlbumUrl (HashSet<API_Instagram> collezione) throws IOException, ParseException {
+		
 		while (collezione.iterator().hasNext()) {
 			API_Instagram appoggio =collezione.iterator().next();
 			if (appoggio.getMedia_type().equals("CAROUSEL_ALBUM")) {
 				Album ricerca= (Album) appoggio;
+				Iterator<Fotografia> p= ricerca.getFotografias().iterator();
+				while(p.hasNext())
+				{    Fotografia a=p.next();
+					String id=a.getId_photos();
+				     String url= getURL(id);
+				     JSONObject fotoAlbum= getJSONbyURL(url);
+				    url=(String)fotoAlbum.get("media_url");
+				    a.setMedia_url(url);
+					
+				}
+				
 				
 			}
 		}
 	
 	}
-	}
+	
+  
+    public String getURL (String id)
+    { String url= "https://graph.instagram.com/" + id +"?fields=media_url&access_token=IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD";
+    return url;
+    }
+}
