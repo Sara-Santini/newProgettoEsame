@@ -25,7 +25,7 @@ public class Parsing {
 	public HashSet<API_Instagram> GetAPIInstagramFromJson(JSONObject jsonObject) 
 	{
      HashSet<API_Instagram> collezione=new HashSet<>();
-     HashSet<Fotografia> fotografias= new HashSet<Fotografia>();
+    
 	             JSONArray posizioni = (JSONArray) jsonObject.get("data");
 
 					for (int i = 0; i < posizioni.size(); i++) {
@@ -36,7 +36,7 @@ public class Parsing {
 						String media_url=(String) jsonObject.get("media_url");
 						
 						if(media_type.equals("CAROUSEL_ALBUM"))
-						{    
+						{     HashSet<Fotografia> fotografias= new HashSet<Fotografia>();
 						   JSONObject jsonprovo= (JSONObject) jsonObject.get("children");
 							JSONArray album = (JSONArray) jsonprovo.get("data");
 							for (int j = 0; j < album.size(); j++) {
@@ -55,11 +55,7 @@ public class Parsing {
 					}}
 					return collezione;
 			}
-	public String urlAlbum(JSONObject jsonObject) {
-		  
-		
-		
-	}
+
 	}
 
 

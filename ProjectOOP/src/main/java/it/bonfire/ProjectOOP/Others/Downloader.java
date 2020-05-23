@@ -48,9 +48,9 @@ public class Downloader {
 
 		}
 	public void getImageAlbumUrl (HashSet<API_Instagram> collezione) throws IOException, ParseException {
-		
-		while (collezione.iterator().hasNext()) {
-			API_Instagram appoggio =collezione.iterator().next();
+		Iterator<API_Instagram> r=collezione.iterator();
+		while (r.hasNext()) {
+			API_Instagram appoggio =r.next();
 			if (appoggio.getMedia_type().equals("CAROUSEL_ALBUM")) {
 				Album ricerca= (Album) appoggio;
 				Iterator<Fotografia> p= ricerca.getFotografias().iterator();

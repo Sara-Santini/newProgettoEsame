@@ -59,4 +59,4 @@ public class Album extends API_Instagram {
 	
 }
 
-}
+

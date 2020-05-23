@@ -87,9 +87,8 @@ public abstract class API_Instagram {
 	 * @return 
 	 */
 	public String getMedia_type() {
-		// Start of user code for method getMedia_type
-		String getMedia_type = "";
-		return getMedia_type;
+	
+		return media_type;
 		// End of user code
 	}
 

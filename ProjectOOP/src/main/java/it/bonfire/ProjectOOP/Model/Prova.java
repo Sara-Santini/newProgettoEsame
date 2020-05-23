@@ -4,12 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream.GetField;
 import java.net.URL;
 import java.util.HashSet;
-import java.util.List;
-
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
+
 import org.json.simple.parser.ParseException;
 
 import it.bonfire.ProjectOOP.Others.Downloader;
@@ -23,8 +22,9 @@ public class Prova {
 		try {
 			 JSONObject cane = ciao.getJSONbyURL("https://graph.instagram.com/me/media?fields=id,media_type,children&access_token=IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD");
 		   Parsing gatto=new Parsing();
-		   HashSet<API_Instagram> topo= gatto.GetAPIInstagramFromJson(cane);
-		  cane.
+		    HashSet<API_Instagram> topo= gatto.GetAPIInstagramFromJson(cane);
+		   ciao.getImageAlbumUrl(topo);
+		
 		} catch (IOException | ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
