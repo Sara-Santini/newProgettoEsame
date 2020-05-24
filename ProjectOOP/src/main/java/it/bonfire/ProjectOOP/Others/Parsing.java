@@ -86,10 +86,10 @@ public class Parsing {
 						Fotografia a = p.next();
 						URL url = new URL(a.getMedia_url());
 						BufferedImage image = ImageIO.read(url);
-						boolean o=new File("\\Users\\39346\\Pictures\\Album" + N).mkdir();
-						if(o) {
+						boolean o=new File("C:\\Users\\arian\\OneDrive\\Immagini\\Album" + N).mkdir();
+						
 						File file = new File(
-								"C:\\Users\\39346\\Pictures\\Album" + N + "\\" + a.getId_photos() + ".jpg");
+								"C:\\Users\\arian\\OneDrive\\Immagini\\Album" + N + "\\" + a.getId_photos() + ".jpg");
 						ImageIO.write(image, "jpg", file);
 						BufferedImage image1 = ImageIO.read(file);
 						byte[] fileContent = Files.readAllBytes(file.toPath());
@@ -99,16 +99,18 @@ public class Parsing {
 						int w= image1.getWidth();
 						a.setPixelHeight(h);
 						a.setPixelWeight(w);
+						
 					}
-						else {throw new ErrorFileException();}
-					N++;
-				}}
+					
+				N++;
+				}
+				
 					else {
 					Image util1 = (Image) appoggio;
 					String IO=util1.getFotografias().getMedia_url();
 					URL url = new URL(IO);
 					BufferedImage image = ImageIO.read(url);
-					File file = new File("C:\\Users\\39346\\Pictures\\" + util1.getId() + ".jpg");
+					File file = new File("C:\\Users\\arian\\OneDrive\\Immagini\\" + util1.getId() + ".jpg");
 					ImageIO.write(image, "jpg", file);
 					BufferedImage image1 = ImageIO.read(file);
 					byte[] fileContent = Files.readAllBytes(file.toPath());
@@ -118,7 +120,7 @@ public class Parsing {
 					int w= image1.getWidth();
 					util1.getFotografias().setPixelHeight(h);
 					util1.getFotografias().setPixelWeight(w);
-					int x=0;
+					
 
 				}
 			}

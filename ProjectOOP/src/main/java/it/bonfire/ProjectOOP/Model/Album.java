@@ -5,7 +5,6 @@ package it.bonfire.ProjectOOP.Model;
 
 import java.util.HashSet;
 
-// End of user code
 
 /**
  * Description of Album.
@@ -20,9 +19,6 @@ public class Album extends API_Instagram {
 	 */
 	private HashSet<Fotografia> fotografias;
 
-	// Start of user code (user defined attributes for Album)
-
-	// End of user code
 
 	/**
 	 * The constructor.
@@ -37,21 +33,14 @@ public class Album extends API_Instagram {
 		super(id, caption, media_type);
 		this.fotografias = fotografias;
 	}
-
-
-
-	// Start of user code (user defined methods for Album)
-
-	// End of user code
+	
 	/**
-	 * Returns fotografias.
 	 * @return fotografias 
 	 */
 	public HashSet<Fotografia> getFotografias() {
-		return this.fotografias;
+		return fotografias;
 	}
-
-
+	
 	/**
 	 * @param fotografias the fotografias to set
 	 */

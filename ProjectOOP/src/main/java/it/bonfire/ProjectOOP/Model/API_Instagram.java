@@ -3,17 +3,14 @@
  *******************************************************************************/
 package it.bonfire.ProjectOOP.Model;
 
-// Start of user code (user defined imports)
-
-// End of user code
-
 /**
  * Description of API_Instagram.
  * 
  * @author Arianna Nazzarelli
  * @author Francesco Voto
- * @author sara Santini
+ * @author Sara Santini
  */
+
 public abstract class API_Instagram {
 	/**
 	 * Description of the property id.
@@ -30,20 +27,15 @@ public abstract class API_Instagram {
 	 */
 	private String media_type = null;
 
-	// Start of user code (user defined attributes for API_Instagram)
-
-	// End of user code
-
 	/**
 	 * The constructor.
 	 */
 
 	public API_Instagram(String id, String caption, String media_type) {
-		// Start of user code constructor for API_Instagram)
 		this.id = id;
 		this.caption = caption;
 		this.media_type = media_type;
-		// End of user code
+
 	}
 
 	public API_Instagram() {
@@ -53,12 +45,11 @@ public abstract class API_Instagram {
 	/**
 	 * Description of the method getCaption.
 	 * 
-	 * @return
+	 * @return caption
 	 */
 	public String getCaption() {
-		// Start of user code for method getCaption
 		return caption;
-		// End of user code
+
 	}
 
 	/**
@@ -67,15 +58,15 @@ public abstract class API_Instagram {
 	 * @param caption
 	 */
 	public void setCaption(String caption) {
-		// Start of user code for method setCaption
+
 		this.caption = caption;
-		// End of user code
+
 	}
 
 	/**
 	 * Description of the method getMedia_type.
 	 * 
-	 * @return
+	 * @return media_type
 	 */
 	public String getMedia_type() {
 
@@ -89,9 +80,9 @@ public abstract class API_Instagram {
 	 * @param media_type
 	 */
 	public void setMedia_type(String media_type) {
-		// Start of user code for method setMedia_type
+
 		this.media_type = media_type;
-		// End of user code
+
 	}
 
 	/**
@@ -105,12 +96,11 @@ public abstract class API_Instagram {
 	 * Description of the method setId.
 	 * 
 	 * @param id
-	 * @return
 	 */
 	public void setId(String id) {
-		// Start of user code for method setId
+
 		this.id = id;
-		// End of user code
+
 	}
 
 }

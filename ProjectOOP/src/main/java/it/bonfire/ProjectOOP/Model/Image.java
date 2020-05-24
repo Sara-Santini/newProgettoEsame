@@ -16,37 +16,25 @@ public class Image extends API_Instagram {
 	 */
 	private Fotografia fotografias = null;
 
-	// Start of user code (user defined attributes for Image)
-
-	// End of user code
-
 	/**
 	 * The constructor.
 	 */
 	public Image() {
-		// Start of user code constructor for Image)
 		super();
-		// End of user code
+
 	}
-	
 
 	public Image(String id, String caption, String media_type, Fotografia fotografias) {
 		super(id, caption, media_type);
 		this.fotografias = fotografias;
 	}
 
-
-	// Start of user code (user defined methods for Image)
-
-	// End of user code
 	/**
-	 * Returns fotografias.
-	 * @return fotografias 
+	 * @return fotografias
 	 */
 	public Fotografia getFotografias() {
-		return this.fotografias;
+		return fotografias;
 	}
-
 
 	/**
 	 * @param fotografias the fotografias to set
