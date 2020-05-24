@@ -7,16 +7,20 @@ import java.io.InputStreamReader;
 import java.io.ObjectInputStream.GetField;
 import java.net.URL;
 import java.util.HashSet;
+
+import javax.swing.text.html.HTMLDocument.Iterator;
 import org.json.simple.JSONObject;
 
 import org.json.simple.parser.ParseException;
 
+import it.bonfire.ProjectOOP.Exceptions.ErrorFileException;
 import it.bonfire.ProjectOOP.Others.Downloader;
 import it.bonfire.ProjectOOP.Others.Parsing;
+import it.bonfire.ProjectOOP.Model.Album;
 
 public class Prova {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ErrorFileException {
 		// TODO Auto-generated method stub
 		Downloader ciao = new Downloader();
 		try {
@@ -25,6 +29,7 @@ public class Prova {
 		    HashSet<API_Instagram> topo= gatto.GetAPIInstagramFromJson(cane);
 		   ciao.getImageAlbumUrl(topo);
 		   gatto.DownloadImage(topo);
+		   
 		   
 		   
 		

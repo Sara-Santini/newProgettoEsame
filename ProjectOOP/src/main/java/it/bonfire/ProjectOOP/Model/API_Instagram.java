@@ -37,67 +37,60 @@ public abstract class API_Instagram {
 	/**
 	 * The constructor.
 	 */
-	
+
 	public API_Instagram(String id, String caption, String media_type) {
 		// Start of user code constructor for API_Instagram)
-		super();
 		this.id = id;
 		this.caption = caption;
 		this.media_type = media_type;
 		// End of user code
 	}
-	public API_Instagram() {
-		
-	}
 
-	/**
-	 * Description of the method setId.
-	 * @param id 
-	 * @return 
-	 */
-	public String setId(int id) {
-		// Start of user code for method setId
-		String setId = "";
-		return setId;
-		// End of user code
+	public API_Instagram() {
+
 	}
 
 	/**
 	 * Description of the method getCaption.
-	 * @return 
+	 * 
+	 * @return
 	 */
 	public String getCaption() {
 		// Start of user code for method getCaption
-		String getCaption = "";
-		return getCaption;
+		return caption;
 		// End of user code
 	}
 
 	/**
 	 * Description of the method setCaption.
-	 * @param caption 
+	 * 
+	 * @param caption
 	 */
 	public void setCaption(String caption) {
 		// Start of user code for method setCaption
+		this.caption = caption;
 		// End of user code
 	}
 
 	/**
 	 * Description of the method getMedia_type.
-	 * @return 
+	 * 
+	 * @return
 	 */
 	public String getMedia_type() {
-	
+
 		return media_type;
-		
+
 	}
 
 	/**
 	 * Description of the method setMedia_type.
-	 * @param media_type 
+	 * 
+	 * @param media_type
 	 */
 	public void setMedia_type(String media_type) {
 		// Start of user code for method setMedia_type
+		this.media_type = media_type;
 		// End of user code
 	}
 
@@ -108,6 +101,16 @@ public abstract class API_Instagram {
 		return id;
 	}
 
+	/**
+	 * Description of the method setId.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public void setId(String id) {
+		// Start of user code for method setId
+		this.id = id;
+		// End of user code
+	}
 
-	
 }

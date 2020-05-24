@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.Files;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -21,11 +21,14 @@ import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Fotografia;
 import it.bonfire.ProjectOOP.Model.Image;
-
+import it.bonfire.ProjectOOP.Exceptions.*;
 /**
  * Description of Parsing.
  * 
- * @author arian
+ * @author Arianna Nazzarelli
+ * @author Francesco Voto
+ * @author Sara Santini 
+ * 
  */
 public class Parsing {
 	public static int N = 1;
@@ -68,7 +71,7 @@ public class Parsing {
 		return collezione;
 	}
 
-	public void DownloadImage(HashSet<API_Instagram> collezione) throws IOException {
+	public void DownloadImage(HashSet<API_Instagram> collezione) throws IOException, ErrorFileException{
 
 		try {
 			Iterator<API_Instagram> l = collezione.iterator();
@@ -84,18 +87,38 @@ public class Parsing {
 						URL url = new URL(a.getMedia_url());
 						BufferedImage image = ImageIO.read(url);
 						boolean o=new File("\\Users\\39346\\Pictures\\Album" + N).mkdir();
+						if(o) {
 						File file = new File(
 								"C:\\Users\\39346\\Pictures\\Album" + N + "\\" + a.getId_photos() + ".jpg");
 						ImageIO.write(image, "jpg", file);
+						BufferedImage image1 = ImageIO.read(file);
+						byte[] fileContent = Files.readAllBytes(file.toPath());
+						int bytes = fileContent.length;
+						a.setnByte(bytes);
+						int h= image1.getHeight();
+						int w= image1.getWidth();
+						a.setPixelHeight(h);
+						a.setPixelWeight(w);
 					}
+						else {throw new ErrorFileException();}
 					N++;
-				} else {
+				}}
+					else {
 					Image util1 = (Image) appoggio;
 					String IO=util1.getFotografias().getMedia_url();
 					URL url = new URL(IO);
 					BufferedImage image = ImageIO.read(url);
 					File file = new File("C:\\Users\\39346\\Pictures\\" + util1.getId() + ".jpg");
 					ImageIO.write(image, "jpg", file);
+					BufferedImage image1 = ImageIO.read(file);
+					byte[] fileContent = Files.readAllBytes(file.toPath());
+					int bytes = fileContent.length;
+					util1.getFotografias().setnByte(bytes);
+					int h= image1.getHeight();
+					int w= image1.getWidth();
+					util1.getFotografias().setPixelHeight(h);
+					util1.getFotografias().setPixelWeight(w);
+					int x=0;
 
 				}
 			}

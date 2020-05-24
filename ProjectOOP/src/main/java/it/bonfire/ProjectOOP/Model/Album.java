@@ -10,7 +10,9 @@ import java.util.HashSet;
 /**
  * Description of Album.
  * 
- * @author arian
+ * @author Arianna Nazzarelli
+ * @author Francesco Voto
+ * @author Sara Santini
  */
 public class Album extends API_Instagram {
 	/**
