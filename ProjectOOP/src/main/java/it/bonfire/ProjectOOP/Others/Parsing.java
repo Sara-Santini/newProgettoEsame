@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -59,8 +60,8 @@ public class Parsing {
 				API_Instagram ciao = (API_Instagram) new Album(id, caption, media_type, fotografias);
 				collezione.add(ciao);
 			} else {
-				API_Instagram appoggio = (API_Instagram) new Image(id, caption, media_type,
-						new Fotografia(id, media_url));
+				Fotografia foto=new Fotografia(id, media_url);
+				API_Instagram appoggio = (API_Instagram) new Image(id, caption, media_type,foto);
 				collezione.add(appoggio);
 			}
 		}
@@ -82,16 +83,18 @@ public class Parsing {
 						Fotografia a = p.next();
 						URL url = new URL(a.getMedia_url());
 						BufferedImage image = ImageIO.read(url);
+						boolean o=new File("\\Users\\39346\\Pictures\\Album" + N).mkdir();
 						File file = new File(
-								"C:\\Users\\arian\\Pictures\\Album" + N + "\\" + a.getId_photos() + ".jpg");
+								"C:\\Users\\39346\\Pictures\\Album" + N + "\\" + a.getId_photos() + ".jpg");
 						ImageIO.write(image, "jpg", file);
 					}
 					N++;
 				} else {
 					Image util1 = (Image) appoggio;
-					URL url = new URL(util1.getFotografias().getMedia_url());
+					String IO=util1.getFotografias().getMedia_url();
+					URL url = new URL(IO);
 					BufferedImage image = ImageIO.read(url);
-					File file = new File("C:\\Users\\arian\\Pictures\\" + util1.getId() + ".jpg");
+					File file = new File("C:\\Users\\39346\\Pictures\\" + util1.getId() + ".jpg");
 					ImageIO.write(image, "jpg", file);
 
 				}
@@ -103,9 +106,5 @@ public class Parsing {
 
 	}
 
-	public String getURL(String id) {
-		String url = "https://graph.instagram.com/" + id
-				+ "?fields=media_url&access_token=IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD";
-		return url;
-	}
+	
 }

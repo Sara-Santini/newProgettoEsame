@@ -49,7 +49,7 @@ public class Downloader {
 		}
 	
 	
-	public void getImageAlbumUrl (HashSet<API_Instagram> collezione) throws IOException, ParseException {
+	public void getImageAlbumUrl (HashSet<API_Instagram> collezione)  {
 		Iterator<API_Instagram> r=collezione.iterator();
 		while (r.hasNext()) {
 			API_Instagram appoggio =r.next();
@@ -60,9 +60,7 @@ public class Downloader {
 				{    Fotografia a=p.next();
 					String id=a.getId_photos();
 				     String url= getURL(id);
-				     JSONObject fotoAlbum= getJSONbyURL(url);
-				    url=(String)fotoAlbum.get("media_url");
-				    a.setMedia_url(url);
+				     a.setMedia_url(url);
 					
 				}
 				
@@ -75,6 +73,19 @@ public class Downloader {
   
     public String getURL (String id)
     { String url= "https://graph.instagram.com/" + id +"?fields=media_url&access_token=IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD";
+      
+	try {
+		JSONObject fotoAlbum = getJSONbyURL(url);
+		url=(String)fotoAlbum.get("media_url");
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (ParseException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+        
+    
     return url;
     }
 }

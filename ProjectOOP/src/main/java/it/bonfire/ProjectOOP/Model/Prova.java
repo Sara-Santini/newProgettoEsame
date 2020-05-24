@@ -20,10 +20,11 @@ public class Prova {
 		// TODO Auto-generated method stub
 		Downloader ciao = new Downloader();
 		try {
-			 JSONObject cane = ciao.getJSONbyURL("https://graph.instagram.com/me/media?fields=id,media_type,children&access_token=IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD");
+			 JSONObject cane = ciao.getJSONbyURL("https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,children&access_token=IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD");
 		   Parsing gatto=new Parsing();
 		    HashSet<API_Instagram> topo= gatto.GetAPIInstagramFromJson(cane);
 		   ciao.getImageAlbumUrl(topo);
+		   gatto.DownloadImage(topo);
 		   
 		   
 		
