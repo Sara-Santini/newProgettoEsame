@@ -17,6 +17,8 @@ import javax.imageio.ImageIO;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Fotografia;
@@ -32,14 +34,16 @@ import it.bonfire.ProjectOOP.Exceptions.*;
  */
 public class Parsing {
 	public static int N = 1;
-
+	HashSet<API_Instagram> collezione1 = new HashSet<>();
 	/**
 	 * Description of the method GetJSONFromUrl.
 	 */
 	public HashSet<API_Instagram> GetAPIInstagramFromJson(JSONObject jsonObject) {
-		HashSet<API_Instagram> collezione = new HashSet<>();
-
+		
+        
 		JSONArray posizioni = (JSONArray) jsonObject.get("data");
+		JSONObject next=  (JSONObject) jsonObject.get("paging");
+		String urlString= (String) next.get("next");
 
 		for (int i = 0; i < posizioni.size(); i++) {
 			jsonObject = (JSONObject) posizioni.get(i);
@@ -61,14 +65,30 @@ public class Parsing {
 
 				}
 				API_Instagram ciao = (API_Instagram) new Album(id, caption, media_type, fotografias);
-				collezione.add(ciao);
+				collezione1.add(ciao);
 			} else {
 				Fotografia foto=new Fotografia(id, media_url);
 				API_Instagram appoggio = (API_Instagram) new Image(id, caption, media_type,foto);
-				collezione.add(appoggio);
+				collezione1.add(appoggio);
 			}
 		}
-		return collezione;
+		try { 
+			if (!urlString.equals(null)) {
+			Downloader DOW = new Downloader();
+			try {
+				JSONObject ciao= DOW.getJSONbyURL(urlString);
+				GetAPIInstagramFromJson(ciao);
+			} catch (IOException | ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}}
+		catch (NullPointerException e) {
+			return collezione1;
+		}
+		return collezione1;
+		
 	}
 
 	public void DownloadImage(HashSet<API_Instagram> collezione) throws IOException, ErrorFileException{
