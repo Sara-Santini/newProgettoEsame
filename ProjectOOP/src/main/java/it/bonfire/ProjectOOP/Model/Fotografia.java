@@ -141,4 +141,12 @@ public class Fotografia {
 		this.nbyte = Byte;
 	}
 
+	@Override
+	public String toString() {
+		return "Fotografia [pixelHeight=" + pixelHeight + ", media_url=" + media_url + ", id_photos=" + id_photos
+				+ ", pixelWeight=" + pixelWeight + ", nbyte=" + nbyte + "]";
+	}
+	
+	
+
 }

@@ -16,6 +16,7 @@ public class Image extends API_Instagram {
 	 */
 	private Fotografia fotografias = null;
 
+	
 	/**
 	 * The constructor.
 	 */
@@ -35,12 +36,15 @@ public class Image extends API_Instagram {
 	public Fotografia getFotografias() {
 		return fotografias;
 	}
-
 	/**
 	 * @param fotografias the fotografias to set
 	 */
 	public void setFotografias(Fotografia fotografias) {
 		this.fotografias = fotografias;
+	}
+@Override
+	public String toString() {
+		return "Image [fotografias=" + fotografias + "]";
 	}
 
 }

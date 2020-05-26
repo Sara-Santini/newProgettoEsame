@@ -23,7 +23,7 @@ import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Fotografia;
 import it.bonfire.ProjectOOP.Model.Image;
-import it.bonfire.ProjectOOP.Exceptions.*;
+
 /**
  * Description of Parsing.
  * 
@@ -91,7 +91,7 @@ public class Parsing {
 		
 	}
 
-	public void DownloadImage(HashSet<API_Instagram> collezione) throws IOException, ErrorFileException{
+	public void DownloadImage(HashSet<API_Instagram> collezione) throws IOException{
 
 		try {
 			Iterator<API_Instagram> l = collezione.iterator();

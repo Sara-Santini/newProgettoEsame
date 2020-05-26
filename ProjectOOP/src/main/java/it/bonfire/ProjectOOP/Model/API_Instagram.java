@@ -103,4 +103,10 @@ public abstract class API_Instagram {
 
 	}
 
+	@Override
+	public String toString() {
+		return "API_Instagram [id=" + id + ", caption=" + caption + ", media_type=" + media_type + "]";
+	}
+	
+
 }

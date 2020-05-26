@@ -47,6 +47,11 @@ public class Album extends API_Instagram {
 	public void setFotografias(HashSet<Fotografia> fotografias) {
 		this.fotografias = fotografias;
 	}
+
+	@Override
+	public String toString() {
+		return "Album [fotografias=" + fotografias + "]";
+	}
 	
 }
 
