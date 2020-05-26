@@ -54,8 +54,8 @@ public class Parsing {
 
 			if (media_type.equals("CAROUSEL_ALBUM")) {
 				HashSet<Fotografia> fotografias = new HashSet<Fotografia>();
-				JSONObject jsonprovo = (JSONObject) jsonObject.get("children");
-				JSONArray album = (JSONArray) jsonprovo.get("data");
+				JSONObject jsonObj = (JSONObject) jsonObject.get("children");
+				JSONArray album = (JSONArray) jsonObj.get("data");
 				for (int j = 0; j < album.size(); j++) {
 
 					JSONObject jsonObject1 = (JSONObject) album.get(j);
@@ -64,8 +64,8 @@ public class Parsing {
 					fotografias.add(new Fotografia(albumid));
 
 				}
-				API_Instagram ciao = (API_Instagram) new Album(id, caption, media_type, fotografias);
-				collezione1.add(ciao);
+				API_Instagram api_instagram = (API_Instagram) new Album(id, caption, media_type, fotografias);
+				collezione1.add(api_instagram);
 			} else {
 				Fotografia foto=new Fotografia(id, media_url);
 				API_Instagram appoggio = (API_Instagram) new Image(id, caption, media_type,foto);
@@ -99,19 +99,19 @@ public class Parsing {
 			while (l.hasNext()) {
 				API_Instagram appoggio = l.next();
 				if (appoggio.getMedia_type().equals("CAROUSEL_ALBUM")) {
-					Album util = (Album) appoggio;
+					Album album = (Album) appoggio;
 
-					Iterator<Fotografia> p = util.getFotografias().iterator();
+					Iterator<Fotografia> p = album.getFotografias().iterator();
 					while (p.hasNext()) {
-						Fotografia a = p.next();
-						URL url = new URL(a.getMedia_url());
+						Fotografia f = p.next();
+						URL url = new URL(f.getMedia_url());
 						BufferedImage image = ImageIO.read(url);
 						new File("C:\\Users\\39346\\Pictures\\Album" + N).mkdir();
 						
 						File file = new File(
-								"C:\\Users\\39346\\Pictures\\Album" + N + "\\" + a.getId_photos() + ".jpg");
+								"C:\\Users\\39346\\Pictures\\Album" + N + "\\" + f.getId_photos() + ".jpg");
 						ImageIO.write(image, "jpg", file);
-						extractBytePixel(file, a);
+						extractBytePixel(file, f);
 						
 						
 					}
@@ -120,13 +120,13 @@ public class Parsing {
 				}
 				
 					else {
-					Image util1 = (Image) appoggio;
-					String IO=util1.getFotografias().getMedia_url();
-					URL url = new URL(IO);
+					Image images = (Image) appoggio;
+					String media_url=images.getFotografias().getMedia_url();
+					URL url = new URL(media_url);
 					BufferedImage image = ImageIO.read(url);
-					File file = new File("C:\\Users\\39346\\Pictures\\" + util1.getId() + ".jpg");
+					File file = new File("C:\\Users\\39346\\Pictures\\" + images.getId() + ".jpg");
 					ImageIO.write(image, "jpg", file);
-					extractBytePixel(file, util1.getFotografias());
+					extractBytePixel(file, images.getFotografias());
 					
 				}
 			}
