@@ -32,8 +32,8 @@ public class Downloader {
 	 * @throws ParseException Errore lanciato nel convertire una stringa in oggetto
 	 */
 	public JSONObject getJSONbyURL(String url) throws IOException, ParseException {
-		String totdata = null;
-		String lines = null;
+		String totdata = "";
+		String lines ="";
 
 		try (InputStream imput = new URL(url).openStream()) {
 			BufferedReader buffer = new BufferedReader(new InputStreamReader(imput));
