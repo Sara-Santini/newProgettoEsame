@@ -3,15 +3,19 @@
  *******************************************************************************/
 package it.bonfire.ProjectOOP.Filters;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
+
+import javax.imageio.ImageIO;
 
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Fotografia;
 import it.bonfire.ProjectOOP.Model.Image;
-
+import it.bonfire.ProjectOOP.Others.Parsing;
 // Start of user code (user defined imports)
 
 // End of user code
@@ -25,7 +29,7 @@ import it.bonfire.ProjectOOP.Model.Image;
  */
 public class Filter {
 	HashSet<API_Instagram> collezione;
-
+	Parsing par;
 	/**
 	 * The constructor.
 	 */
@@ -33,11 +37,12 @@ public class Filter {
 	public Filter(HashSet<API_Instagram> collezione) {
 		super();
 		this.collezione = collezione;
+		 par=new Parsing();
 	}
 
-	public void sortPhotos(){
-		new File("C:\\\\Users\\\\39346\\\\Pictures\\\\FotoMeno100kb").mkdir();
-		new File("C:\\\\Users\\\\39346\\\\Pictures\\\\FotoPiu100kb").mkdir();
+	public void sortPhotos() throws IOException{
+		new File(par.getDir()+"\\FotoMeno100kb").mkdir();
+		new File(par.getDir()+"\\FotoPiu100kb").mkdir();
 	     int n=1;
 	   Iterator<API_Instagram> p= collezione.iterator();
 		while(p.hasNext()) {
@@ -47,13 +52,19 @@ public class Filter {
 				Iterator<Fotografia> a = album.getFotografias().iterator();
 			while (a.hasNext()) {
 					Fotografia appoggio1 =a.next();
-					File photo = new File("C:\\Users\\39346\\Pictures\\Album"+n+"\\" +appoggio1.getId_photos()+".jpg" ); 
-					if (appoggio1.getnByte()<102.400) {
-					photo.renameTo(new File("C:\\Users\\39346\\Pictures\\FotoMeno100kb")); 
+					File photo = new File(par.getDir()+"\\Album"+n+"\\" +appoggio1.getId_photos()+".jpg" ); 
+					BufferedImage image = ImageIO.read(photo);
+					if (appoggio1.getnByte()<102400) {
 					
+					File photo2=new File(par.getDir()+"\\FotoMeno100kb\\"+ appoggio1.getId_photos()+".jpg"); 
+					ImageIO.write(image, "jpg", photo2);
+				
+				
 				}
 			else {
-				photo.renameTo(new File("C:\\Users\\39346\\Pictures\\FotoPiu100kb")); 
+				
+				File photo2= new File(par.getDir()+"\\FotoPiu100kb\\"+ appoggio1.getId_photos()+".jpg"); 
+				ImageIO.write(image, "jpg", photo2);
 				
 			}
 				
@@ -62,13 +73,16 @@ public class Filter {
 			}
 				else {
 					Image image= (Image) appoggio;
-					File photo = new File("C:\\Users\\39346\\Pictures"+ image.getId()+".jpg"); 
-					if (image.getFotografias().getnByte()<102.400) {
-						photo.renameTo(new File("C:\\Users\\39346\\Pictures\\FotoMeno100kb" + photo.getName())); 
+					File photo = new File(par.getDir()+"\\"+ image.getId()+".jpg"); 
+					BufferedImage image1 = ImageIO.read(photo);
+					if (image.getFotografias().getnByte()<102400) {
+						File photo2=new File(par.getDir()+"\\FotoMeno100kb\\" + image.getId()+".jpg");
+						ImageIO.write(image1, "jpg", photo2);
 						
 					}
 				else {
-					photo.renameTo(new File("C:\\Users\\39346\\Pictures\\FotoPiu100kb" + photo.getName())); 
+					File photo2=new File(par.getDir()+"\\FotoPiu100kb\\" + image.getId()+ ".jpg");
+					ImageIO.write(image1, "jpg", photo2);
 				
 					
 				}
@@ -76,3 +90,4 @@ public class Filter {
 	   
    }
 }}}
+

@@ -1,6 +1,4 @@
-/*******************************************************************************
- * 2020, All rights reserved.
- *******************************************************************************/
+
 package it.bonfire.ProjectOOP.Others;
 
 import java.awt.image.BufferedImage;
@@ -11,7 +9,6 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.util.HashSet;
 import java.util.Iterator;
-
 
 import javax.imageio.ImageIO;
 
@@ -29,21 +26,28 @@ import it.bonfire.ProjectOOP.Model.Image;
  * 
  * @author Arianna Nazzarelli
  * @author Francesco Voto
- * @author Sara Santini 
+ * @author Sara Santini
  * 
  */
 public class Parsing {
 	public static int N = 1;
 	HashSet<API_Instagram> collezione1 = new HashSet<>();
+	private String dir="C:\\Users\\arian\\OneDrive\\Immagini";
+	
+	
+
+	public String getDir() {
+		return dir;
+	}
+
 	/**
 	 * Description of the method GetJSONFromUrl.
 	 */
 	public HashSet<API_Instagram> GetAPIInstagramFromJson(JSONObject jsonObject) {
-		
-        
+
 		JSONArray posizioni = (JSONArray) jsonObject.get("data");
-		JSONObject next=  (JSONObject) jsonObject.get("paging");
-		String urlString= (String) next.get("next");
+		JSONObject next = (JSONObject) jsonObject.get("paging");
+		String urlString = (String) next.get("next");
 
 		for (int i = 0; i < posizioni.size(); i++) {
 			jsonObject = (JSONObject) posizioni.get(i);
@@ -54,8 +58,8 @@ public class Parsing {
 
 			if (media_type.equals("CAROUSEL_ALBUM")) {
 				HashSet<Fotografia> fotografias = new HashSet<Fotografia>();
-				JSONObject jsonObj = (JSONObject) jsonObject.get("children");
-				JSONArray album = (JSONArray) jsonObj.get("data");
+				JSONObject jsonprovo = (JSONObject) jsonObject.get("children");
+				JSONArray album = (JSONArray) jsonprovo.get("data");
 				for (int j = 0; j < album.size(); j++) {
 
 					JSONObject jsonObject1 = (JSONObject) album.get(j);
@@ -64,34 +68,31 @@ public class Parsing {
 					fotografias.add(new Fotografia(albumid));
 
 				}
-				API_Instagram api_instagram = (API_Instagram) new Album(id, caption, media_type, fotografias);
-				collezione1.add(api_instagram);
+				API_Instagram ciao = (API_Instagram) new Album(id, caption, media_type, fotografias);
+				collezione1.add(ciao);
 			} else {
-				Fotografia foto=new Fotografia(id, media_url);
-				API_Instagram appoggio = (API_Instagram) new Image(id, caption, media_type,foto);
+				Fotografia foto = new Fotografia(id, media_url);
+				API_Instagram appoggio = (API_Instagram) new Image(id, caption, media_type, foto);
 				collezione1.add(appoggio);
 			}
 		}
-		try { 
-			if (!urlString.equals(null)) {
-			Downloader DOW = new Downloader();
-			try {
-				JSONObject ciao= DOW.getJSONbyURL(urlString);
-				GetAPIInstagramFromJson(ciao);
-			} catch (IOException | ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}}
-		catch (NullPointerException e) {
-			return collezione1;
-		}
+
+//		if (urlString != null) {
+//			Downloader DOW = new Downloader();
+//			try {
+//				JSONObject ciao = DOW.getJSONbyURL(urlString);
+//				GetAPIInstagramFromJson(ciao);
+//			} catch (IOException | ParseException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//
+//		}
 		return collezione1;
-		
+
 	}
 
-	public void DownloadImage(HashSet<API_Instagram> collezione) throws IOException{
+	public void DownloadImage(HashSet<API_Instagram> collezione) throws IOException {
 
 		try {
 			Iterator<API_Instagram> l = collezione.iterator();
@@ -99,35 +100,15 @@ public class Parsing {
 			while (l.hasNext()) {
 				API_Instagram appoggio = l.next();
 				if (appoggio.getMedia_type().equals("CAROUSEL_ALBUM")) {
-					Album album = (Album) appoggio;
-
-					Iterator<Fotografia> p = album.getFotografias().iterator();
-					while (p.hasNext()) {
-						Fotografia f = p.next();
-						URL url = new URL(f.getMedia_url());
-						BufferedImage image = ImageIO.read(url);
-						new File("C:\\Users\\39346\\Pictures\\Album" + N).mkdir();
-						
-						File file = new File(
-								"C:\\Users\\39346\\Pictures\\Album" + N + "\\" + f.getId_photos() + ".jpg");
-						ImageIO.write(image, "jpg", file);
-						extractBytePixel(file, f);
-						
-						
-					}
+					Album util = (Album) appoggio;
+					Download(util);
 					
-				N++;
 				}
-				
-					else {
-					Image images = (Image) appoggio;
-					String media_url=images.getFotografias().getMedia_url();
-					URL url = new URL(media_url);
-					BufferedImage image = ImageIO.read(url);
-					File file = new File("C:\\Users\\39346\\Pictures\\" + images.getId() + ".jpg");
-					ImageIO.write(image, "jpg", file);
-					extractBytePixel(file, images.getFotografias());
-					
+
+				else {
+					Image util1 = (Image) appoggio;
+					Download(util1);
+
 				}
 			}
 		} catch (MalformedURLException e) {
@@ -136,17 +117,54 @@ public class Parsing {
 		}
 
 	}
-	public void extractBytePixel(File file, Fotografia foto) throws IOException
-	{
+
+	public void Download(Album album) {
+
+		Iterator<Fotografia> p = album.getFotografias().iterator();
+		while (p.hasNext()) {
+			Fotografia a = p.next();
+			URL url;
+			try {
+				url = new URL(a.getMedia_url());
+
+				BufferedImage image = ImageIO.read(url);
+				new File(dir+"\\Album" + N).mkdir();
+				File file = new File(dir+ "\\Album" + N + "\\" + a.getId_photos() + ".jpg");
+				ImageIO.write(image, "jpg", file);
+				extractBytePixel(file, a);
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		N++;
+		
+	}
+
+	public void Download(Image image) throws IOException {
+		String IO = image.getFotografias().getMedia_url();
+		URL url = new URL(IO);
+		BufferedImage image1 = ImageIO.read(url);
+		File file = new File(dir+ "\\" + image.getId() + ".jpg");
+		ImageIO.write(image1, "jpg", file);
+		extractBytePixel(file, image.getFotografias());
+
+	}
+
+	public void extractBytePixel(File file, Fotografia foto) throws IOException {
 		BufferedImage image1 = ImageIO.read(file);
 		byte[] fileContent = Files.readAllBytes(file.toPath());
 		int bytes = fileContent.length;
 		foto.setnByte(bytes);
-		int h= image1.getHeight();
-		int w= image1.getWidth();
+		int h = image1.getHeight();
+		int w = image1.getWidth();
 		foto.setPixelHeight(h);
-		foto.setPixelWeight(w);	
+		foto.setPixelWeight(w);
 	}
 
-	
 }
+
