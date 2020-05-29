@@ -16,9 +16,10 @@ import it.bonfire.ProjectOOP.Model.API_Instagram;
 import javax.imageio.ImageIO;
 
 public class GetImagebytes {
+	Parsing pars;
 	public int extractBytes (HashSet<API_Instagram> collezione) throws IOException { // open image try(File imgPath = new URL(url).openStream()) {
 	   Iterator<API_Instagram> c = collezione.iterator(); 
-	   File fi = new File("C:\\Users\\39346\\Pictures\\pippo.jpg");
+	   File fi = new File(pars.getDir()+"\\pippo.jpg");
 	   BufferedImage image = ImageIO.read(fi);
 	   byte[] fileContent = Files.readAllBytes(fi.toPath());
 
