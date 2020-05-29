@@ -29,6 +29,10 @@ public class Image extends API_Instagram {
 		super(id, caption, media_type);
 		this.fotografias = fotografias;
 	}
+	public Image(API_Instagram api, Fotografia fotografias) {
+		super(api.getId(), api.getCaption(), api.getMedia_type());
+		this.fotografias = fotografias;
+	}
 
 	/**
 	 * @return fotografias

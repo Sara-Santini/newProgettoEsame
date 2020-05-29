@@ -6,12 +6,18 @@ package it.bonfire.ProjectOOP.Controller;
 import java.io.IOException;
 import java.util.HashSet;
 
+import javax.imageio.stream.IIOByteBuffer;
+
 import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+
 import it.bonfire.ProjectOOP.Model.API_Instagram;
+import it.bonfire.ProjectOOP.Model.Fotografia;
+import it.bonfire.ProjectOOP.Model.Image;
 import it.bonfire.ProjectOOP.Others.Downloader;
 import it.bonfire.ProjectOOP.Others.Parsing;
 
@@ -29,7 +35,7 @@ import it.bonfire.ProjectOOP.Others.Parsing;
 @RestController
 public class AppController {
 	
-	    HashSet<API_Instagram> dati;
+	    DataBase dati=new DataBase();
 
 			
 			/**
@@ -39,8 +45,21 @@ public class AppController {
 
 			@RequestMapping(value = "metadata", method=RequestMethod.GET)
 			public HashSet<API_Instagram> getMetadata(){
+					
+				return dati.getApi();
+			}
+			
+			@RequestMapping(value = "postImage", method=RequestMethod.POST)
+			public HashSet<API_Instagram> postImage(@RequestBody Image image){
 				
-				return new DataBase().getApi();
+				dati.addApi(image);
+				return dati.getApi();
+			}
+			@RequestMapping(value = "parPostImage", method=RequestMethod.POST)
+			public HashSet<API_Instagram> postParImage(@RequestBody API_Instagram api,@RequestBody Fotografia photo ){
+				Image a= new Image(api, photo);
+				dati.addApi(a);
+				return dati.getApi();
 			}
 			
 			

@@ -6,16 +6,22 @@ import java.util.HashSet;
 import org.json.simple.parser.ParseException;
 
 import it.bonfire.ProjectOOP.Model.API_Instagram;
+import it.bonfire.ProjectOOP.Model.Image;
 import it.bonfire.ProjectOOP.Others.Downloader;
 import it.bonfire.ProjectOOP.Others.Parsing;
 
 public class DataBase {
 	private HashSet<API_Instagram> api=new HashSet<API_Instagram>();
+	
 	public HashSet<API_Instagram> getApi() {
 		return api;
 	}
 	public void setApi(HashSet<API_Instagram> api) {
 		this.api = api;
+	}
+	public void addApi(Image image)
+	{
+		api.add((API_Instagram)image);
 	}
 	public DataBase() {
 		Downloader iooDownloader=new Downloader();

@@ -32,7 +32,7 @@ import it.bonfire.ProjectOOP.Model.Image;
 public class Parsing {
 	public static int N = 1;
 	HashSet<API_Instagram> collezione1 = new HashSet<>();
-	private String dir="C:\\Users\\arian\\OneDrive\\Immagini";
+	private String dir="C:\\Users\\39346\\Pictures";
 	
 	
 
