@@ -89,5 +89,38 @@ public class Filter {
 	   
 	   
    }
-}}}
+		}}
+	
+public void PhotosWithHashtag(HashSet<API_Instagram> collezione) throws IOException{
+	Iterator<API_Instagram> iter= collezione.iterator();
+	new File(par.getDir()+"\\PhotosWithHashtag").mkdir();
+	
+	Parsing pars=new Parsing();
+	while(iter.hasNext()) {
+	 API_Instagram api= iter.next();
+	 if(api.getCaption()!=null && api.getCaption().contains("#") ) {
+		 if(api.getClass().equals(Image.class)) {
+			  Image image= (Image) api;
+			  File file= new File(par.getDir()+"\\PhotosWithHashtag\\"+ image.getId()+".jpg");
+			  pars.Download(image, file);
+			  
+			 
+			 
+		 }
+		 else {
+			 Album album= (Album)api;
+			 File file= new File(par.getDir()+"\\PhotosWithHashtag");
+			 pars.Download(album, file);
+		 }
+	 }
+	 
+	}
+}
+
+
+
+
+
+
+}
 

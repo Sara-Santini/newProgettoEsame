@@ -101,14 +101,18 @@ public class Parsing {
 				API_Instagram appoggio = l.next();
 				if (appoggio.getMedia_type().equals("CAROUSEL_ALBUM")) {
 					Album util = (Album) appoggio;
-					Download(util);
+					new File(dir+"\\Album" + N).mkdir();
+					File file= new File(dir+"\\Album" + N);
+					Download(util,file);
+					 
 					
 				}
 
 				else {
 					Image util1 = (Image) appoggio;
-					Download(util1);
-
+					File file = new File(dir+ "\\" + util1.getId() + ".jpg");
+					Download(util1, file);
+                 
 				}
 			}
 		} catch (MalformedURLException e) {
@@ -118,7 +122,7 @@ public class Parsing {
 
 	}
 
-	public void Download(Album album) {
+	public void Download(Album album, File file) {
 
 		Iterator<Fotografia> p = album.getFotografias().iterator();
 		while (p.hasNext()) {
@@ -128,10 +132,10 @@ public class Parsing {
 				url = new URL(a.getMedia_url());
 
 				BufferedImage image = ImageIO.read(url);
-				new File(dir+"\\Album" + N).mkdir();
-				File file = new File(dir+ "\\Album" + N + "\\" + a.getId_photos() + ".jpg");
-				ImageIO.write(image, "jpg", file);
-				extractBytePixel(file, a);
+				 
+				File file2 = new File(file.getPath() + "\\" + a.getId_photos() + ".jpg");
+				ImageIO.write(image, "jpg", file2);
+				extractBytePixel(file2, a);
 			} catch (MalformedURLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -145,11 +149,10 @@ public class Parsing {
 		
 	}
 
-	public void Download(Image image) throws IOException {
+	public void Download(Image image, File file) throws IOException {
 		String IO = image.getFotografias().getMedia_url();
 		URL url = new URL(IO);
 		BufferedImage image1 = ImageIO.read(url);
-		File file = new File(dir+ "\\" + image.getId() + ".jpg");
 		ImageIO.write(image1, "jpg", file);
 		extractBytePixel(file, image.getFotografias());
 
@@ -165,6 +168,13 @@ public class Parsing {
 		foto.setPixelHeight(h);
 		foto.setPixelWeight(w);
 	}
+	
+	public void extractCaption(HashSet<API_Instagram> collezione) {
+		
+		
+	}
+	
+	
 
 }
 

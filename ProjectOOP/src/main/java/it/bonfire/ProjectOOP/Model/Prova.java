@@ -24,13 +24,13 @@ public class Prova {
 		// TODO Auto-generated method stub
 		Downloader load = new Downloader();
 		try {
-			JSONObject obj = load.getJSONbyURL("https://graph.instagram.com/me/media?fields=id,media_type,media_url,children&access_token=IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD");
+			JSONObject obj = load.getJSONbyURL("https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,children&access_token=IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD");
 			Parsing pars = new Parsing();
 			HashSet<API_Instagram> api_insta = pars.GetAPIInstagramFromJson(obj);
 			load.getImageAlbumUrl(api_insta);
 			pars.DownloadImage(api_insta);
 			Filter filter= new Filter(api_insta);
-			filter.sortPhotos();
+			filter.PhotosWithHashtag(api_insta);
 
 		} catch (IOException | ParseException e) {
 			// TODO Auto-generated catch block
