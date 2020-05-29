@@ -9,12 +9,14 @@ import java.util.HashSet;
 import javax.imageio.stream.IIOByteBuffer;
 
 import org.json.simple.parser.ParseException;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
+import it.bonfire.ProjectOOP.Exceptions.PhotoNotFoundException;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Fotografia;
 import it.bonfire.ProjectOOP.Model.Image;
@@ -61,7 +63,16 @@ public class AppController {
 				dati.addApi(a);
 				return dati.getApi();
 			}
-			
+			@RequestMapping(value= "/deleteImage",method=RequestMethod.DELETE)
+			public HashSet<API_Instagram> deleteImage(@RequestParam (name ="id")String id){
+				try {
+					dati.deleteAPI(id);
+				} catch (PhotoNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return dati.getApi();				
+			}
 			
 			
 }

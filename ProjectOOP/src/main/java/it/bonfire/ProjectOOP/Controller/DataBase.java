@@ -2,9 +2,11 @@ package it.bonfire.ProjectOOP.Controller;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Iterator;
 
 import org.json.simple.parser.ParseException;
 
+import it.bonfire.ProjectOOP.Exceptions.PhotoNotFoundException;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Image;
 import it.bonfire.ProjectOOP.Others.Downloader;
@@ -33,14 +35,28 @@ public class DataBase {
 			parsing.DownloadImage(api);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.getMessage();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 	}
-
+	public void deleteAPI(String id) throws PhotoNotFoundException {
+		Iterator<API_Instagram> p = api.iterator();
+		int i =0;
+		while(p.hasNext()) {
+			API_Instagram ap =p.next();
+			if(ap.getId().equals(id)) {
+				api.remove(ap);
+			i++;
+			}
+		}
+			if(i==0) throw new PhotoNotFoundException();
+		
+		
 	
+
+	}
 
 }
