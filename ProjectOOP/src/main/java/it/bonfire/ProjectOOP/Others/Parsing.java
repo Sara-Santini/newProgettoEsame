@@ -14,7 +14,7 @@ import javax.imageio.ImageIO;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
+
 
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
@@ -32,7 +32,7 @@ import it.bonfire.ProjectOOP.Model.Image;
 public class Parsing {
 	public static int N = 1;
 	HashSet<API_Instagram> collezione1 = new HashSet<>();
-	private String dir="/Users/sarasantini/Desktop/";
+	private String dir="C:\\Users\\39346\\Pictures";
 	
 	
 
@@ -169,10 +169,6 @@ public class Parsing {
 		foto.setPixelWeight(w);
 	}
 	
-	public void extractCaption(HashSet<API_Instagram> collezione) {
-		
-		
-	}
 	
 	
 

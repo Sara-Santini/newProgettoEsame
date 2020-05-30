@@ -32,9 +32,7 @@ public class Statistics {
 	 */
 	public Statistics(HashSet<API_Instagram> collezione) {
 		this.collezione = collezione;
-	}
-	public void initializer () {
-	Iterator<API_Instagram> p= collezione.iterator();
+		Iterator<API_Instagram> p= this.collezione.iterator();
 		while(p.hasNext()) {
 			API_Instagram appoggio = p.next();
 			if (appoggio.getMedia_type().equals("CAROUSEL_ALBUM")) {
@@ -57,14 +55,21 @@ public class Statistics {
 			
 
 		}
-		
 	}
+
 	public float averageofbytes () {
 		float somma=0;
 		for(int i=0;i<bytes.size();i++){
 			somma+= bytes.get(i);
 		}
 		 return somma/bytes.size();
+	}
+	public float averageofpixel () {
+		float somma=0;
+		for(int i=0;i<pixel.size();i++){
+			somma+= pixel.get(i);
+		}
+		 return somma/pixel.size();
 	}
 	
 	public float medianofbytes () {
@@ -77,6 +82,23 @@ public class Statistics {
 		int median= (int) pixel.size()/2;
 		return pixel.get(median);	
 	}
-
+ public float averageOfHashtag ()
+{   Iterator<API_Instagram> p= collezione.iterator();
+    int n=0;
+	while (p.hasNext()) {
+		API_Instagram api= p.next();
+		for (int i = 0; i < api.getCaption().length(); i++) if(api.getCaption().charAt(i)=='#') n++;
+	}
+	return n/bytes.size();
+	}
+	 public int TotHashtag ()
+	 {   Iterator<API_Instagram> p= collezione.iterator();
+	     int n=0;
+	 	while (p.hasNext()) {
+	 		API_Instagram api= p.next();
+	 		for (int i = 0; i < api.getCaption().length(); i++) if(api.getCaption().charAt(i)=='#') n++;
+	 			}
+	 	return n ;
+}
 	
 }

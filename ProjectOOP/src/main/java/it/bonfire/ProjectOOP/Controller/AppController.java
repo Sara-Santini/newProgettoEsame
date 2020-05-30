@@ -3,25 +3,20 @@
  *******************************************************************************/
 package it.bonfire.ProjectOOP.Controller;
 
-import java.io.IOException;
 import java.util.HashSet;
 
-import javax.imageio.stream.IIOByteBuffer;
 
-import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
-import it.bonfire.ProjectOOP.Exceptions.PhotoNotFoundException;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Fotografia;
 import it.bonfire.ProjectOOP.Model.Image;
-import it.bonfire.ProjectOOP.Others.Downloader;
-import it.bonfire.ProjectOOP.Others.Parsing;
+
 
 // Start of user code (user defined imports)
 
@@ -36,8 +31,8 @@ import it.bonfire.ProjectOOP.Others.Parsing;
  */
 @RestController
 public class AppController {
-	
-	    DataBase dati=new DataBase();
+	 
+ DataBase dati=new DataBase();
 
 			
 			/**
@@ -46,16 +41,16 @@ public class AppController {
 			 */
 
 			@RequestMapping(value = "metadata", method=RequestMethod.GET)
-			public HashSet<API_Instagram> getMetadata(){
+			public ResponseEntity<Object> getMetadata(){
 					
-				return dati.getApi();
+				return new ResponseEntity<>(dati.getApi(),HttpStatus.OK);
 			}
 			
 			@RequestMapping(value = "postImage", method=RequestMethod.POST)
-			public HashSet<API_Instagram> postImage(@RequestBody Image image){
+			public ResponseEntity<Object>postImage(@RequestBody Image image){
 				
 				dati.addApi(image);
-				return dati.getApi();
+				return new ResponseEntity<>("image is created",HttpStatus.CREATED);
 			}
 			@RequestMapping(value = "parPostImage", method=RequestMethod.POST)
 			public HashSet<API_Instagram> postParImage(@RequestBody API_Instagram api,@RequestBody Fotografia photo ){
@@ -63,15 +58,12 @@ public class AppController {
 				dati.addApi(a);
 				return dati.getApi();
 			}
-			@RequestMapping(value= "/deleteImage",method=RequestMethod.DELETE)
-			public HashSet<API_Instagram> deleteImage(@RequestParam (name ="id")String id){
-				try {
-					dati.deleteAPI(id);
-				} catch (PhotoNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				return dati.getApi();				
+			@RequestMapping(value= "deleteImage",method=RequestMethod.DELETE)
+			public ResponseEntity<Object> deleteImage(@RequestParam (name ="id")String id){
+			   
+				dati.deleteAPI(id);
+			
+				return new ResponseEntity<>("image is deleted",HttpStatus.OK) ;				
 			}
 			
 			
