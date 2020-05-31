@@ -25,7 +25,7 @@ import it.bonfire.ProjectOOP.Model.Image;
 public class Statistics {
 	private HashSet <API_Instagram> collezione;
 	private Vector<Float> bytes = new Vector<>();
-	private Vector<Long> pixel;
+	private Vector<Long> pixel=new Vector<>();
 
 	/**
 	 * @param collezione
@@ -83,13 +83,8 @@ public class Statistics {
 		return pixel.get(median);	
 	}
  public float averageOfHashtag ()
-{   Iterator<API_Instagram> p= collezione.iterator();
-    int n=0;
-	while (p.hasNext()) {
-		API_Instagram api= p.next();
-		for (int i = 0; i < api.getCaption().length(); i++) if(api.getCaption().charAt(i)=='#') n++;
-	}
-	return n/bytes.size();
+{   
+    return TotHashtag()/(float)bytes.size();
 	}
 	 public int TotHashtag ()
 	 {   Iterator<API_Instagram> p= collezione.iterator();

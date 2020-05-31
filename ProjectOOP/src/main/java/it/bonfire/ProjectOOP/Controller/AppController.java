@@ -82,9 +82,7 @@ public class AppController {
 	}
 	@RequestMapping(value = "getAllStatistics", method = RequestMethod.GET)
 	public ResponseEntity<Object> getstats(){
-		
-
-		return new ResponseEntity<>(dati.getStatistics(), HttpStatus.OK);
+		return new ResponseEntity<>((String)dati.getStatistics(), HttpStatus.OK);
 	}
 	@RequestMapping(value = "getAllFilters", method = RequestMethod.GET)
 	public ResponseEntity<Object> getfilters(){
