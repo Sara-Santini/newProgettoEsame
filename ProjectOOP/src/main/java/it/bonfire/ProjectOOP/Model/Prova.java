@@ -20,6 +20,7 @@ public class Prova {
 			load.getImageAlbumUrl(api_insta);
 			pars.DownloadImage(api_insta);
 			Filter filter= new Filter(api_insta);
+			filter.sortPhotos();
 			filter.PhotosWithHashtag(api_insta);
 
 		} catch (IOException | ParseException e) {

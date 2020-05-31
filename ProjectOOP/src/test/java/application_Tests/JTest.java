@@ -46,11 +46,15 @@ class JTest {
 	
 	@Test
 	void test2() {
-		assertThrows(ResponseStatusException.class, ()->data.deleteAPI("17963418202137327"));
+		assertThrows(ResponseStatusException.class, ()->data.deleteAPI("17963418202137328"));
 	}
 	@Test
 	void test3() {
 		assertThrows(ResponseStatusException.class,()->data.addApi(image));
+	}
+	@Test
+	void test4() {
+		assertTrue(data.deleteAPI("17963418202137327"));
 	}
 }
 

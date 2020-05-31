@@ -1,11 +1,15 @@
 package it.bonfire.ProjectOOP.Controller;
 
 import java.io.IOException;
+import java.security.PublicKey;
 import java.util.HashSet;
 import java.util.Iterator;
 import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
+
+import it.bonfire.ProjectOOP.Exceptions.FilterNotFoundException;
+import it.bonfire.ProjectOOP.Filters.Filter;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Image;
@@ -52,25 +56,47 @@ public class DataBase {
 		api.add((API_Instagram) image);
 	}
 
-	public void deleteAPI(String id) {
+	public boolean deleteAPI(String id) {
 		Iterator<API_Instagram> p = api.iterator();
-		int i = 0;
-		while (p.hasNext() && i == 0) {
+		boolean i=false;
+		while (p.hasNext() && i==false) {
 			API_Instagram ap = p.next();
 			if (ap.getId().equals(id)) {
 
 				api.remove(ap);
-				i++;
+				i=true;
 			}
 		}
-		if (i == 0)
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "non presente");
+			if(i==false) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "non presente");
+			return i;
+				
 	}
 
 	public void addApi(Album album) {
 		if (api.contains((API_Instagram) album))
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "già esistente");
 		api.add((API_Instagram) album);
+	}
+	public void getPhotoHashtag()  {
+		Filter filter = new Filter(api);
+		try {
+			filter.PhotosWithHashtag(api);
+		} catch (IOException e) {
+
+			FilterNotFoundException a= (FilterNotFoundException) e;
+			 a.getMessage();
+		}}
+		
+		public void getSortPhotos() {
+			Filter filter = new Filter(api);
+			try {
+				filter.sortPhotos();
+			} catch (IOException e) {
+				
+				FilterNotFoundException a= (FilterNotFoundException) e;
+				 a.getMessage();
+			}
+	     
 	}
 
 }

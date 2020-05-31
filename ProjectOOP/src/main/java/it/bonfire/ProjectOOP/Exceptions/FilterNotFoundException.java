@@ -1,12 +1,18 @@
 package it.bonfire.ProjectOOP.Exceptions;
 
-public class FilterNotFoundException extends ClassNotFoundException{
+import java.io.IOException;
+
+public class FilterNotFoundException extends IOException{
 
 	private static final long serialVersionUID = 1L;
 
 	public FilterNotFoundException() {
 		super();
-		System.out.println("Filtro inesistente");
+		System.out.println("failed filter");
 		
+	}
+	
+	public String getMessage(){
+	return "failed filter";
 	}
 }
