@@ -65,13 +65,12 @@ public class DataBase {
 		}
 		if (i == 0)
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "non presente");
-
 	}
-	
 
 	public void addApi(Album album) {
-		if(api.contains((API_Instagram)album)) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "già esistente");
-		api.add((API_Instagram)album);
+		if (api.contains((API_Instagram) album))
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "già esistente");
+		api.add((API_Instagram) album);
 	}
 
 }
