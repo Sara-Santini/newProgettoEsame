@@ -80,4 +80,16 @@ public class AppController {
 
 		return new ResponseEntity<>("album is deleted", HttpStatus.OK);
 	}
+	@RequestMapping(value = "getAllStatistics", method = RequestMethod.GET)
+	public ResponseEntity<Object> getstats(){
+		
+
+		return new ResponseEntity<>(dati.getStatistics(), HttpStatus.OK);
+	}
+	@RequestMapping(value = "getAllFilters", method = RequestMethod.GET)
+	public ResponseEntity<Object> getfilters(){
+		dati.getSortPhotos();
+		dati.getPhotoHashtag();
+        return new ResponseEntity<>("immagini filtrate", HttpStatus.OK);
+	}
 }

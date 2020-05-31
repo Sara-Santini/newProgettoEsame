@@ -100,5 +100,8 @@ public class Statistics {
 	 			}
 	 	return n ;
 }
-	
+	public String toString() {
+		return "average byte:" + averageofbytes() + "average of pixels: " + averageofpixel() +  
+				 "average of hashtag: " + averageOfHashtag() + "\n"+  "median of bytes: " + medianofbytes() + "median of pixel: "+ medianofpixels() + "\n" + 
+				"total hashtags" + TotHashtag(); }
 }

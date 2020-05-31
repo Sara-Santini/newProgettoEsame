@@ -15,6 +15,7 @@ import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Image;
 import it.bonfire.ProjectOOP.Others.Downloader;
 import it.bonfire.ProjectOOP.Others.Parsing;
+import it.bonfire.ProjectOOP.Statistics.Statistics;
 
 public class DataBase {
 	private HashSet<API_Instagram> api = new HashSet<API_Instagram>();
@@ -98,5 +99,11 @@ public class DataBase {
 			}
 	     
 	}
+		public String getStatistics () {
+			Statistics stats= new Statistics(api);
+			return stats.toString();
+			
+			
+		}
 
 }
