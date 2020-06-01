@@ -4,13 +4,13 @@
 package it.bonfire.ProjectOOP.Model;
 
 /**
- * Description of Fotografia.
+ * Description of Photos.
  * 
  * @author Arianna Nazzarelli
  * @author Francesco Voto
  * @author Sara Santini
  */
-public class Fotografia {
+public class Photos {
 	/**
 	 * Description of the property pixelHeight.
 	 */
@@ -41,7 +41,7 @@ public class Fotografia {
 	 * 
 	 * @param id_photos
 	 */
-	public Fotografia(String id_photos) {
+	public Photos(String id_photos) {
 		this.id_photos = id_photos;
 	}
 
@@ -49,7 +49,7 @@ public class Fotografia {
 	 * @param media_url
 	 * @param id_photos
 	 */
-	public Fotografia(String id_photos, String media_url) {
+	public Photos(String id_photos, String media_url) {
 
 		this.id_photos = id_photos;
 		this.media_url = media_url;
@@ -69,7 +69,7 @@ public class Fotografia {
 	 * 
 	 * @return id_photos
 	 */
-	public String getId_photos() {
+	public String getId_Photos() {
 		return id_photos;
 	}
 
@@ -94,7 +94,7 @@ public class Fotografia {
 	 * 
 	 * @return media_url
 	 */
-	public String getMedia_url() {
+	public String getMedia_Url() {
 		return media_url;
 	}
 
@@ -103,7 +103,7 @@ public class Fotografia {
 	 * 
 	 * @param Media_url
 	 */
-	public void setMedia_url(String Media_url) {
+	public void setMedia_Url(String Media_url) {
 		this.media_url = Media_url;
 	}
 

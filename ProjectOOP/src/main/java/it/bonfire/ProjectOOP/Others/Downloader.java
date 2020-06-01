@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
-import it.bonfire.ProjectOOP.Model.Fotografia;
+import it.bonfire.ProjectOOP.Model.Photos;
 
 /**
  * Classe che mette a disposizione i metodi per recuperare le infomazioni da un
@@ -57,12 +57,12 @@ public void getImageAlbumUrl(HashSet<API_Instagram> collezione) {
 			API_Instagram appoggio = r.next();
 			if (appoggio.getMedia_type().equals("CAROUSEL_ALBUM")) {
 				Album album = (Album) appoggio;
-				Iterator<Fotografia> p = album.getFotografias().iterator();
+				Iterator<Photos> p = album.getPhotos().iterator();
 				while (p.hasNext()) {
-					Fotografia a = p.next();
-					String id = a.getId_photos();
+					Photos a = p.next();
+					String id = a.getId_Photos();
 					String url = getURL(id);
-					a.setMedia_url(url);
+					a.setMedia_Url(url);
 
 				}
 

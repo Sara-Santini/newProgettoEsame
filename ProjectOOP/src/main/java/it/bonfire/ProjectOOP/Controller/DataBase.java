@@ -57,7 +57,7 @@ public class DataBase {
 		api.add((API_Instagram) image);
 	}
 
-	public boolean deleteAPI(String id) {
+	public boolean deleteApi(String id) {
 		Iterator<API_Instagram> p = api.iterator();
 		boolean i=false;
 		while (p.hasNext() && i==false) {

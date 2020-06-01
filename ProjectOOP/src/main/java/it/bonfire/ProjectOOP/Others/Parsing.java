@@ -14,11 +14,11 @@ import javax.imageio.ImageIO;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
+import org.json.simple.parser.ParseException;
 
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
-import it.bonfire.ProjectOOP.Model.Fotografia;
+import it.bonfire.ProjectOOP.Model.Photos;
 import it.bonfire.ProjectOOP.Model.Image;
 
 /**
@@ -32,7 +32,7 @@ import it.bonfire.ProjectOOP.Model.Image;
 public class Parsing {
 	public static int N = 1;
 	HashSet<API_Instagram> collezione1 = new HashSet<>();
-	private String dir="C:\\Users\\39346\\Pictures";
+	private String dir="C:\\Users\\arian\\OneDrive\\Immagini";
 	
 	
 
@@ -57,7 +57,7 @@ public class Parsing {
 			String media_url = (String) jsonObject.get("media_url");
 
 			if (media_type.equals("CAROUSEL_ALBUM")) {
-				HashSet<Fotografia> fotografias = new HashSet<Fotografia>();
+				HashSet<Photos> photos = new HashSet<Photos>();
 				JSONObject jsonprovo = (JSONObject) jsonObject.get("children");
 				JSONArray album = (JSONArray) jsonprovo.get("data");
 				for (int j = 0; j < album.size(); j++) {
@@ -65,13 +65,13 @@ public class Parsing {
 					JSONObject jsonObject1 = (JSONObject) album.get(j);
 					String albumid = (String) jsonObject1.get("id");
 
-					fotografias.add(new Fotografia(albumid));
+					photos.add(new Photos(albumid));
 
 				}
-				API_Instagram ciao = (API_Instagram) new Album(id, caption, media_type, fotografias);
+				API_Instagram ciao = (API_Instagram) new Album(id, caption, media_type, photos);
 				collezione1.add(ciao);
 			} else {
-				Fotografia foto = new Fotografia(id, media_url);
+				Photos foto = new Photos(id, media_url);
 				API_Instagram appoggio = (API_Instagram) new Image(id, caption, media_type, foto);
 				collezione1.add(appoggio);
 			}
@@ -124,16 +124,16 @@ public class Parsing {
 
 	public void Download(Album album, File file) {
 
-		Iterator<Fotografia> p = album.getFotografias().iterator();
+		Iterator<Photos> p = album.getPhotos().iterator();
 		while (p.hasNext()) {
-			Fotografia a = p.next();
+			Photos a = p.next();
 			URL url;
 			try {
-				url = new URL(a.getMedia_url());
+				url = new URL(a.getMedia_Url());
 
 				BufferedImage image = ImageIO.read(url);
 				 
-				File file2 = new File(file.getPath() + "\\" + a.getId_photos() + ".jpg");
+				File file2 = new File(file.getPath() + "\\" + a.getId_Photos() + ".jpg");
 				ImageIO.write(image, "jpg", file2);
 				extractBytePixel(file2, a);
 			} catch (MalformedURLException e) {
@@ -150,15 +150,15 @@ public class Parsing {
 	}
 
 	public void Download(Image image, File file) throws IOException {
-		String IO = image.getFotografias().getMedia_url();
+		String IO = image.getPhotos().getMedia_Url();
 		URL url = new URL(IO);
 		BufferedImage image1 = ImageIO.read(url);
 		ImageIO.write(image1, "jpg", file);
-		extractBytePixel(file, image.getFotografias());
+		extractBytePixel(file, image.getPhotos());
 
 	}
 
-	public void extractBytePixel(File file, Fotografia foto) throws IOException {
+	public void extractBytePixel(File file, Photos foto) throws IOException {
 		BufferedImage image1 = ImageIO.read(file);
 		byte[] fileContent = Files.readAllBytes(file.toPath());
 		int bytes = fileContent.length;
@@ -171,6 +171,6 @@ public class Parsing {
 	
 	
 	
-
+	
 }
 

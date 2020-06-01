@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
-import it.bonfire.ProjectOOP.Model.Fotografia;
 import it.bonfire.ProjectOOP.Model.Image;
+import it.bonfire.ProjectOOP.Model.Photos;
 
 // Start of user code (user defined imports)
 
@@ -52,7 +52,7 @@ public class AppController {
 	}
 
 	@RequestMapping(value = "parPostImage", method = RequestMethod.POST)
-	public HashSet<API_Instagram> postParImage(@RequestBody API_Instagram api, @RequestBody Fotografia photo) {
+	public HashSet<API_Instagram> postParImage(@RequestBody API_Instagram api, @RequestBody Photos photo) {
 		Image a = new Image(api, photo);
 		dati.addApi(a);
 		return dati.getApi();

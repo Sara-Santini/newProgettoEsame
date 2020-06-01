@@ -12,9 +12,9 @@ package it.bonfire.ProjectOOP.Model;
  */
 public class Image extends API_Instagram {
 	/**
-	 * Description of the property fotografias.
+	 * Description of the property Photos.
 	 */
-	private Fotografia fotografias = null;
+	private Photos photos = null;
 
 	
 	/**
@@ -25,30 +25,31 @@ public class Image extends API_Instagram {
 
 	}
 
-	public Image(String id, String caption, String media_type, Fotografia fotografias) {
+	public Image(String id, String caption, String media_type, Photos photos) {
 		super(id, caption, media_type);
-		this.fotografias = fotografias;
+		this.photos = photos;
 	}
-	public Image(API_Instagram api, Fotografia fotografias) {
+	
+	public Image(API_Instagram api, Photos photos) {
 		super(api.getId(), api.getCaption(), api.getMedia_type());
-		this.fotografias = fotografias;
+		this.photos = photos;
 	}
 
 	/**
-	 * @return fotografias
+	 * @return photos
 	 */
-	public Fotografia getFotografias() {
-		return fotografias;
+	public Photos getPhotos() {
+		return photos;
 	}
 	/**
-	 * @param fotografias the fotografias to set
+	 * @param photos the photos to set
 	 */
-	public void setFotografias(Fotografia fotografias) {
-		this.fotografias = fotografias;
+	public void setPhotos(Photos photos) {
+		this.photos = photos;
 	}
 @Override
 	public String toString() {
-		return "Image [fotografias=" + fotografias + "]";
+		return "Image [photos=" + photos + "]";
 	}
 
 }

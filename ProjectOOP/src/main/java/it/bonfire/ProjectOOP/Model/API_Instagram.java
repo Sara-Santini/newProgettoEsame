@@ -3,6 +3,12 @@
  *******************************************************************************/
 package it.bonfire.ProjectOOP.Model;
 
+import java.util.HashSet;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+
 /**
  * Description of API_Instagram.
  * 
@@ -108,5 +114,15 @@ public abstract class API_Instagram {
 		return "API_Instagram [id=" + id + ", caption=" + caption + ", media_type=" + media_type + "]";
 	}
 	
+	
+//	public String getJSON() throws JsonProcessingException {
+//		String out="";
+//		if(this.id!=null && this.media_type!= null && this.caption!= null) {
+//			ObjectMapper obj=new ObjectMapper();
+//			out=obj.writeValueAsString(this);
+//		}
+//		return out;
+//	}
+//
 
 }

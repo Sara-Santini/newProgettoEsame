@@ -15,9 +15,9 @@ import java.util.HashSet;
  */
 public class Album extends API_Instagram {
 	/**
-	 * Description of the property fotografias.
+	 * Description of the property photos.
 	 */
-	private HashSet<Fotografia> fotografias;
+	private HashSet<Photos> photos;
 
 
 	/**
@@ -29,28 +29,28 @@ public class Album extends API_Instagram {
 	 * @param media_type
 	 * @param fotografias
 	 */
-	public Album(String id, String caption, String media_type, HashSet<Fotografia> fotografias) {
+	public Album(String id, String caption, String media_type, HashSet<Photos> photos) {
 		super(id, caption, media_type);
-		this.fotografias = fotografias;
+		this.photos = photos;
 	}
 	
 	/**
-	 * @return fotografias 
+	 * @return photos 
 	 */
-	public HashSet<Fotografia> getFotografias() {
-		return fotografias;
+	public HashSet<Photos> getPhotos() {
+		return photos;
 	}
 	
 	/**
-	 * @param fotografias the fotografias to set
+	 * @param fotografias the photos to set
 	 */
-	public void setFotografias(HashSet<Fotografia> fotografias) {
-		this.fotografias = fotografias;
+	public void setFotografias(HashSet<Photos> photos) {
+		this.photos = photos;
 	}
 
 	@Override
 	public String toString() {
-		return "Album [fotografias=" + fotografias + "]";
+		return "Album [fotografias=" + photos + "]";
 	}
 	
 }

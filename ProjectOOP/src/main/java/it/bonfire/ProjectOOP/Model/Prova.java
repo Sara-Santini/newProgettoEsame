@@ -25,10 +25,10 @@ public class Prova {
 //			filter.PhotosWithHashtag(api_insta);
 			Statistics stat=new Statistics(api_insta);
 			int a=0; float u=0;
-			u=stat.averageofbytes();
-			u=stat.averageOfHashtag();
-			u=stat.averageofpixel();
-			u=stat.medianofbytes(); 
+			u=stat.AverageOfBytes();
+			u=stat.AverageOfHashtag();
+			u=stat.AverageOfPixel();
+			u=stat.MedianOfBytes(); 
 			a=stat.TotHashtag();
 			
 

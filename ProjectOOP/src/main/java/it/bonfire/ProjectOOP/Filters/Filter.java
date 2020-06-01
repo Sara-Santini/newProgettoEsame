@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
-import it.bonfire.ProjectOOP.Model.Fotografia;
+import it.bonfire.ProjectOOP.Model.Photos;
 import it.bonfire.ProjectOOP.Model.Image;
 import it.bonfire.ProjectOOP.Others.Parsing;
 // Start of user code (user defined imports)
@@ -49,21 +49,21 @@ public class Filter {
 			API_Instagram appoggio = p.next();
 			if (appoggio.getMedia_type().equals("CAROUSEL_ALBUM")) {
 				Album album = (Album) appoggio;
-				Iterator<Fotografia> a = album.getFotografias().iterator();
+				Iterator<Photos> a = album.getPhotos().iterator();
 			while (a.hasNext()) {
-					Fotografia appoggio1 =a.next();
-					File photo = new File(par.getDir()+"\\Album"+n+"\\" +appoggio1.getId_photos()+".jpg" ); 
+				Photos appoggio1 =a.next();
+					File photo = new File(par.getDir()+"\\Album"+n+"\\" +appoggio1.getId_Photos()+".jpg" ); 
 					BufferedImage image = ImageIO.read(photo);
 					if (appoggio1.getnByte()<102400) {
 					
-					File photo2=new File(par.getDir()+"\\FotoMeno100kb\\"+ appoggio1.getId_photos()+".jpg"); 
+					File photo2=new File(par.getDir()+"\\FotoMeno100kb\\"+ appoggio1.getId_Photos()+".jpg"); 
 					ImageIO.write(image, "jpg", photo2);
 				
 				
 				}
 			else {
 				
-				File photo2= new File(par.getDir()+"\\FotoPiu100kb\\"+ appoggio1.getId_photos()+".jpg"); 
+				File photo2= new File(par.getDir()+"\\FotoPiu100kb\\"+ appoggio1.getId_Photos()+".jpg"); 
 				ImageIO.write(image, "jpg", photo2);
 				
 			}
@@ -75,7 +75,7 @@ public class Filter {
 					Image image= (Image) appoggio;
 					File photo = new File(par.getDir()+"\\"+ image.getId()+".jpg"); 
 					BufferedImage image1 = ImageIO.read(photo);
-					if (image.getFotografias().getnByte()<102400) {
+					if (image.getPhotos().getnByte()<102400) {
 						File photo2=new File(par.getDir()+"\\FotoMeno100kb\\" + image.getId()+".jpg");
 						ImageIO.write(image1, "jpg", photo2);
 						

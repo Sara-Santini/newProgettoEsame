@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.web.server.ResponseStatusException;
 
 import it.bonfire.ProjectOOP.Controller.DataBase;
-import it.bonfire.ProjectOOP.Model.Fotografia;
+import it.bonfire.ProjectOOP.Model.Photos;
 import it.bonfire.ProjectOOP.Model.Image;
 
 class JTest {
@@ -21,7 +21,7 @@ class JTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		data=new DataBase();
-		Fotografia foto=new Fotografia("17963418202137327", "https://scontent.cdninstagram.com/v/t51.2885-15/43914773_544273275994752_2221340766346393107_n.jpg?_nc_cat=108&_nc_sid=8ae9d6&_nc_ohc=a2O2SaubpHkAX_yKNy-&_nc_ht=scontent.cdninstagram.com&oh=90bb3428e81db69913056c8aabcc69c5&oe=5EF81E4A");
+		Photos foto=new Photos("17963418202137327", "https://scontent.cdninstagram.com/v/t51.2885-15/43914773_544273275994752_2221340766346393107_n.jpg?_nc_cat=108&_nc_sid=8ae9d6&_nc_ohc=a2O2SaubpHkAX_yKNy-&_nc_ht=scontent.cdninstagram.com&oh=90bb3428e81db69913056c8aabcc69c5&oe=5EF81E4A");
 		foto.setPixelHeight(1080);
 		foto.setPixelWeight(1350);
 		foto.setnByte(144426);
@@ -38,10 +38,10 @@ class JTest {
 		assertAll("valori",()-> assertEquals("17963418202137327", image.getId()),
 		()->assertEquals("Un alba che nasce ai confini di un mondo migliore🏞",image.getCaption()),
 		()->assertEquals("IMAGE",image.getMedia_type()),
-		()->assertEquals(144426,image.getFotografias().getnByte()),
-		()-> assertEquals(1080,image.getFotografias().getPixelHeight()),
-		()->assertEquals(1350,image.getFotografias().getPixelWeight()),
-		()-> assertNotNull(image.getFotografias().getMedia_url()));
+		()->assertEquals(144426,image.getPhotos().getnByte()),
+		()-> assertEquals(1080,image.getPhotos().getPixelHeight()),
+		()->assertEquals(1350,image.getPhotos().getPixelWeight()),
+		()-> assertNotNull(image.getPhotos().getMedia_Url()));
 		}
 	
 	@Test
