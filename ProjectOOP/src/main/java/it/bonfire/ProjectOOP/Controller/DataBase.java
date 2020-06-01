@@ -19,6 +19,7 @@ import it.bonfire.ProjectOOP.Statistics.Statistics;
 
 public class DataBase {
 	private HashSet<API_Instagram> api = new HashSet<API_Instagram>();
+	private Statistics stats= new Statistics(api);
 
 	public DataBase() {
 		Downloader iooDownloader = new Downloader();
@@ -104,6 +105,20 @@ public class DataBase {
 			return stats.toString();
 			
 			
+		}
+
+		/**
+		 * @return the stats
+		 */
+		public Statistics getStats() {
+			return stats;
+		}
+
+		/**
+		 * @param stats the stats to set
+		 */
+		public void setStats(Statistics stats) {
+			this.stats = stats;
 		}
 
 }

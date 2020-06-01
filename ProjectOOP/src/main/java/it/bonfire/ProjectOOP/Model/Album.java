@@ -44,7 +44,7 @@ public class Album extends API_Instagram {
 	/**
 	 * @param fotografias the photos to set
 	 */
-	public void setFotografias(HashSet<Photos> photos) {
+	public void setPhotos(HashSet<Photos> photos) {
 		this.photos = photos;
 	}
 

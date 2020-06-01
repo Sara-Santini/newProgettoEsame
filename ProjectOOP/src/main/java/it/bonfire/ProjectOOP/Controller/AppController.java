@@ -61,7 +61,7 @@ public class AppController {
 	@RequestMapping(value = "deleteImage", method = RequestMethod.DELETE)
 	public ResponseEntity<Object> deleteImage(@RequestParam(name = "id") String id) {
 
-		dati.deleteAPI(id);
+		dati.deleteApi(id);
 
 		return new ResponseEntity<>("image is deleted", HttpStatus.OK);
 	}
@@ -76,13 +76,37 @@ public class AppController {
 	@RequestMapping(value = "deleteCarouselAlbum", method = RequestMethod.DELETE)
 	public ResponseEntity<Object> deleteCarouselAlbum(@RequestParam(name = "id") String id) {
 
-		dati.deleteAPI(id);
+		dati.deleteApi(id);
 
 		return new ResponseEntity<>("album is deleted", HttpStatus.OK);
 	}
 	@RequestMapping(value = "getAllStatistics", method = RequestMethod.GET)
 	public ResponseEntity<Object> getstats(){
 		return new ResponseEntity<>((String)dati.getStatistics(), HttpStatus.OK);
+	}
+	@RequestMapping(value = "getAverageOfBytes", method=RequestMethod.GET)
+	public ResponseEntity<Object> getAverageOfBytes() {
+		return new ResponseEntity<>(String.valueOf(dati.getStats().AverageOfBytes()), HttpStatus.OK);
+	}
+	@RequestMapping(value = "getAverageOfPixel", method=RequestMethod.GET)
+	public ResponseEntity<Object> getAverageOfPixel() {
+		return new ResponseEntity<>(String.valueOf(dati.getStats().AverageOfPixel()), HttpStatus.OK);
+	}
+	@RequestMapping(value = "getMedianOfPixels", method=RequestMethod.GET)
+	public ResponseEntity<Object> getMedianOfPixels() {
+		return new ResponseEntity<>(String.valueOf(dati.getStats().MedianOfPixels()), HttpStatus.OK);
+	}
+	@RequestMapping(value = "getAverageOfHashtag", method=RequestMethod.GET)
+	public ResponseEntity<Object> getAverageOfHashtag() {
+		return new ResponseEntity<>(String.valueOf(dati.getStats().AverageOfHashtag()), HttpStatus.OK);
+	}
+	@RequestMapping(value = "getMedianOfBytes", method=RequestMethod.GET)
+	public ResponseEntity<Object> getMedianOfBytes() {
+		return new ResponseEntity<>(String.valueOf(dati.getStats().MedianOfBytes()), HttpStatus.OK);
+	}
+	@RequestMapping(value = "getTotHashtag", method=RequestMethod.GET)
+	public ResponseEntity<Object> getTotHashtag() {
+		return new ResponseEntity<>(String.valueOf(dati.getStats().TotHashtag()), HttpStatus.OK);
 	}
 	@RequestMapping(value = "getAllFilters", method = RequestMethod.GET)
 	public ResponseEntity<Object> getfilters(){
