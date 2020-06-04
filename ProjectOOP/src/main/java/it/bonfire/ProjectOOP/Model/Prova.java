@@ -23,15 +23,9 @@ public class Prova {
 //			Filter filter= new Filter(api_insta);
 //			filter.sortPhotos();
 //			filter.PhotosWithHashtag(api_insta);
-			Statistics stat=new Statistics(api_insta);
-			int a=0; float u=0;
-			u=stat.AverageOfBytes();
-			u=stat.AverageOfHashtag();
-			u=stat.AverageOfPixel();
-			u=stat.MedianOfBytes(); 
-			a=stat.TotHashtag();
-			
-
+			Filter ciaoFilter=new Filter(api_insta);
+			ciaoFilter.sortPhotos2(ciaoFilter.photosMore100Kb(api_insta), ciaoFilter.photosUnder100Kb(api_insta));
+			int a=5;
 		} catch (IOException | ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
