@@ -23,8 +23,12 @@ public class Prova {
 //			Filter filter= new Filter(api_insta);
 //			filter.sortPhotos();
 //			filter.PhotosWithHashtag(api_insta);
-			Filter ciaoFilter=new Filter(api_insta);
-			ciaoFilter.sortPhotos2(ciaoFilter.photosMore100Kb(api_insta), ciaoFilter.photosUnder100Kb(api_insta));
+			Filter ciaoFilter=new Filter();
+			ciaoFilter.dowPhotosWithHashtag(ciaoFilter.photosWithHashtag(api_insta));
+			HashSet<API_Instagram> aa=ciaoFilter.photosMore100Kb(api_insta);
+			HashSet<API_Instagram> bb= ciaoFilter.photosUnder100Kb(api_insta); 
+			ciaoFilter.sortPhotos2(aa,bb);
+			Statistics statistics=new Statistics(api_insta);
 			int a=5;
 		} catch (IOException | ParseException e) {
 			// TODO Auto-generated catch block

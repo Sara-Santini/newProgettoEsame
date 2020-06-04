@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.bonfire.ProjectOOP.Filters.FilterService;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Image;
@@ -90,6 +91,7 @@ public class AppController {
 	}
 	@RequestMapping(value = "getAverageOfPixel", method=RequestMethod.GET)
 	public ResponseEntity<Object> getAverageOfPixel() {
+
 		return new ResponseEntity<>(String.valueOf(dati.getStats().AverageOfPixel()), HttpStatus.OK);
 	}
 	@RequestMapping(value = "getMedianOfPixels", method=RequestMethod.GET)
@@ -113,5 +115,12 @@ public class AppController {
 		dati.getSortPhotos();
 		dati.getPhotoHashtag();
         return new ResponseEntity<>("immagini filtrate", HttpStatus.OK);
+	}
+	@RequestMapping(value = "getFilters", method = RequestMethod.GET)
+	public ResponseEntity<Object> getSomeFilters(@RequestParam (name="field")String field ){
+		
+			FilterService filterService=new FilterService(field,dati.getApi());
+		
+        return new ResponseEntity<>(filterService.getApi(), HttpStatus.OK);
 	}
 }

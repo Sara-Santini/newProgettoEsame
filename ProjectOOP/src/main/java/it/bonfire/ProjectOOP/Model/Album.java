@@ -17,7 +17,7 @@ public class Album extends API_Instagram {
 	/**
 	 * Description of the property photos.
 	 */
-	private HashSet<Photos> photos;
+	private HashSet<Photos> photos= new HashSet<Photos>();
 
 
 	/**
@@ -32,6 +32,11 @@ public class Album extends API_Instagram {
 	public Album(String id, String caption, String media_type, HashSet<Photos> photos) {
 		super(id, caption, media_type);
 		this.photos = photos;
+	}
+	public Album(Album a) {
+		super(a.getId(),a.getCaption(),a.getMedia_type());
+		this.photos=new HashSet<Photos>(a.getPhotos());
+	
 	}
 	
 	/**

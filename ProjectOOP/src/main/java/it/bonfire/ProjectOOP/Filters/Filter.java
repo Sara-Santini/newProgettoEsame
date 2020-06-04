@@ -3,14 +3,11 @@
  *******************************************************************************/
 package it.bonfire.ProjectOOP.Filters;
 
-import java.awt.image.BufferedImage;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
-
-import javax.imageio.ImageIO;
-
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Photos;
@@ -29,22 +26,21 @@ import it.bonfire.ProjectOOP.Others.Parsing;
  */
 public class Filter {
 	HashSet<API_Instagram> collezione;
-	Parsing par;
+	Parsing par=new Parsing();;
 
 	/**
 	 * The constructor.
 	 */
 
-	public Filter(HashSet<API_Instagram> collezione) {
-		super();
-		this.collezione = collezione;
-		par = new Parsing();
+	public Filter() {
+		
 	}
 	public void sortPhotos2(HashSet<API_Instagram> more100,HashSet<API_Instagram> under100) throws IOException {
 		new File(par.getDir() + "\\FotoMeno100kb").mkdir();
 		new File(par.getDir() + "\\FotoPiu100kb").mkdir();
-		par=new Parsing();
+		  par=new Parsing();
        par.setDir(par.getDir()+"\\FotoMeno100kb");
+     
      par.DownloadImage(under100);
      par=new Parsing();
      par.setDir(par.getDir()+"\\FotoPiu100kb");
@@ -54,74 +50,28 @@ public class Filter {
 		
 	}
 
-	public void sortPhotos() throws IOException {
-		new File(par.getDir() + "\\FotoMeno100kb").mkdir();
-		new File(par.getDir() + "\\FotoPiu100kb").mkdir();
-		int n = 1;
-		Iterator<API_Instagram> p = collezione.iterator();
-		while (p.hasNext()) {
-			API_Instagram appoggio = p.next();
-			if (appoggio.getMedia_type().equals("CAROUSEL_ALBUM")) {
-				Album album = (Album) appoggio;
-				Iterator<Photos> a = album.getPhotos().iterator();
-				while (a.hasNext()) {
-					Photos appoggio1 = a.next();
-					File photo = new File(par.getDir() + "\\Album" + n + "\\" + appoggio1.getId_Photos() + ".jpg");
-					BufferedImage image = ImageIO.read(photo);
-					if (appoggio1.getnByte() < 102400) {
 
-						File photo2 = new File(par.getDir() + "\\FotoMeno100kb\\" + appoggio1.getId_Photos() + ".jpg");
-						ImageIO.write(image, "jpg", photo2);
 
-					} else {
-
-						File photo2 = new File(par.getDir() + "\\FotoPiu100kb\\" + appoggio1.getId_Photos() + ".jpg");
-						ImageIO.write(image, "jpg", photo2);
-
-					}
-
-				}
-				n++;
-			} else {
-				Image image = (Image) appoggio;
-				File photo = new File(par.getDir() + "\\" + image.getId() + ".jpg");
-				BufferedImage image1 = ImageIO.read(photo);
-				if (image.getPhotos().getnByte() < 102400) {
-					File photo2 = new File(par.getDir() + "\\FotoMeno100kb\\" + image.getId() + ".jpg");
-					ImageIO.write(image1, "jpg", photo2);
-
-				} else {
-					File photo2 = new File(par.getDir() + "\\FotoPiu100kb\\" + image.getId() + ".jpg");
-					ImageIO.write(image1, "jpg", photo2);
-
-				}
-
-			}
-		}
-	}
-
-	public void PhotosWithHashtag(HashSet<API_Instagram> collezione) throws IOException {
-		Iterator<API_Instagram> iter = collezione.iterator();
-		new File(par.getDir() + "\\PhotosWithHashtag").mkdir();
-
+	public void dowPhotosWithHashtag(HashSet<API_Instagram> collezione) throws IOException {
+		
 		Parsing pars = new Parsing();
-		while (iter.hasNext()) {
-			API_Instagram api = iter.next();
-			if (api.getCaption() != null && api.getCaption().contains("#")) {
-				if (api.getClass().equals(Image.class)) {
-					Image image = (Image) api;
-					File file = new File(par.getDir() + "\\PhotosWithHashtag\\" + image.getId() + ".jpg");
-					pars.Download(image, file);
-
-				} else {
-					Album album = (Album) api;
-					File file = new File(par.getDir() + "\\PhotosWithHashtag");
-					pars.Download(album, file);
-				}
-			}
+		new File(par.getDir() + "\\PhotosWithHashtag").mkdir();
+		pars.setDir(pars.getDir()+ "\\PhotosWithHashtag");
+		pars.DownloadImage(collezione);
 
 		}
-	}
+	public HashSet<API_Instagram> photosWithHashtag(HashSet<API_Instagram> collezione) {
+		HashSet<API_Instagram> api = new HashSet<API_Instagram>(collezione);
+		Iterator<API_Instagram> iter = api.iterator();
+		while (iter.hasNext()) {
+			API_Instagram im = iter.next();
+				if (!im.getCaption().contains("#"))	iter.remove();
+			
+				}
+		 return api;
+			}
+	  
+		
 	public HashSet<API_Instagram> photosMore100Kb(HashSet<API_Instagram> collezione) {
 		int Bt = 102400;
 		HashSet<API_Instagram> api = new HashSet<API_Instagram>(collezione);
@@ -133,14 +83,16 @@ public class Filter {
 				if (image.getPhotos().getnByte() < Bt)
 					iter.remove();
 			} else {
-				Album album = (Album) im;
+				
+				Album album = new Album((Album)im);
+				
 				Iterator<Photos> a = album.getPhotos().iterator();
 				while (a.hasNext()) {
 					Photos appoggio1 = a.next();
-					if (appoggio1.getnByte() < Bt)
-						a.remove();
+					if (appoggio1.getnByte() < Bt) a.remove();
 
 				}
+				if(album.getPhotos().isEmpty()) iter.remove();
 			}
 
 		}
@@ -148,8 +100,8 @@ public class Filter {
 	}
 	public HashSet<API_Instagram> photosUnder100Kb(HashSet<API_Instagram> collezione) {
 		int Bt = 102400;
-		HashSet<API_Instagram> api = new HashSet<API_Instagram>(collezione);
-		Iterator<API_Instagram> iter = api.iterator();
+		HashSet<API_Instagram> api1 = new HashSet<API_Instagram>(collezione);
+		Iterator<API_Instagram> iter = api1.iterator();
 		while (iter.hasNext()) {
 			API_Instagram im = iter.next();
 			if (im.getClass().equals(Image.class)) {
@@ -157,18 +109,18 @@ public class Filter {
 				if (image.getPhotos().getnByte() > Bt)
 					iter.remove();
 			} else {
-				Album album = (Album) im;
+				Album album = new Album((Album)im);
 				Iterator<Photos> a = album.getPhotos().iterator();
 				while (a.hasNext()) {
 					Photos appoggio1 = a.next();
-					if (appoggio1.getnByte() > Bt)
-						a.remove();
+					if (appoggio1.getnByte() > Bt) a.remove();
 
 				}
+				if(album.getPhotos().isEmpty()) iter.remove();
 			}
 
 		}
-   return api;
+   return api1;
 	}
 
 	public HashSet<API_Instagram> PhotosHight(HashSet<API_Instagram> collezione) {
@@ -191,6 +143,7 @@ public class Filter {
 						a.remove();
 
 				}
+				if(album.getPhotos().isEmpty()) iter.remove();
 			}
 
 		}
@@ -215,6 +168,7 @@ public class Filter {
 						a.remove();
 
 				}
+				if(album.getPhotos().isEmpty()) iter.remove();
 			}
 
 		}

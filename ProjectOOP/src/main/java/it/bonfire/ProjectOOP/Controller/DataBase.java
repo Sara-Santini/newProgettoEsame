@@ -1,7 +1,7 @@
 package it.bonfire.ProjectOOP.Controller;
 
 import java.io.IOException;
-import java.security.PublicKey;
+
 import java.util.HashSet;
 import java.util.Iterator;
 import org.json.simple.parser.ParseException;
@@ -19,7 +19,7 @@ import it.bonfire.ProjectOOP.Statistics.Statistics;
 
 public class DataBase {
 	private HashSet<API_Instagram> api = new HashSet<API_Instagram>();
-	private Statistics stats= new Statistics(api);
+	private Statistics stats ;
 
 	public DataBase() {
 		Downloader iooDownloader = new Downloader();
@@ -29,6 +29,7 @@ public class DataBase {
 			api = parsing.GetAPIInstagramFromJson(iooDownloader.getJSONbyURL(urlString));
 			iooDownloader.getImageAlbumUrl(api);
 			parsing.DownloadImage(api);
+		 stats= new Statistics(api);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.getMessage();
@@ -80,9 +81,9 @@ public class DataBase {
 		api.add((API_Instagram) album);
 	}
 	public void getPhotoHashtag()  {
-		Filter filter = new Filter(api);
+		Filter filter = new Filter();
 		try {
-			filter.PhotosWithHashtag(api);
+			filter.dowPhotosWithHashtag(filter.photosWithHashtag(api));
 		} catch (IOException e) {
 
 			FilterNotFoundException a= (FilterNotFoundException) e;
@@ -90,9 +91,9 @@ public class DataBase {
 		}}
 		
 		public void getSortPhotos() {
-			Filter filter = new Filter(api);
+			Filter filter = new Filter();
 			try {
-				filter.sortPhotos();
+				filter.sortPhotos2(filter.photosMore100Kb(api), filter.photosUnder100Kb(api));
 			} catch (IOException e) {
 				
 				FilterNotFoundException a= (FilterNotFoundException) e;

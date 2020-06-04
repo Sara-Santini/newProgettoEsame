@@ -21,7 +21,7 @@ import it.bonfire.ProjectOOP.Model.Image;
  * @author Sara Santini
  */
 public class Statistics {
-	private HashSet<API_Instagram> collezione;
+	private HashSet<API_Instagram> collezione= new HashSet<API_Instagram>();
 	private Vector<Float> bytes = new Vector<>();
 	private Vector<Long> pixel = new Vector<>();
 
