@@ -105,10 +105,11 @@ public class Parsing {
 				API_Instagram appoggio = l.next();
 				if (appoggio.getMedia_type().equals("CAROUSEL_ALBUM")) {
 					Album util = (Album) appoggio;
-					new File(dir+"\\Album" + N).mkdir();
+					if(!util.getPhotos().isEmpty())
+					{new File(dir+"\\Album" + N).mkdir();
 					File file= new File(dir+"\\Album" + N);
 					Download(util,file);
-					 
+					}
 					
 				}
 
