@@ -3,14 +3,8 @@
  *******************************************************************************/
 package it.bonfire.ProjectOOP.Model;
 
-import java.util.HashSet;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-
 /**
- * Description of API_Instagram.
+ * Class which describes some features of a photo.
  * 
  * @author Arianna Nazzarelli
  * @author Francesco Voto
@@ -19,17 +13,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public abstract class API_Instagram {
 	/**
-	 * Description of the property id.
+	 * It is the identity of a photo.
 	 */
 	private String id;
 
 	/**
-	 * Description of the property caption.
+	 * It is the caption of a photo.
 	 */
 	private String caption;
 
 	/**
-	 * Description of the property media_type.
+	 * It is the media_type of a photo.
 	 */
 	private String media_type = null;
 
@@ -44,12 +38,15 @@ public abstract class API_Instagram {
 
 	}
 
+	/**
+	 * The constructor.
+	 */
 	public API_Instagram() {
 
 	}
 
 	/**
-	 * Description of the method getCaption.
+	 * Method that gives back the caption of API_Instagram.
 	 * 
 	 * @return caption
 	 */
@@ -59,7 +56,7 @@ public abstract class API_Instagram {
 	}
 
 	/**
-	 * Description of the method setCaption.
+	 * Method which sets a caption, given by the user, to API_Instagram.
 	 * 
 	 * @param caption
 	 */
@@ -70,7 +67,7 @@ public abstract class API_Instagram {
 	}
 
 	/**
-	 * Description of the method getMedia_type.
+	 * Method that gives back the media_type of API_Instagram.
 	 * 
 	 * @return media_type
 	 */
@@ -81,7 +78,7 @@ public abstract class API_Instagram {
 	}
 
 	/**
-	 * Description of the method setMedia_type.
+	 *  Method which sets a value to attribute to Media_type.
 	 * 
 	 * @param media_type
 	 */
@@ -92,6 +89,8 @@ public abstract class API_Instagram {
 	}
 
 	/**
+	 * Method that gives back the id of API_Instagram.
+	 * 
 	 * @return the id
 	 */
 	public String getId() {
@@ -99,7 +98,7 @@ public abstract class API_Instagram {
 	}
 
 	/**
-	 * Description of the method setId.
+	 *  Method which sets a value to attribute to Id.
 	 * 
 	 * @param id
 	 */
@@ -109,20 +108,16 @@ public abstract class API_Instagram {
 
 	}
 
+	
+	/**
+	 * Methods which gives back the string of API_Instagram.
+	 * 
+	 * @return String.
+	 */
 	@Override
 	public String toString() {
+
 		return "API_Instagram [id=" + id + ", caption=" + caption + ", media_type=" + media_type + "]";
 	}
-	
-	
-//	public String getJSON() throws JsonProcessingException {
-//		String out="";
-//		if(this.id!=null && this.media_type!= null && this.caption!= null) {
-//			ObjectMapper obj=new ObjectMapper();
-//			out=obj.writeValueAsString(this);
-//		}
-//		return out;
-//	}
-//
 
 }

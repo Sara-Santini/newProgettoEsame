@@ -4,7 +4,7 @@
 package it.bonfire.ProjectOOP.Model;
 
 /**
- * Description of Photos.
+ * Class which describes the features of a photo.
  * 
  * @author Arianna Nazzarelli
  * @author Francesco Voto
@@ -12,27 +12,27 @@ package it.bonfire.ProjectOOP.Model;
  */
 public class Photos {
 	/**
-	 * Description of the property pixelHeight.
+	 * It is the height of pixel which are taken up by a photo.
 	 */
 	private int pixelHeight = 0;
 
 	/**
-	 * Description of the property media_url.
+	 * It is the media_url of a photo.
 	 */
 	private String media_url = null;
 
 	/**
-	 * Description of the property id_photos.
+	 * It is the identity of a photo.
 	 */
 	private String id_photos = null;
 
 	/**
-	 * Description of the property pixelWeight.
+	 * It is the weight of pixel which are taken up by a photo.
 	 */
 	private int pixelWeight = 0;
 
 	/**
-	 * Description of the property byte.
+	 * It is the number of bytes which are taken up by a photo.
 	 */
 	private int nbyte = 0;
 
@@ -46,6 +46,7 @@ public class Photos {
 	}
 
 	/**
+	 * The constructor.
 	 * @param media_url
 	 * @param id_photos
 	 */
@@ -56,7 +57,7 @@ public class Photos {
 	}
 
 	/**
-	 * Description of the method setId_Photos.
+	 *  Method which sets a value to attribute to Id_Photos.
 	 * 
 	 * @param id_photos
 	 */
@@ -74,7 +75,7 @@ public class Photos {
 	}
 
 	/**
-	 * 
+	 * Method that gives back the PixelHeight.
 	 * @return pixelHeight
 	 */
 	public int getPixelHeight() {
@@ -82,7 +83,7 @@ public class Photos {
 	}
 
 	/**
-	 * Sets a value to attribute pixelHeight.
+	 *  Method which sets a value to attribute to PixelHeight.
 	 * 
 	 * @param PixelHeight
 	 */
@@ -91,7 +92,7 @@ public class Photos {
 	}
 
 	/**
-	 * 
+	 * Method that gives back the Media_Url.
 	 * @return media_url
 	 */
 	public String getMedia_Url() {
@@ -99,7 +100,7 @@ public class Photos {
 	}
 
 	/**
-	 * Sets a value to attribute media_url.
+	 *  Method which sets a value to attribute to Media_Url.
 	 * 
 	 * @param Media_url
 	 */
@@ -108,7 +109,7 @@ public class Photos {
 	}
 
 	/**
-	 * 
+	 * Method that gives back the pixelWeight.
 	 * @return pixelWeight
 	 */
 	public int getPixelWeight() {
@@ -116,7 +117,7 @@ public class Photos {
 	}
 
 	/**
-	 * Sets a value to attribute pixelWeight.
+	 * Method which sets a value to attribute to PixelWeight.
 	 * 
 	 * @param PixelWeight
 	 */
@@ -125,7 +126,7 @@ public class Photos {
 	}
 
 	/**
-	 * 
+	 * Method that gives back the byte.
 	 * @return byte
 	 */
 	public int getnByte() {
@@ -133,7 +134,7 @@ public class Photos {
 	}
 
 	/**
-	 * Sets a value to attribute byte.
+	 *  Method which sets a value to attribute to byte.
 	 * 
 	 * @param Byte
 	 */
@@ -142,10 +143,18 @@ public class Photos {
 	}
 
 	@Override
+	/**
+	 * Methods which gives back the string of API_Instagram.
+	 * 
+	 * @return String.
+	 */
 	public String toString() {
-		return "Fotografia [pixelHeight=" + pixelHeight + ", media_url=" + media_url + ", id_photos=" + id_photos
+		return "Photos [pixelHeight=" + pixelHeight + ", media_url=" + media_url + ", id_photos=" + id_photos
 				+ ", pixelWeight=" + pixelWeight + ", nbyte=" + nbyte + "]";
 	}
+
+	
+	
 	
 	
 

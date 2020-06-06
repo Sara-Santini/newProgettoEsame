@@ -7,7 +7,7 @@ import java.util.HashSet;
 
 
 /**
- * Description of Album.
+ * Class which describes the album of Instagram.
  * 
  * @author Arianna Nazzarelli
  * @author Francesco Voto
@@ -15,7 +15,8 @@ import java.util.HashSet;
  */
 public class Album extends API_Instagram {
 	/**
-	 * Description of the property photos.
+	 * New collection of photos.
+	 * @see Photos.
 	 */
 	private HashSet<Photos> photos= new HashSet<Photos>();
 
@@ -28,11 +29,22 @@ public class Album extends API_Instagram {
 	 * @param caption
 	 * @param media_type
 	 * @param fotografias
+	 * 
+	 * @see API_Instagram,Photos.
 	 */
 	public Album(String id, String caption, String media_type, HashSet<Photos> photos) {
 		super(id, caption, media_type);
 		this.photos = photos;
 	}
+	
+	/**
+	 * The constructor.
+	 */
+	/**
+	 * @param a
+	 * @see API_Instagram, Photos.
+	 
+	 */
 	public Album(Album a) {
 		super(a.getId(),a.getCaption(),a.getMedia_type());
 		this.photos=new HashSet<Photos>(a.getPhotos());
@@ -40,6 +52,7 @@ public class Album extends API_Instagram {
 	}
 	
 	/**
+	 * Method that gives back a collection of Photos.
 	 * @return photos 
 	 */
 	public HashSet<Photos> getPhotos() {
@@ -47,15 +60,22 @@ public class Album extends API_Instagram {
 	}
 	
 	/**
-	 * @param fotografias the photos to set
+	 *  Method which sets a value to attribute to photos..
+	 * @see Photos.
+	 * @param photos the photos to set
 	 */
 	public void setPhotos(HashSet<Photos> photos) {
 		this.photos = photos;
 	}
 
+	/**
+	 * Methods which gives back the string of the Album.
+	 * @see photos.
+	 * @return String.
+	 */
 	@Override
 	public String toString() {
-		return "Album [fotografias=" + photos + "]";
+		return "Album [photos=" + photos + "]";
 	}
 	
 }

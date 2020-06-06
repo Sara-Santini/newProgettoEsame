@@ -4,7 +4,7 @@
 package it.bonfire.ProjectOOP.Model;
 
 /**
- * Description of Image.
+ * Class which describes the features of an image.
  * 
  * @author Arianna Nazzarelli
  * @author Frncesco Voto
@@ -12,7 +12,7 @@ package it.bonfire.ProjectOOP.Model;
  */
 public class Image extends API_Instagram {
 	/**
-	 * Description of the property Photos.
+	 * It's a new photo.
 	 */
 	private Photos photos = null;
 
@@ -24,32 +24,46 @@ public class Image extends API_Instagram {
 		super();
 
 	}
-
+	/**
+	 * The constructor.
+	 */
 	public Image(String id, String caption, String media_type, Photos photos) {
 		super(id, caption, media_type);
 		this.photos = photos;
 	}
-	
+	/**
+	 * The constructor.
+	 */
 	public Image(API_Instagram api, Photos photos) {
 		super(api.getId(), api.getCaption(), api.getMedia_type());
 		this.photos = photos;
 	}
 
 	/**
+	 * Method that gives back a photo.
 	 * @return photos
 	 */
 	public Photos getPhotos() {
 		return photos;
 	}
 	/**
+	 * Method which sets a photo, given by the user,to image.
 	 * @param photos the photos to set
 	 */
 	public void setPhotos(Photos photos) {
 		this.photos = photos;
 	}
-@Override
+
+/**
+ 
+* Methods which gives back the string of Image.
+* 
+* @return String
+* @see API_Instagram
+* */
+	@Override
 	public String toString() {
-		return "Image [photos=" + photos + "]";
+		return  super.toString()+"Image [photos=" + photos + "]";
 	}
 
 }
