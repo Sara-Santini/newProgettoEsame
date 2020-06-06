@@ -3,13 +3,14 @@
  *******************************************************************************/
 package it.bonfire.ProjectOOP.Model;
 
+
 /**
- * Class which describes some features of a photo.
- * 
- * @author Arianna Nazzarelli
- * @author Francesco Voto
- * @author Sara Santini
- */
+* Class which describes some features of a photo.
+* 
+* @author Arianna Nazzarelli
+* @author Francesco Voto
+* @author Sara Santini
+*/
 
 public abstract class API_Instagram {
 	/**
@@ -56,7 +57,7 @@ public abstract class API_Instagram {
 	}
 
 	/**
-	 * Method which sets a caption, given by the user, to API_Instagram.
+	 * Method which sets a value to attribute to caption.
 	 * 
 	 * @param caption
 	 */

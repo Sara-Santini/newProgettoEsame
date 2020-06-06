@@ -5,7 +5,6 @@ package it.bonfire.ProjectOOP.Model;
 
 import java.util.HashSet;
 
-
 /**
  * Class which describes the album of Instagram.
  * 
@@ -60,7 +59,7 @@ public class Album extends API_Instagram {
 	}
 	
 	/**
-	 *  Method which sets a value to attribute to photos..
+	 *  Method which sets a value to attribute to photos.
 	 * @see Photos.
 	 * @param photos the photos to set
 	 */
@@ -79,5 +78,3 @@ public class Album extends API_Instagram {
 	}
 	
 }
-
-

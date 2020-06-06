@@ -7,7 +7,7 @@ package it.bonfire.ProjectOOP.Model;
  * Class which describes the features of an image.
  * 
  * @author Arianna Nazzarelli
- * @author Frncesco Voto
+ * @author Francesco Voto
  * @author Sara Santini
  */
 public class Image extends API_Instagram {
@@ -47,7 +47,7 @@ public class Image extends API_Instagram {
 		return photos;
 	}
 	/**
-	 * Method which sets a photo, given by the user,to image.
+	 * Method which sets a value to attribute to photos.
 	 * @param photos the photos to set
 	 */
 	public void setPhotos(Photos photos) {
