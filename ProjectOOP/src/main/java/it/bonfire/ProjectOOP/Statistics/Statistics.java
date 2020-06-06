@@ -2,12 +2,11 @@
  * 2020, All rights reserved.
  *******************************************************************************/
 package it.bonfire.ProjectOOP.Statistics;
-
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
-
+import it.bonfire.ProjectOOP.Exceptions.StatsNotFoundException;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Photos;
@@ -22,7 +21,7 @@ import it.bonfire.ProjectOOP.Model.Image;
  */
 public class Statistics {
 	private HashSet<API_Instagram> collezione= new HashSet<API_Instagram>();
-	private Vector<Float> bytes = new Vector<>();
+	private Vector<Integer> bytes = new Vector<>();
 	private Vector<Long> pixel = new Vector<>();
 
 	/**
@@ -30,6 +29,7 @@ public class Statistics {
 	 */
 	public Statistics(HashSet<API_Instagram> collezione) {
 		this.collezione = collezione;
+		if(collezione.isEmpty()) System.out.println( new StatsNotFoundException().getMessage());
 		Iterator<API_Instagram> p = this.collezione.iterator();
 		while (p.hasNext()) {
 			API_Instagram appoggio = p.next();
@@ -40,12 +40,12 @@ public class Statistics {
 				while (a.hasNext()) {
 					Photos appoggio1 = a.next();
 
-					bytes.add((float) (appoggio1.getnByte() / 1024));
+					bytes.add((int) (appoggio1.getnByte() / 1024));
 					pixel.add((long) (appoggio1.getPixelHeight() * appoggio1.getPixelWeight()));
 				}
 			} else {
 				Image image = (Image) appoggio;
-				bytes.add((float) (image.getPhotos().getnByte() / 1024));
+				bytes.add((int) (image.getPhotos().getnByte() / 1024));
 				pixel.add((long) (image.getPhotos().getPixelHeight() * image.getPhotos().getPixelWeight()));
 
 			}
@@ -70,14 +70,14 @@ public class Statistics {
 	/**
 	 * @return the bytes
 	 */
-	public Vector<Float> getBytes() {
+	public Vector<Integer> getBytes() {
 		return bytes;
 	}
 
 	/**
 	 * @param bytes the bytes to set
 	 */
-	public void setBytes(Vector<Float> bytes) {
+	public void setBytes(Vector<Integer> bytes) {
 		this.bytes = bytes;
 	}
 
@@ -97,20 +97,20 @@ public class Statistics {
 
 	public float AverageOfBytes() {
 		float somma = 0;
-		for (int i = 0; i < bytes.size(); i++) {
-			somma += bytes.get(i);
+		for (int lb : bytes) {
+			somma +=lb;
 		}
 		return somma / bytes.size();
 	}
 
+
 	public float AverageOfPixel() {
 		float somma = 0;
-		for (int i = 0; i < pixel.size(); i++) {
-			somma += pixel.get(i);
+		for (long lp : pixel) {
+			somma += lp;
 		}
 		return somma / pixel.size();
 	}
-
 	public float MedianOfBytes() {
 		Collections.sort(bytes);
 		int median = (int) bytes.size() / 2;
@@ -138,10 +138,26 @@ public class Statistics {
 		}
 		return n;
 	}
+	public float PixelVariance() {
+		float average= AverageOfPixel();
+		float somma=0;
+		for(long pv: pixel) {
+			somma=(float) Math.pow((pv-average),2);
+		}
+		return somma/pixel.size();
+	}
+	public float BytesVariance() {
+		float average= AverageOfBytes();
+		float somma=0;
+		for(int bv: bytes) {
+			somma=(float) Math.pow((bv-average),2);
+		}
+		return somma/bytes.size();
+	}
 
 	public String toString() {
 		return "average byte: " + AverageOfBytes() + " average of pixels: " + AverageOfPixel() + " average of hashtag: "
 				+ AverageOfHashtag() + "\n" + " median of bytes: " + MedianOfBytes() + " median of pixel: "
-				+ MedianOfPixels() + "\n" + " total hashtags: " + TotHashtag();
+				+ MedianOfPixels() + "\n" + " total hashtags: " + TotHashtag() + "\n" +"pixel variance: " + PixelVariance()+"bytes variance: " + BytesVariance();
 	}
 }

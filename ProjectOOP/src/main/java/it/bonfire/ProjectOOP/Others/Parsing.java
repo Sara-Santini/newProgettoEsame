@@ -32,7 +32,8 @@ import it.bonfire.ProjectOOP.Model.Image;
 public class Parsing {
 	public int N = 1;
 	HashSet<API_Instagram> collezione1 = new HashSet<>();
-	private String dir="C:\\Users\\39346\\Pictures";
+	private String dir="/Users/sarasantini/Desktop/Esame";
+	private String path= "/";
 	
 	
 
@@ -106,8 +107,8 @@ public class Parsing {
 				if (appoggio.getMedia_type().equals("CAROUSEL_ALBUM")) {
 					Album util = (Album) appoggio;
 					if(!util.getPhotos().isEmpty())
-					{new File(dir+"\\Album" + N).mkdir();
-					File file= new File(dir+"\\Album" + N);
+					{new File(dir+path+"Album" + N).mkdir();
+					File file= new File(dir+path +"Album" + N);
 					Download(util,file);
 					}
 					
@@ -115,7 +116,7 @@ public class Parsing {
 
 				else {
 					Image util1 = (Image) appoggio;
-					File file = new File(dir+ "\\" + util1.getId() + ".jpg");
+					File file = new File(dir+ path + util1.getId() + ".jpg");
 					Download(util1, file);
                  
 				}
@@ -138,7 +139,7 @@ public class Parsing {
 
 				BufferedImage image = ImageIO.read(url);
 				 
-				File file2 = new File(file.getPath() + "\\" + a.getId_Photos() + ".jpg");
+				File file2 = new File(file.getPath() + path + a.getId_Photos() + ".jpg");
 				ImageIO.write(image, "jpg", file2);
 				extractBytePixel(file2, a);
 			} catch (MalformedURLException e) {
@@ -172,6 +173,27 @@ public class Parsing {
 		int w = image1.getWidth();
 		foto.setPixelHeight(h);
 		foto.setPixelWeight(w);
+	}
+
+	/**
+	 * @return the n
+	 */
+	public int getN() {
+		return N;
+	}
+
+	/**
+	 * @return the collezione1
+	 */
+	public HashSet<API_Instagram> getCollezione1() {
+		return collezione1;
+	}
+
+	/**
+	 * @return the path
+	 */
+	public String getPath() {
+		return path;
 	}
 	
 	

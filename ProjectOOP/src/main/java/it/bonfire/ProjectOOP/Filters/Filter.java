@@ -35,15 +35,15 @@ public class Filter {
 	public Filter() {
 		
 	}
-	public void sortPhotos2(HashSet<API_Instagram> more100,HashSet<API_Instagram> under100) throws IOException {
-		new File(par.getDir() + "\\FotoMeno100kb").mkdir();
-		new File(par.getDir() + "\\FotoPiu100kb").mkdir();
+	public void sortPhotos(HashSet<API_Instagram> more100,HashSet<API_Instagram> under100) throws IOException {
+		new File(par.getDir() +par.getPath() +"FotoMeno100kb").mkdir();
+		new File(par.getDir() + par.getPath()+"FotoPiu100kb").mkdir();
 		  par=new Parsing();
-       par.setDir(par.getDir()+"\\FotoMeno100kb");
+       par.setDir(par.getDir()+ par.getPath()+"FotoMeno100kb");
      
      par.DownloadImage(under100);
      par=new Parsing();
-     par.setDir(par.getDir()+"\\FotoPiu100kb");
+     par.setDir(par.getDir()+ par.getPath()+ "FotoPiu100kb");
      par.DownloadImage(more100);
 
 			
@@ -55,8 +55,8 @@ public class Filter {
 	public void dowPhotosWithHashtag(HashSet<API_Instagram> collezione) throws IOException {
 		
 		Parsing pars = new Parsing();
-		new File(par.getDir() + "\\PhotosWithHashtag").mkdir();
-		pars.setDir(pars.getDir()+ "\\PhotosWithHashtag");
+		new File(par.getDir() + pars.getPath()+"PhotosWithHashtag").mkdir();
+		pars.setDir(pars.getDir()+ pars.getPath()+"PhotosWithHashtag");
 		pars.DownloadImage(collezione);
 
 		}

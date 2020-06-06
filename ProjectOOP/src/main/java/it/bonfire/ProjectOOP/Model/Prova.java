@@ -20,15 +20,13 @@ public class Prova {
 			HashSet<API_Instagram> api_insta = pars.GetAPIInstagramFromJson(obj);
 			load.getImageAlbumUrl(api_insta);
 			pars.DownloadImage(api_insta);
-//			Filter filter= new Filter(api_insta);
-//			filter.sortPhotos();
-//			filter.PhotosWithHashtag(api_insta);
 			Filter ciaoFilter=new Filter();
 			ciaoFilter.dowPhotosWithHashtag(ciaoFilter.photosWithHashtag(api_insta));
 			HashSet<API_Instagram> aa=ciaoFilter.photosMore100Kb(api_insta);
 			HashSet<API_Instagram> bb= ciaoFilter.photosUnder100Kb(api_insta); 
-			ciaoFilter.sortPhotos2(aa,bb);
+			ciaoFilter.sortPhotos(aa,bb);
 			Statistics statistics=new Statistics(api_insta);
+			float aaa=statistics.AverageOfPixel();
 			int a=5;
 		} catch (IOException | ParseException e) {
 			// TODO Auto-generated catch block

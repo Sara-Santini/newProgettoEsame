@@ -51,7 +51,7 @@ public class Downloader {
 	}
 	
 @JsonIgnore
-public void getImageAlbumUrl(HashSet<API_Instagram> collezione) {
+public HashSet<API_Instagram> getImageAlbumUrl(HashSet<API_Instagram> collezione) {
 		Iterator<API_Instagram> r = collezione.iterator();
 		while (r.hasNext()) {
 			API_Instagram appoggio = r.next();
@@ -63,11 +63,13 @@ public void getImageAlbumUrl(HashSet<API_Instagram> collezione) {
 					String id = a.getId_Photos();
 					String url = getURL(id);
 					a.setMedia_Url(url);
+					
 
 				}
 
 			}
 		}
+		return collezione;
 
 	}
 
