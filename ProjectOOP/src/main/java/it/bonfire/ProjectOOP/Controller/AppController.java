@@ -3,19 +3,16 @@
  *******************************************************************************/
 package it.bonfire.ProjectOOP.Controller;
 
-import java.util.HashSet;
 
+
+import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import it.bonfire.ProjectOOP.Filters.FilterService;
-import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Image;
-import it.bonfire.ProjectOOP.Model.Photos;
 
 // Start of user code (user defined imports)
 
@@ -50,13 +47,6 @@ public class AppController {
 
 		dati.addApi(image);
 		return new ResponseEntity<>("image is created", HttpStatus.CREATED);
-	}
-
-	@RequestMapping(value = "parPostImage", method = RequestMethod.POST)
-	public HashSet<API_Instagram> postParImage(@RequestBody API_Instagram api, @RequestBody Photos photo) {
-		Image a = new Image(api, photo);
-		dati.addApi(a);
-		return dati.getApi();
 	}
 
 	@RequestMapping(value = "deleteImage", method = RequestMethod.DELETE)
@@ -116,11 +106,21 @@ public class AppController {
 		dati.getPhotoHashtag();
         return new ResponseEntity<>("immagini filtrate", HttpStatus.OK);
 	}
+//	@RequestMapping(value = "getFilters", method = RequestMethod.GET)
+//	public ResponseEntity<Object> getSomeFilters(@RequestParam (name="field")String field ){
+//		
+//			FilterService filterService=new FilterService(field,dati.getApi());
+//		
+//        return new ResponseEntity<>(filterService.getApi(), HttpStatus.OK);
+//	}
 	@RequestMapping(value = "getFilters", method = RequestMethod.GET)
-	public ResponseEntity<Object> getSomeFilters(@RequestParam (name="field")String field ){
+	public ResponseEntity<Object> getSomeFilters2(@RequestBody String json ) throws ParseException{
 		
-			FilterService filterService=new FilterService(field,dati.getApi());
-		
-        return new ResponseEntity<>(filterService.getApi(), HttpStatus.OK);
+        return new ResponseEntity<>(dati.filterservis(json).getApi(), HttpStatus.OK);
 	}
+	@RequestMapping(value = "searchPhoto", method = RequestMethod.GET)
+	public ResponseEntity<Object> SearchPhoto(@RequestParam(name = "id") String id) {
+    return new ResponseEntity<>(dati.SearchPhotos(id), HttpStatus.OK);
+	}
+
 }

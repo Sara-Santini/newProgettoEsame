@@ -12,29 +12,34 @@ package it.bonfire.ProjectOOP.Model;
  */
 public class Photos {
 	/**
-	 * It is the height of pixel which are taken up by a photo.
+	 * It is the identity of a photo.
 	 */
-	private int pixelHeight = 0;
-
+	private String id_photos = null;
+	
 	/**
 	 * It is the media_url of a photo.
 	 */
 	private String media_url = null;
 
-	/**
-	 * It is the identity of a photo.
-	 */
-	private String id_photos = null;
+	
 
 	/**
 	 * It is the weight of pixel which are taken up by a photo.
 	 */
 	private int pixelWeight = 0;
+	
+	/**
+	 * It is the height of pixel which are taken up by a photo.
+	 */
+	private int pixelHeight = 0;
 
 	/**
 	 * It is the number of bytes which are taken up by a photo.
 	 */
 	private int nbyte = 0;
+	public Photos() {
+		
+	}
 
 	/**
 	 * The constructor.
@@ -148,10 +153,14 @@ public class Photos {
 	 * 
 	 * @return String.
 	 */
+	
 	public String toString() {
-		return "Photos [pixelHeight=" + pixelHeight + ", media_url=" + media_url + ", id_photos=" + id_photos
-				+ ", pixelWeight=" + pixelWeight + ", nbyte=" + nbyte + "]";
+		return "Photos [id_photos=" + id_photos + ", media_url=" + media_url + ", pixelWeight=" + pixelWeight
+				+ ", pixelHeight=" + pixelHeight + ", nbyte=" + nbyte + "]";
 	}
+
+
+	
 
 	
 	

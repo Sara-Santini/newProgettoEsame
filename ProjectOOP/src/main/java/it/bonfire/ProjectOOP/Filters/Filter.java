@@ -72,8 +72,8 @@ public class Filter {
 			}
 	  
 		
-	public HashSet<API_Instagram> photosMore100Kb(HashSet<API_Instagram> collezione) {
-		int Bt = 102400;
+	public HashSet<API_Instagram> photosMore100Kb(HashSet<API_Instagram> collezione,int Bt) {
+		
 		HashSet<API_Instagram> api = new HashSet<API_Instagram>(collezione);
 		Iterator<API_Instagram> iter = api.iterator();
 		while (iter.hasNext()) {
@@ -98,8 +98,8 @@ public class Filter {
 		}
    return api;
 	}
-	public HashSet<API_Instagram> photosUnder100Kb(HashSet<API_Instagram> collezione) {
-		int Bt = 102400;
+	public HashSet<API_Instagram> photosUnder100Kb(HashSet<API_Instagram> collezione,int Bt) {
+	
 		HashSet<API_Instagram> api1 = new HashSet<API_Instagram>(collezione);
 		Iterator<API_Instagram> iter = api1.iterator();
 		while (iter.hasNext()) {
@@ -123,8 +123,8 @@ public class Filter {
    return api1;
 	}
 
-	public HashSet<API_Instagram> PhotosHight(HashSet<API_Instagram> collezione) {
-		int H = 1100;
+	public HashSet<API_Instagram> PhotosHight(HashSet<API_Instagram> collezione,int H) {
+	
 		HashSet<API_Instagram> api = new HashSet<API_Instagram>(collezione);
 		Iterator<API_Instagram> iter = api.iterator();
 		while (iter.hasNext()) {
@@ -149,8 +149,8 @@ public class Filter {
 		}
    return api;
 	}
-	public HashSet<API_Instagram> PhotosWight(HashSet<API_Instagram> collezione) {
-		int W = 600;
+	public HashSet<API_Instagram> PhotosWight(HashSet<API_Instagram> collezione,int W) {
+		
 		HashSet<API_Instagram> api = new HashSet<API_Instagram>(collezione);
 		Iterator<API_Instagram> iter = api.iterator();
 		while (iter.hasNext()) {

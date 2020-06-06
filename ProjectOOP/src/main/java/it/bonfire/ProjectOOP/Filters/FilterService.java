@@ -16,25 +16,27 @@ public class FilterService {
 		this.api = api;
 	}
 
-	public FilterService(String field,HashSet<API_Instagram> util) {
+	public FilterService(HashSet<API_Instagram> util) {
 		api=util;
-		if(field.contains("#")) {
-			api=filter.photosWithHashtag(api);
-			}
-		if(field.contains("|")) {
-			api=filter.PhotosHight(api);
-			
-		}
-		if(field.contains("-")) {
-			api=filter.PhotosWight(api);
-		}
-		if(field.contains("?")) {
-			api=filter.photosMore100Kb(api);
-		}
-		if(field.contains("!")) {
-			api=filter.photosUnder100Kb(api);
-		}
 		
 	}
-
+   public void Operator(String field,int a) {
+	   if(field.equals("#")) {
+			api=filter.photosWithHashtag(api);
+			}
+		if(field.equals("|")) {
+			api=filter.PhotosHight(api,a);
+			
+		}
+		if(field.equals("-")) {
+			api=filter.PhotosWight(api,a);
+		}
+		if(field.equals("?")) {
+			api=filter.photosMore100Kb(api,a);
+		}
+		if(field.equals("!")) {
+			api=filter.photosUnder100Kb(api,a);
+		}
+		
+   }
 }
