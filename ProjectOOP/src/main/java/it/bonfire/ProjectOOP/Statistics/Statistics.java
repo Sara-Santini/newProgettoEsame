@@ -242,7 +242,9 @@ public class Statistics {
 	public String toString() {
 		return "average byte: " + AverageOfBytes() + " average of pixels: " + AverageOfPixel() + " average of hashtag: "
 				+ AverageOfHashtag() + "\n" + " median of bytes: " + MedianOfBytes() + " median of pixel: "
-				+ MedianOfPixels() + "\n" + " total hashtags: " + TotHashtag() + "\n" + "pixel variance: "
-				+ PixelVariance() + "bytes variance: " + BytesVariance();
+				+ MedianOfPixels() + "\n" + " total hashtags: " + TotHashtag() ;
+//		+ "\n" 
+//				+ "pixel variance: "
+//				+ PixelVariance() + "bytes variance: " + BytesVariance();
 	}
 }

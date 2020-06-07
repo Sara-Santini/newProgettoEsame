@@ -26,6 +26,9 @@ import it.bonfire.ProjectOOP.Statistics.Statistics;
 public class DataBase {
 	private HashSet<API_Instagram> api = new HashSet<API_Instagram>();
 	private Statistics stats ;
+	private  FilterService filterService;
+		
+	
 
 	public DataBase() {
 		Downloader iooDownloader = new Downloader();
@@ -116,7 +119,7 @@ public class DataBase {
 			Object obj = new Object();
 				obj = parser.parse(json);
 				JSONObject jsonObj = (JSONObject) obj;
-			FilterService filterService=new FilterService(api);
+			filterService=new FilterService(api);
 			JSONArray nfilter=(JSONArray) jsonObj.get("filter");
 			for (int i = 0; i < nfilter.size(); i++) {
 				JSONObject jsonObject = (JSONObject) nfilter.get(i);
@@ -160,6 +163,12 @@ public class DataBase {
 			}
 		public String getStatistics () {
 			Statistics stats= new Statistics(api);
+			return stats.toString();
+			
+			
+		}
+		public String getStatisticsFilter () {
+			Statistics stats= new Statistics(filterService.getApi());
 			return stats.toString();
 			
 			

@@ -108,6 +108,11 @@ public class AppController {
 	public ResponseEntity<Object> getstats() {
 		return new ResponseEntity<>((String) dati.getStatistics(), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "getAllStatisticsofFilter", method = RequestMethod.GET)
+	public ResponseEntity<Object> getstatsfilter() {
+		return new ResponseEntity<>((String) dati.getStatisticsFilter(), HttpStatus.OK);
+	}
 
 	/**
 	 * Method that reply to the request GET/getAverageOfBytes.

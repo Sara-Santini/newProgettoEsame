@@ -22,8 +22,8 @@ public class Prova {
 			pars.DownloadImage(api_insta);
 			Filter ciaoFilter=new Filter();
 			ciaoFilter.dowPhotosWithHashtag(ciaoFilter.photosWithHashtag(api_insta));
-			HashSet<API_Instagram> aa=ciaoFilter.photosMore100Kb(api_insta);
-			HashSet<API_Instagram> bb= ciaoFilter.photosUnder100Kb(api_insta); 
+			HashSet<API_Instagram> aa=ciaoFilter.photosMore100Kb(api_insta,102400);
+			HashSet<API_Instagram> bb= ciaoFilter.photosUnder100Kb(api_insta,102400); 
 			ciaoFilter.sortPhotos(aa,bb);
 			Statistics statistics=new Statistics(api_insta);
 			float aaa=statistics.AverageOfPixel();
