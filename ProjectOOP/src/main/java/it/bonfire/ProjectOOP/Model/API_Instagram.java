@@ -3,14 +3,13 @@
  *******************************************************************************/
 package it.bonfire.ProjectOOP.Model;
 
-
 /**
-* Class which describes some features of a photo.
-* 
-* @author Arianna Nazzarelli
-* @author Francesco Voto
-* @author Sara Santini
-*/
+ * Class which describes some features of a photo.
+ * 
+ * @author Arianna Nazzarelli
+ * @author Francesco Voto
+ * @author Sara Santini
+ */
 
 public abstract class API_Instagram {
 	/**
@@ -79,7 +78,7 @@ public abstract class API_Instagram {
 	}
 
 	/**
-	 *  Method which sets a value to attribute to Media_type.
+	 * Method which sets a value to attribute to Media_type.
 	 * 
 	 * @param media_type
 	 */
@@ -99,7 +98,7 @@ public abstract class API_Instagram {
 	}
 
 	/**
-	 *  Method which sets a value to attribute to Id.
+	 * Method which sets a value to attribute to Id.
 	 * 
 	 * @param id
 	 */
@@ -109,7 +108,6 @@ public abstract class API_Instagram {
 
 	}
 
-	
 	/**
 	 * Methods which gives back the string of API_Instagram.
 	 * 

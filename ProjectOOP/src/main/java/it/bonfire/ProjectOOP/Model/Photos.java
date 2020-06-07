@@ -12,9 +12,10 @@ package it.bonfire.ProjectOOP.Model;
  */
 public class Photos {
 	/**
+
 	 * It is the identity of a photo.
 	 */
-	private String id_photos = null;
+	private String id_photos= null;
 	
 	/**
 	 * It is the media_url of a photo.
@@ -29,6 +30,7 @@ public class Photos {
 	private int pixelWeight = 0;
 	
 	/**
+
 	 * It is the height of pixel which are taken up by a photo.
 	 */
 	private int pixelHeight = 0;
@@ -139,7 +141,7 @@ public class Photos {
 	}
 
 	/**
-	 *  Method which sets a value to attribute to byte.
+	 * Method which sets a value to attribute to byte.
 	 * 
 	 * @param Byte
 	 */
@@ -153,14 +155,16 @@ public class Photos {
 	 * 
 	 * @return String.
 	 */
-	
+
 	public String toString() {
+
 		return "Photos [id_photos=" + id_photos + ", media_url=" + media_url + ", pixelWeight=" + pixelWeight
 				+ ", pixelHeight=" + pixelHeight + ", nbyte=" + nbyte + "]";
+
+
 	}
 
 
-	
 
 	
 	

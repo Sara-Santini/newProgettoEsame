@@ -2,6 +2,7 @@
  * 2020, All rights reserved.
  *******************************************************************************/
 package it.bonfire.ProjectOOP.Statistics;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -13,23 +14,40 @@ import it.bonfire.ProjectOOP.Model.Photos;
 import it.bonfire.ProjectOOP.Model.Image;
 
 /**
- * Description of StatsByte.
+ * Class in which are described the statistics that the user can makes with the
+ * collection.
  * 
  * @author Arianna Nazzarelli
  * @author Francesco Voto
  * @author Sara Santini
  */
 public class Statistics {
-	private HashSet<API_Instagram> collezione= new HashSet<API_Instagram>();
+	/**
+	 * New collection of API_Instagram.
+	 */
+	private HashSet<API_Instagram> collezione = new HashSet<API_Instagram>();
+	/**
+	 * New collection of Bytes.
+	 */
 	private Vector<Integer> bytes = new Vector<>();
+	/**
+	 * New collection of pixel.
+	 */
 	private Vector<Long> pixel = new Vector<>();
 
 	/**
-	 * @param collezione
+	 * The Constructor.
+	 * 
+	 * @see API_Instagram.
+	 * @see Image.
+	 * @see Photos.
+	 * @see Album.
+	 * @param collezione New collection of API_Instagram.
 	 */
 	public Statistics(HashSet<API_Instagram> collezione) {
 		this.collezione = collezione;
-		if(collezione.isEmpty()) System.out.println( new StatsNotFoundException().getMessage());
+		if (collezione.isEmpty())
+			System.out.println(new StatsNotFoundException().getMessage());
 		Iterator<API_Instagram> p = this.collezione.iterator();
 		while (p.hasNext()) {
 			API_Instagram appoggio = p.next();
@@ -54,20 +72,26 @@ public class Statistics {
 	}
 
 	/**
-	 * @return the collezione
+	 * Method that gives back the collection of API_Instagram.
+	 * 
+	 * @return HashSet<API_Instagram>
 	 */
 	public HashSet<API_Instagram> getCollezione() {
 		return collezione;
 	}
 
 	/**
-	 * @param collezione the collezione to set
+	 * Method which sets a value to attribute to collection.
+	 * 
+	 * @param collezione the collection to set
 	 */
 	public void setCollezione(HashSet<API_Instagram> collezione) {
 		this.collezione = collezione;
 	}
 
 	/**
+	 * Method that gives back the bytes of an image.
+	 * 
 	 * @return the bytes
 	 */
 	public Vector<Integer> getBytes() {
@@ -75,6 +99,8 @@ public class Statistics {
 	}
 
 	/**
+	 * Method which sets a value to attribute to bytes.
+	 * 
 	 * @param bytes the bytes to set
 	 */
 	public void setBytes(Vector<Integer> bytes) {
@@ -82,6 +108,8 @@ public class Statistics {
 	}
 
 	/**
+	 * Method that gives back the number of Bytes of an image.
+	 * 
 	 * @return the pixel
 	 */
 	public Vector<Long> getPixel() {
@@ -89,21 +117,32 @@ public class Statistics {
 	}
 
 	/**
+	 * Method which sets a value to attribute to pixel.
+	 * 
 	 * @param pixel the pixel to set
 	 */
 	public void setPixel(Vector<Long> pixel) {
 		this.pixel = pixel;
 	}
 
+	/**
+	 * Method that gives back the average of bytes.
+	 * 
+	 * @return float
+	 */
 	public float AverageOfBytes() {
 		float somma = 0;
 		for (int lb : bytes) {
-			somma +=lb;
+			somma += lb;
 		}
 		return somma / bytes.size();
 	}
 
-
+	/**
+	 * Method that gives back the average of pixel.
+	 * 
+	 * @return float
+	 */
 	public float AverageOfPixel() {
 		float somma = 0;
 		for (long lp : pixel) {
@@ -111,22 +150,47 @@ public class Statistics {
 		}
 		return somma / pixel.size();
 	}
+
+	/**
+	 * Method that gives back the median of bytes.
+	 * 
+	 * @return float
+	 * 
+	 */
 	public float MedianOfBytes() {
 		Collections.sort(bytes);
 		int median = (int) bytes.size() / 2;
 		return bytes.get(median);
 	}
 
+	/**
+	 * Method that gives back the median of pixel.
+	 * 
+	 * @return long
+	 * 
+	 */
 	public long MedianOfPixels() {
 		Collections.sort(pixel);
 		int median = (int) pixel.size() / 2;
 		return pixel.get(median);
 	}
 
+	/**
+	 * Method that gives back the average of hashtag.
+	 * 
+	 * @return float
+	 * 
+	 */
 	public float AverageOfHashtag() {
 		return TotHashtag() / (float) bytes.size();
 	}
 
+	/**
+	 * Method that gives back the total number of hashtag in the collection.
+	 * 
+	 * @see API_Instagram
+	 * @return Integer
+	 */
 	public int TotHashtag() {
 		Iterator<API_Instagram> p = collezione.iterator();
 		int n = 0;
@@ -138,26 +202,47 @@ public class Statistics {
 		}
 		return n;
 	}
+
+	/**
+	 * Method that gives back the variance of pixels.
+	 * 
+	 * @see AverageOfPixel.
+	 * @return float.
+	 */
 	public float PixelVariance() {
-		float average= AverageOfPixel();
-		float somma=0;
-		for(long pv: pixel) {
-			somma=(float) Math.pow((pv-average),2);
+		float average = AverageOfPixel();
+		float somma = 0;
+		for (long pv : pixel) {
+			somma = (float) Math.pow((pv - average), 2);
 		}
-		return somma/pixel.size();
+		return somma / pixel.size();
 	}
+
+	/**
+	 * Method that gives back the variance of bytes.
+	 * 
+	 * @see AverageOfBytes
+	 * @return float.
+	 */
 	public float BytesVariance() {
-		float average= AverageOfBytes();
-		float somma=0;
-		for(int bv: bytes) {
-			somma=(float) Math.pow((bv-average),2);
+		float average = AverageOfBytes();
+		float somma = 0;
+		for (int bv : bytes) {
+			somma = (float) Math.pow((bv - average), 2);
 		}
-		return somma/bytes.size();
+		return somma / bytes.size();
 	}
+
+	/**
+	 * Methods which gives back the string of Statistics.
+	 * 
+	 * @return String.
+	 */
 
 	public String toString() {
 		return "average byte: " + AverageOfBytes() + " average of pixels: " + AverageOfPixel() + " average of hashtag: "
 				+ AverageOfHashtag() + "\n" + " median of bytes: " + MedianOfBytes() + " median of pixel: "
-				+ MedianOfPixels() + "\n" + " total hashtags: " + TotHashtag() + "\n" +"pixel variance: " + PixelVariance()+"bytes variance: " + BytesVariance();
+				+ MedianOfPixels() + "\n" + " total hashtags: " + TotHashtag() + "\n" + "pixel variance: "
+				+ PixelVariance() + "bytes variance: " + BytesVariance();
 	}
 }

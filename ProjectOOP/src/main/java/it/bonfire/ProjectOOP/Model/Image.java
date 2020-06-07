@@ -16,7 +16,6 @@ public class Image extends API_Instagram {
 	 */
 	private Photos photos = null;
 
-	
 	/**
 	 * The constructor.
 	 */
@@ -24,6 +23,7 @@ public class Image extends API_Instagram {
 		super();
 
 	}
+
 	/**
 	 * The constructor.
 	 */
@@ -31,6 +31,7 @@ public class Image extends API_Instagram {
 		super(id, caption, media_type);
 		this.photos = photos;
 	}
+
 	/**
 	 * The constructor.
 	 */
@@ -41,29 +42,32 @@ public class Image extends API_Instagram {
 
 	/**
 	 * Method that gives back a photo.
+	 * 
 	 * @return photos
 	 */
 	public Photos getPhotos() {
 		return photos;
 	}
+
 	/**
 	 * Method which sets a value to attribute to photos.
+	 * 
 	 * @param photos the photos to set
 	 */
 	public void setPhotos(Photos photos) {
 		this.photos = photos;
 	}
 
-/**
- 
-* Methods which gives back the string of Image.
-* 
-* @return String
-* @see API_Instagram
-* */
+	/**
+	 * 
+	 * Methods which gives back the string of Image.
+	 * 
+	 * @return String
+	 * @see API_Instagram
+	 */
 	@Override
 	public String toString() {
-		return  super.toString()+"Image [photos=" + photos + "]";
+		return super.toString() + "Image [photos=" + photos + "]";
 	}
 
 }

@@ -1,5 +1,4 @@
 
-
 package it.bonfire.ProjectOOP.Others;
 
 import java.awt.image.BufferedImage;
@@ -32,7 +31,7 @@ import it.bonfire.ProjectOOP.Model.Image;
  */
 public class Parsing {
 	public int N = 1;
-	
+
 	/**
 	 * New collection of API_Instagram
 	 */
@@ -40,33 +39,38 @@ public class Parsing {
 	/**
 	 * Directory for the downloaded images.
 	 */
-	private String dir="/Users/sarasantini/Desktop/Esame";
-	private String path= "/";
-	
-	
-/**
- * Method which sets a value to attribute to dir.
- * @param dir
- */
+	private String dir = "/Users/sarasantini/Desktop/Esame";
+	private String path = "/";
+
+	/**
+	 * Method which sets a value to attribute to dir.
+	 * 
+	 * @param dir
+	 */
 	public void setDir(String dir) {
 		this.dir = dir;
 	}
-/**
- * Method that gives back the dir.
- */
+
+	/**
+	 * Method that gives back the dir.
+	 */
 	public String getDir() {
 		return dir;
 	}
 
 	/**
-	 * It is a method which adds to the collection the photos of Instagram from a JSONObject.
+	 * It is a method which adds to the collection the photos of Instagram from a
+	 * JSONObject.
+	 * 
 	 * @see API_Instagram
 	 * @see Downloader
 	 * @see Photos
 	 * @see Album
 	 * @see getJSONbyURL
-	 * @exception IOException which is thrown if there is any problem in the process of input/output.
-	 * @exception ParseException which is thrown if there is any problem in the process of parsing.
+	 * @exception IOException    which is thrown if there is any problem in the
+	 *                           process of input/output.
+	 * @exception ParseException which is thrown if there is any problem in the
+	 *                           process of parsing.
 	 * @param jsonObject
 	 */
 	public HashSet<API_Instagram> GetAPIInstagramFromJson(JSONObject jsonObject) {
@@ -104,31 +108,35 @@ public class Parsing {
 		}
 
 		if (urlString != null) {
-		try {	Downloader DOW = new Downloader();
-			
+			try {
+				Downloader DOW = new Downloader();
+
 				JSONObject ciao = DOW.getJSONbyURL(urlString);
 				GetAPIInstagramFromJson(ciao);
 			} catch (IOException | ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			
+
+			}
 
 		}
-		
-
-	}
 		return collezione1;
-		}
+	}
 
 	/**
-	 * It is a method that places images, which are already downloaded, of the collection on a specific directory.
+	 * It is a method which places images, that are already downloaded, of the
+	 * collection on a specific directory.
+	 * 
 	 * @see API_Instagram.
 	 * @see Album.
 	 * @see Download.
-	 * @see Image. 
-	 * @param collezione which is a collection of API_Instagram and it contains all the photos of the API.
-	 * @exception IOException which is thrown if there is any problem in the process of input/output.
-	 * @exception MalformedURLException which is thrown if there is any problem in the input of an URL.
+	 * @see Image.
+	 * @param collezione which is a collection of API_Instagram and it contains all
+	 *                   the photos of the API.
+	 * @exception IOException           which is thrown if there is any problem in
+	 *                                  the process of input/output.
+	 * @exception MalformedURLException which is thrown if there is any problem in
+	 *                                  the input of an URL.
 	 * 
 	 */
 	public void DownloadImage(HashSet<API_Instagram> collezione) {
@@ -140,19 +148,19 @@ public class Parsing {
 				API_Instagram appoggio = l.next();
 				if (appoggio.getMedia_type().equals("CAROUSEL_ALBUM")) {
 					Album util = (Album) appoggio;
-					if(!util.getPhotos().isEmpty()){
-						new File(dir+path+"Album" + N).mkdir();
-					File file= new File(dir+path +"Album" + N);
-					Download(util,file);
+					if (!util.getPhotos().isEmpty()) {
+						new File(dir + path + "Album" + N).mkdir();
+						File file = new File(dir + path + "Album" + N);
+						Download(util, file);
 					}
-					
+
 				}
 
 				else {
 					Image util1 = (Image) appoggio;
-					File file = new File(dir+ path + util1.getId() + ".jpg");
+					File file = new File(dir + path + util1.getId() + ".jpg");
 					Download(util1, file);
-                 
+
 				}
 			}
 		} catch (MalformedURLException e) {
@@ -173,7 +181,10 @@ public class Parsing {
 	 * @see File.
 	 * @param album
 	 * @param file
-	 * @exception IOException, ParseException
+	 * @exception IOException    which is thrown if there is any problem in the
+	 *                           process of input/output.
+	 * @exception ParseException which is thrown if there is any problem in the
+	 *                           process of parsing.
 	 */
 	public void Download(Album album, File file) {
 
@@ -185,7 +196,7 @@ public class Parsing {
 				url = new URL(a.getMedia_Url());
 
 				BufferedImage image = ImageIO.read(url);
-				 
+
 				File file2 = new File(file.getPath() + path + a.getId_Photos() + ".jpg");
 				ImageIO.write(image, "jpg", file2);
 				extractBytePixel(file2, a);
@@ -199,16 +210,19 @@ public class Parsing {
 			}
 		}
 		N++;
-		
+
 	}
 
 	/**
 	 * Method that downloads the images of the API.
+	 * 
 	 * @param image The image that the method downloads.
-	 * @param file The file in which the user wants to be used to download the image.
+	 * @param file  The file in which the user wants to be used to download the
+	 *              image.
 	 * @see Image.
 	 * @see extractBytePixel.
-	 * @throws IOException which is thrown if there is any problem in the process of input/output.
+	 * @throws IOException which is thrown if there is any problem in the process of
+	 *                     input/output.
 	 */
 	public void Download(Image image, File file) throws IOException {
 		String IO = image.getPhotos().getMedia_Url();
@@ -220,11 +234,13 @@ public class Parsing {
 	}
 
 	/**
-	 * Method that reads the weight and the height of pixels of an image and it sets the value to the parameters PixelHeight and 
-	 * PixelWeight of a photos. 
+	 * Method that reads the weight and the height of pixels of an image and it sets
+	 * the value to the parameters PixelHeight and PixelWeight of a photos.
+	 * 
 	 * @param file The file which is occupy by the image.
 	 * @param foto The photo from which the user wants to know about pixels.
-	 * @throws IOException which is thrown if there is any problem in the process of input/output.
+	 * @throws IOException which is thrown if there is any problem in the process of
+	 *                     input/output.
 	 */
 	public void extractBytePixel(File file, Photos foto) throws IOException {
 		BufferedImage image1 = ImageIO.read(file);
@@ -239,6 +255,7 @@ public class Parsing {
 
 	/**
 	 * Method that gives back the N.
+	 * 
 	 * @return the n
 	 */
 	public int getN() {
@@ -247,6 +264,7 @@ public class Parsing {
 
 	/**
 	 * Methods that gives back the Collezione1.
+	 * 
 	 * @return the collezione1
 	 */
 	public HashSet<API_Instagram> getCollezione1() {
@@ -255,10 +273,10 @@ public class Parsing {
 
 	/**
 	 * Method that gives back the path.
+	 * 
 	 * @return the path
 	 */
 	public String getPath() {
 		return path;
 	}
 }
-	
