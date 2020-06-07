@@ -25,9 +25,9 @@ public class Photos {
 	
 
 	/**
-	 * It is the weight of pixel which are taken up by a photo.
+	 * It is the wide of pixel which are taken up by a photo.
 	 */
-	private int pixelWeight = 0;
+	private int pixelWide = 0;
 	
 	/**
 
@@ -116,20 +116,20 @@ public class Photos {
 	}
 
 	/**
-	 * Method that gives back the pixelWeight.
-	 * @return pixelWeight
+	 * Method that gives back the pixelWide.
+	 * @return pixelWide
 	 */
-	public int getPixelWeight() {
-		return pixelWeight;
+	public int getPixelWide() {
+		return pixelWide;
 	}
 
 	/**
-	 * Method which sets a value to attribute to PixelWeight.
+	 * Method which sets a value to attribute to PixelWide.
 	 * 
-	 * @param PixelWeight
+	 * @param PixelWide
 	 */
-	public void setPixelWeight(int PixelWeight) {
-		this.pixelWeight = PixelWeight;
+	public void setPixelWide(int PixelWide) {
+		this.pixelWide = PixelWide;
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class Photos {
 
 	public String toString() {
 
-		return "Photos [id_photos=" + id_photos + ", media_url=" + media_url + ", pixelWeight=" + pixelWeight
+		return "Photos [id_photos=" + id_photos + ", media_url=" + media_url + ", pixelWide=" + pixelWide
 				+ ", pixelHeight=" + pixelHeight + ", nbyte=" + nbyte + "]";
 
 

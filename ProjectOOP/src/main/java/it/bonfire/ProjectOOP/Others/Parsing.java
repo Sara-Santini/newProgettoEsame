@@ -30,7 +30,7 @@ import it.bonfire.ProjectOOP.Model.Image;
  * 
  */
 public class Parsing {
-	public int N = 1;
+	private int N = 1;
 
 	/**
 	 * New collection of API_Instagram
@@ -250,7 +250,7 @@ public class Parsing {
 		int h = image1.getHeight();
 		int w = image1.getWidth();
 		foto.setPixelHeight(h);
-		foto.setPixelWeight(w);
+		foto.setPixelWide(w);
 	}
 
 	/**

@@ -19,7 +19,7 @@ public class FilterService {
 	/**
 	 * New collection of API_instagram.
 	 */
-	HashSet<API_Instagram> api = new HashSet<API_Instagram>();
+	private HashSet<API_Instagram> api = new HashSet<API_Instagram>();
 	/**
 	 * New object of filter.
 	 */
@@ -64,11 +64,11 @@ public class FilterService {
 			api = filter.photosWithHashtag(api);
 		}
 		if (field.equals("|")) {
-			api = filter.PhotosHight(api, a);
+			api = filter.PhotosHeight(api, a);
 
 		}
 		if (field.equals("-")) {
-			api = filter.PhotosWight(api, a);
+			api = filter.PhotosWide(api, a);
 		}
 		if (field.equals("?")) {
 			api = filter.photosMore100Kb(api, a);

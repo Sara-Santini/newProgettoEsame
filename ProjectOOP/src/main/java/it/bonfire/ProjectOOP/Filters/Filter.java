@@ -22,7 +22,13 @@ import it.bonfire.ProjectOOP.Others.Parsing;
  * @author Francesco Voto
  */
 public class Filter {
+	/**
+	 * Collection of API_Instagram.
+	 */
 	HashSet<API_Instagram> collezione;
+	/**
+	 * New Object of Parsing.
+	 */
 	Parsing par = new Parsing();
 
 	/**
@@ -184,7 +190,7 @@ public class Filter {
 	 * @return HashSet<API_Instagram>
 	 */
 
-	public HashSet<API_Instagram> PhotosHight(HashSet<API_Instagram> collezione, int H) {
+	public HashSet<API_Instagram> PhotosHeight(HashSet<API_Instagram> collezione, int H) {
 
 		HashSet<API_Instagram> api = new HashSet<API_Instagram>(collezione);
 		Iterator<API_Instagram> iter = api.iterator();
@@ -213,17 +219,17 @@ public class Filter {
 	}
 
 	/**
-	 * Method that deletes photos that have a height of pixel greater than the one
+	 * Method that deletes photos that have a wide of pixel greater than the one
 	 * passed by the user.
 	 * 
 	 * @param collezione New collection of API_Instagram.
-	 * @param W          Weight of a photo's pixels.
+	 * @param W          Wide of a photo's pixels.
 	 * @see API_Instagram.
 	 * @see Image.
 	 * @see Album.
 	 * @return HashSet<API_Instagram>
 	 */
-	public HashSet<API_Instagram> PhotosWight(HashSet<API_Instagram> collezione, int W) {
+	public HashSet<API_Instagram> PhotosWide(HashSet<API_Instagram> collezione, int W) {
 
 		HashSet<API_Instagram> api = new HashSet<API_Instagram>(collezione);
 		Iterator<API_Instagram> iter = api.iterator();
@@ -231,14 +237,14 @@ public class Filter {
 			API_Instagram im = iter.next();
 			if (im.getClass().equals(Image.class)) {
 				Image image = (Image) im;
-				if (image.getPhotos().getPixelWeight() < W)
+				if (image.getPhotos().getPixelWide() < W)
 					iter.remove();
 			} else {
 				Album album = (Album) im;
 				Iterator<Photos> a = album.getPhotos().iterator();
 				while (a.hasNext()) {
 					Photos appoggio1 = a.next();
-					if (appoggio1.getPixelWeight() < W)
+					if (appoggio1.getPixelWide() < W)
 						a.remove();
 
 				}

@@ -59,12 +59,12 @@ public class Statistics {
 					Photos appoggio1 = a.next();
 
 					bytes.add((int) (appoggio1.getnByte() / 1024));
-					pixel.add((long) (appoggio1.getPixelHeight() * appoggio1.getPixelWeight()));
+					pixel.add((long) (appoggio1.getPixelHeight() * appoggio1.getPixelWide()));
 				}
 			} else {
 				Image image = (Image) appoggio;
 				bytes.add((int) (image.getPhotos().getnByte() / 1024));
-				pixel.add((long) (image.getPhotos().getPixelHeight() * image.getPhotos().getPixelWeight()));
+				pixel.add((long) (image.getPhotos().getPixelHeight() * image.getPhotos().getPixelWide()));
 
 			}
 
