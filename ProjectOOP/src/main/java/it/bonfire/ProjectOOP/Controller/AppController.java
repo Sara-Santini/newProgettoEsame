@@ -108,6 +108,11 @@ public class AppController {
 	public ResponseEntity<Object> getstats() {
 		return new ResponseEntity<>((String) dati.getStatistics(), HttpStatus.OK);
 	}
+	/**
+	 * Method that reply to the request GET/getAllStatisticsofFilter.
+	 * @see DataBase
+	 * @return all the statistics of filtered's images as string.
+	 */
 	
 	@RequestMapping(value = "getAllStatisticsofFilter", method = RequestMethod.GET)
 	public ResponseEntity<Object> getstatsfilter() {
@@ -156,10 +161,15 @@ public class AppController {
 	public ResponseEntity<Object> getAverageOfHashtag() {
 		return new ResponseEntity<>(String.valueOf(dati.getStats().AverageOfHashtag()), HttpStatus.OK);
 	}
-
+	/**
+	 * Method that reply to the request GET/getMedianOfBytes.
+	 * 
+	 * @see DataBase.
+	 * @return the median of Bytes as string.
+	 */
 	@RequestMapping(value = "getMedianOfBytes", method = RequestMethod.GET)
 	public ResponseEntity<Object> getMedianOfBytes() {
-		return new ResponseEntity<>(String.valueOf(dati.getStats().MedianOfBytes()), HttpStatus.OK);
+		return new ResponseEntity<>(String.valueOf((int)dati.getStats().MedianOfBytes()), HttpStatus.OK);
 	}
 
 	/**
@@ -197,7 +207,7 @@ public class AppController {
 	@RequestMapping(value = "getFilters", method = RequestMethod.GET)
 	public ResponseEntity<Object> getSomeFilters2(@RequestBody String json) throws ParseException {
 
-		return new ResponseEntity<>(dati.filterservis(json).getApi(), HttpStatus.OK);
+		return new ResponseEntity<>(dati.filterservice(json).getApi(), HttpStatus.OK);
 	}
 
 	/**

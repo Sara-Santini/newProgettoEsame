@@ -1,7 +1,6 @@
 package it.bonfire.ProjectOOP.Controller;
 
 import java.io.IOException;
-
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -22,14 +21,38 @@ import it.bonfire.ProjectOOP.Model.Photos;
 import it.bonfire.ProjectOOP.Others.Downloader;
 import it.bonfire.ProjectOOP.Others.Parsing;
 import it.bonfire.ProjectOOP.Statistics.Statistics;
+/**
+	 * Class that represents the DataSet's initialization.
+	 * @author Sara Santini.
+	 * @author Francesco Voto.
+	 * @author Arianna Nazzarelli.
+	 */
 
 public class DataBase {
+	/**
+	 * New collection of API_Instagram.
+	 */
 	private HashSet<API_Instagram> api = new HashSet<API_Instagram>();
+	/**
+	 * Object of Statistics.
+	 */
 	private Statistics stats ;
+	/**
+	 * Object of FilterService.
+	 */
 	private  FilterService filterService;
 		
 	
-
+/**
+ * The Constructor.
+ * @see Downloader
+ * @see Parsing
+ * @see Statistics
+ * @exception IOException Error that is thrown if there is any problem in the
+	 *                        process of input/output.
+ * @exception ParseException MalformedURLException which is thrown if there is any problem in
+	 *                                  the input of an URL.
+ */
 	public DataBase() {
 		Downloader iooDownloader = new Downloader();
 		Parsing parsing = new Parsing();
@@ -48,19 +71,36 @@ public class DataBase {
 		}
 
 	}
-
+/**
+ * The Constructor.
+ * @param api A collection of API_Instagram.
+ */
 	public DataBase(HashSet<API_Instagram> api) {
 		this.api = api;
 	}
 
+	/**
+	 * Method that gives back the collection of API_Instagram.
+	 * @return HashSet<API_Instagram>
+	 */
 	public HashSet<API_Instagram> getApi() {
 		return api;
 	}
-
+/**
+ *  Method which sets a value to attribute to the collection of API_Instagram.
+ * @param api
+ */
 	public void setApi(HashSet<API_Instagram> api) {
 		this.api = api;
 	}
 
+	/**
+	 * Method that add an image to the collection of API_Instragram.
+	 * @see Image
+	 * @see API_Instagram
+	 * @param image The image that the user wants to add to the collection.
+	 * @throws ResponseStatusException if the image is existing in the collection yet.
+	 */
 	public void addApi(Image image) {
 		if (api.contains((API_Instagram) image)) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "già esistente");
@@ -68,7 +108,13 @@ public class DataBase {
 		api.add((API_Instagram) image);
 	}
 	
-
+/**
+ * Method that deletes an image or an album of the API_Instragram's collection.
+ * @param id Identify the photos.
+ * @return true or false if the image is found and deleted.
+ * @see API_Instagram
+ * @throws ResponseStatusException if the image or the album is not present in the API.
+ */
 	public boolean deleteApi(String id) {
 		Iterator<API_Instagram> p = api.iterator();
 		boolean i=false;
@@ -87,12 +133,26 @@ public class DataBase {
 			return i;
 				
 	}
-
+/**
+ * Method that add an album to the collection of API_Instragram.
+ * @param album that the user wants to add to the collection.
+ * @see Album
+ * @see API_Instagram
+ * @throws ResponseStatusException if the Album is existing yet.
+ * 
+ */
 	public void addApi(Album album) {
 		if (api.contains((API_Instagram) album))
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "già esistente");
 		api.add((API_Instagram) album);
 	}
+	
+	/**
+	 * Method that gives back the photos with a hashtag in their caption.
+	 * @see Filter
+	 * @exception IOException Error that is thrown if there is any problem in the
+	 *                        process of input/output.
+	 */
 	public void getPhotoHashtag()  {
 		Filter filter = new Filter();
 		try {
@@ -102,7 +162,13 @@ public class DataBase {
 			FilterNotFoundException a= (FilterNotFoundException) e;
 			 a.getMessage();
 		}}
-		
+	
+		/**
+		 * Method that gives back the photos with more and less than 100KB of bytes and organizes them.
+		 * @see Filter
+		 * @exception IOException Error that is thrown if there is any problem in the
+	 *                        process of input/output.
+		 */
 		public void getSortPhotos() {
 			Filter filter = new Filter();
 			try {
@@ -114,7 +180,16 @@ public class DataBase {
 			}
 	     
 	}
-		public FilterService filterservis(String json) throws ParseException {
+		
+		/**
+		 * Method that manage the call of filter by using jolly character.
+		 * @param json String of a JsonObject
+		 * @see FilterService
+		 * @return  a FilterService
+		 * @throws ParseException Error that is thrown if there is any problem on the
+	 *                        conversion of a string into an object.
+		 */
+		public FilterService filterservice(String json) throws ParseException {
 			JSONParser parser = new JSONParser();
 			Object obj = new Object();
 				obj = parser.parse(json);
@@ -126,10 +201,20 @@ public class DataBase {
 				String field = (String) jsonObject.get("field");
 				String param= (String) jsonObject.get("param");
 				if(param==null)param="0";
-				filterService.Operator(field,(int)Integer.valueOf(param));}
+				filterService.Operator(field,(int)Integer.valueOf(param));
+				}
 			return filterService;
 			}
 
+		/**
+		 * Method that search a photo in the collection of API_Instagram by using an id passed by the user.
+		 * @param id Identify the photo to search.
+		 * @return a Photo.
+		 * @see Photos.
+		 * @see API_Instagram
+		 * @see Album.
+		 * @see Image.
+		 */
 		public Photos SearchPhotos(String id) {
 			Iterator<API_Instagram> iter= api.iterator();
 			Photos photos =new Photos();
@@ -161,12 +246,24 @@ public class DataBase {
 			}
 			return photos;
 			}
+		
+		/**
+		 * Method that gives back all the statistics that the user can make on the collection.
+		 * @return String.
+		 * @see Statistics.
+		 */
 		public String getStatistics () {
-			Statistics stats= new Statistics(api);
-			return stats.toString();
+			Statistics stat1= new Statistics(api);
+			return stat1.toString();
 			
 			
 		}
+		
+		/**
+		 * Method that gives back the statistics of filtered images.
+		 * @see Statistics.
+		 * @return String.
+		 */
 		public String getStatisticsFilter () {
 			Statistics stats= new Statistics(filterService.getApi());
 			return stats.toString();
@@ -175,14 +272,15 @@ public class DataBase {
 		}
 
 		/**
-		 * @return the stats
+		 * Method that gives back the statistics.
+		 * @return the statistics.
 		 */
 		public Statistics getStats() {
 			return stats;
 		}
 
 		/**
-		 * @param stats the stats to set
+		 * @param stats the statistics to set
 		 */
 		public void setStats(Statistics stats) {
 			this.stats = stats;

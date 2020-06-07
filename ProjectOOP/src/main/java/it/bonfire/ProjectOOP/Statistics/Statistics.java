@@ -157,7 +157,7 @@ public class Statistics {
 	 * @return float
 	 * 
 	 */
-	public float MedianOfBytes() {
+	public int MedianOfBytes() {
 		Collections.sort(bytes);
 		int median = (int) bytes.size() / 2;
 		return bytes.get(median);
@@ -196,9 +196,11 @@ public class Statistics {
 		int n = 0;
 		while (p.hasNext()) {
 			API_Instagram api = p.next();
+			if(api.getCaption()!=null) {
 			for (int i = 0; i < api.getCaption().length(); i++)
 				if (api.getCaption().charAt(i) == '#')
 					n++;
+		}
 		}
 		return n;
 	}
@@ -240,11 +242,10 @@ public class Statistics {
 	 */
 
 	public String toString() {
-		return "average byte: " + AverageOfBytes() + " average of pixels: " + AverageOfPixel() + " average of hashtag: "
-				+ AverageOfHashtag() + "\n" + " median of bytes: " + MedianOfBytes() + " median of pixel: "
-				+ MedianOfPixels() + "\n" + " total hashtags: " + TotHashtag() ;
-//		+ "\n" 
-//				+ "pixel variance: "
-//				+ PixelVariance() + "bytes variance: " + BytesVariance();
+		return "Average byte: " + AverageOfBytes() + " Average of pixels: " + AverageOfPixel() + " Average of hashtag: "
+				+ AverageOfHashtag() + "\n" + " Median of bytes: " + MedianOfBytes() + " Median of pixel: "
+				+ MedianOfPixels() + "\n" + " Total hashtags: " + TotHashtag()+ "\n" 
+				+ "Pixel variance: "
+				+ PixelVariance() + "Bytes variance: " + BytesVariance();
 	}
 }

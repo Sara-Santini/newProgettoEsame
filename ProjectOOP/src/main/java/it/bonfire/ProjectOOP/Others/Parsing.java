@@ -39,8 +39,8 @@ public class Parsing {
 	/**
 	 * Directory for the downloaded images.
 	 */
-	private String dir = "/Users/sarasantini/Desktop/Esame";
-	private String path = "/";
+	private String dir = "C:\\Users\\arian\\OneDrive\\Immagini";
+	private String path = "\\";
 
 	/**
 	 * Method which sets a value to attribute to dir.

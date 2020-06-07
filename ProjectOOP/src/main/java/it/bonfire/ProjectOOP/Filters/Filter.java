@@ -79,7 +79,7 @@ public class Filter {
 	 * Method that downloads images with hashtag.
 	 * 
 	 * @see API_Instagram
-	 * @param collezione New collection of API_Instagram.
+	 * @param collezione  collection of API_Instagram.
 	 * @return HashSet<API_Instagram>
 	 */
 	public HashSet<API_Instagram> photosWithHashtag(HashSet<API_Instagram> collezione) {

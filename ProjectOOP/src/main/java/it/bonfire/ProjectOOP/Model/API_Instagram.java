@@ -58,7 +58,7 @@ public abstract class API_Instagram {
 	/**
 	 * Method which sets a value to attribute to caption.
 	 * 
-	 * @param caption
+	 * @param caption The caption of the photo.
 	 */
 	public void setCaption(String caption) {
 
@@ -80,7 +80,7 @@ public abstract class API_Instagram {
 	/**
 	 * Method which sets a value to attribute to Media_type.
 	 * 
-	 * @param media_type
+	 * @param media_type It is the type of the data.
 	 */
 	public void setMedia_type(String media_type) {
 
@@ -100,7 +100,7 @@ public abstract class API_Instagram {
 	/**
 	 * Method which sets a value to attribute to Id.
 	 * 
-	 * @param id
+	 * @param id identify the photo.
 	 */
 	public void setId(String id) {
 

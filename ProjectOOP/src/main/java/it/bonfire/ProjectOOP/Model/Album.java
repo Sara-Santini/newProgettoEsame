@@ -24,10 +24,10 @@ public class Album extends API_Instagram {
 	 * The constructor.
 	 */
 	/**
-	 * @param id
-	 * @param caption
-	 * @param media_type
-	 * @param fotografias
+	 * @param id Identify the photo.
+	 * @param caption Description of a photo.
+	 * @param media_type Type of the media.
+	 * @param photos Photos of an album.
 	 * 
 	 * @see API_Instagram,Photos.
 	 */
@@ -40,7 +40,7 @@ public class Album extends API_Instagram {
 	 * The constructor.
 	 */
 	/**
-	 * @param a
+	 * @param a Album 
 	 * @see API_Instagram, Photos.
 	 * 
 	 */
