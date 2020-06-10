@@ -16,6 +16,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
+
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Photos;
@@ -39,14 +40,23 @@ public class Parsing {
 	/**
 	 * Directory for the downloaded images.
 	 */
-	private String dir = "/Users/sarasantini/Desktop/Esame";
-	private String path = "/";
+	private  String dir = "C:\\Users\\39346\\Pictures";
+	public String dirOk;
+	private  String  path = "\\";
 
 	/**
 	 * Method which sets a value to attribute to dir.
 	 * 
 	 * @param dir
 	 */
+	public Parsing(String dir,String path) {
+	   this.dir=dir;
+		this.path = path;
+	}
+	public Parsing() {
+	    
+	}
+
 	public void setDir(String dir) {
 		this.dir = dir;
 	}

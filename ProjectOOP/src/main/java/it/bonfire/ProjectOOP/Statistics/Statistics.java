@@ -211,11 +211,11 @@ public class Statistics {
 	 * @see AverageOfPixel.
 	 * @return float.
 	 */
-	public float PixelVariance() {
+	public double PixelVariance() {
 		float average = AverageOfPixel();
-		float somma = 0;
+		double somma = 0;
 		for (long pv : pixel) {
-			somma = (float) Math.pow((pv - average), 2);
+			somma += (double) Math.pow((pv - average), 2);
 		}
 		return somma / pixel.size();
 	}
@@ -230,7 +230,7 @@ public class Statistics {
 		float average = AverageOfBytes();
 		float somma = 0;
 		for (int bv : bytes) {
-			somma = (float) Math.pow((bv - average), 2);
+			somma += (float) Math.pow((bv - average), 2);
 		}
 		return somma / bytes.size();
 	}
@@ -242,10 +242,10 @@ public class Statistics {
 	 */
 
 	public String toString() {
-		return "Average byte: " + AverageOfBytes() + " Average of pixels: " + AverageOfPixel() + " Average of hashtag: "
-				+ AverageOfHashtag() + "\n" + " Median of bytes: " + MedianOfBytes() + " Median of pixel: "
-				+ MedianOfPixels() + "\n" + " Total hashtags: " + TotHashtag()+ "\n" 
+		return "{Statistics: [{Average byte: " + AverageOfBytes() + "},{ Average of pixels: " + AverageOfPixel() + "},{ Average of hashtag: "
+				+ AverageOfHashtag() + "},{" + " Median of bytes: " + MedianOfBytes() + "},{ Median of pixel: "
+				+ MedianOfPixels() + "},{" + " Total hashtags: " + TotHashtag()+ "},{" 
 				+ "Pixel variance: "
-				+ PixelVariance() + "Bytes variance: " + BytesVariance();
+				+ PixelVariance() + "Bytes variance: " + BytesVariance()+"]}";
 	}
 }

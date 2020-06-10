@@ -20,6 +20,7 @@ import it.bonfire.ProjectOOP.Model.Image;
 import it.bonfire.ProjectOOP.Model.Photos;
 import it.bonfire.ProjectOOP.Others.Downloader;
 import it.bonfire.ProjectOOP.Others.Parsing;
+import it.bonfire.ProjectOOP.Statistics.StatisticService;
 import it.bonfire.ProjectOOP.Statistics.Statistics;
 /**
 	 * Class that represents the DataSet's initialization.
@@ -36,7 +37,7 @@ public class DataBase {
 	/**
 	 * Object of Statistics.
 	 */
-	private Statistics stats ;
+	private StatisticService statsService ;
 	/**
 	 * Object of FilterService.
 	 */
@@ -52,16 +53,23 @@ public class DataBase {
 	 *                        process of input/output.
  * @exception ParseException MalformedURLException which is thrown if there is any problem in
 	 *                                  the input of an URL.
- */
+ */ 
 	public DataBase() {
 		Downloader iooDownloader = new Downloader();
+//		int scelta;
+//		String dir = JOptionPane.showInputDialog("Inserisci una directory");
+//		String path="";
+//		scelta=JOptionPane.showConfirmDialog(null ,"IL sistema operativo Windows?", "Scelta",JOptionPane.YES_NO_OPTION);
+//        if( JOptionPane.YES_OPTION==scelta ) path="\\" ;
+//		else if(JOptionPane.NO_OPTION==scelta) path= "/" ;
+//		else JOptionPane.showMessageDialog(null, "scelta non valida");
 		Parsing parsing = new Parsing();
 		String urlString = "https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,children&access_token=IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD";
 		try {
 			api = parsing.GetAPIInstagramFromJson(iooDownloader.getJSONbyURL(urlString));
 			iooDownloader.getImageAlbumUrl(api);
 			parsing.DownloadImage(api);
-		 stats= new Statistics(api);
+		 statsService= new StatisticService(api);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.getMessage();
@@ -265,7 +273,7 @@ public class DataBase {
 		 * @return String.
 		 */
 		public String getStatisticsFilter () {
-			Statistics stats= new Statistics(filterService.getApi());
+			StatisticService stats= new StatisticService(filterService.getApi());
 			return stats.toString();
 			
 			
@@ -275,15 +283,15 @@ public class DataBase {
 		 * Method that gives back the statistics.
 		 * @return the statistics.
 		 */
-		public Statistics getStats() {
-			return stats;
+		public StatisticService getStats() {
+			return statsService;
 		}
 
 		/**
 		 * @param stats the statistics to set
 		 */
-		public void setStats(Statistics stats) {
-			this.stats = stats;
+		public void setStats(StatisticService stats) {
+			this.statsService = stats;
 		}
 
 }

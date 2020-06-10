@@ -25,13 +25,7 @@ public class AppController {
 	 * Object of DataBase.
 	 */
 	DataBase dati = new DataBase();
-//  int scelta;
-//  String dir = JOptionPane.showInputDialog("Inserisci una directory");
-//  String path="";
-//  scelta=JOptionPane.showConfirmDialog(null ,"IL sistema operativo Windows?", "Scelta",JOptionPane.YES_NO_OPTION);
-//  if( JOptionPane.YES_OPTION==scelta ) path="\\" ;
-//  else if(JOptionPane.NO_OPTION==scelta) path= "/" ;
-//  else JOptionPane.showMessageDialog(null, "scelta non valida");
+
 
 	/**
 	 * Method that reply to the request GET/metadata
@@ -113,7 +107,7 @@ public class AppController {
 	 */
 	@RequestMapping(value = "getAllStatistics", method = RequestMethod.GET)
 	public ResponseEntity<Object> getstats() {
-		return new ResponseEntity<>((String) dati.getStatistics(), HttpStatus.OK);
+		return new ResponseEntity<>( dati.getStats(), HttpStatus.OK);
 	}
 	/**
 	 * Method that reply to the request GET/getAllStatisticsofFilter.
@@ -134,7 +128,7 @@ public class AppController {
 	 */
 	@RequestMapping(value = "getAverageOfBytes", method = RequestMethod.GET)
 	public ResponseEntity<Object> getAverageOfBytes() {
-		return new ResponseEntity<>(String.valueOf(dati.getStats().AverageOfBytes()), HttpStatus.OK);
+		return new ResponseEntity<>(String.valueOf(dati.getStats().getAverageOfBytes()), HttpStatus.OK);
 	}
 
 	/**
@@ -145,7 +139,7 @@ public class AppController {
 	@RequestMapping(value = "getAverageOfPixel", method = RequestMethod.GET)
 	public ResponseEntity<Object> getAverageOfPixel() {
 
-		return new ResponseEntity<>(String.valueOf(dati.getStats().AverageOfPixel()), HttpStatus.OK);
+		return new ResponseEntity<>(String.valueOf(dati.getStats().getAverageOfPixel()), HttpStatus.OK);
 	}
 
 	/**
@@ -156,7 +150,7 @@ public class AppController {
 	 */
 	@RequestMapping(value = "getMedianOfPixels", method = RequestMethod.GET)
 	public ResponseEntity<Object> getMedianOfPixels() {
-		return new ResponseEntity<>(String.valueOf(dati.getStats().MedianOfPixels()), HttpStatus.OK);
+		return new ResponseEntity<>(String.valueOf(dati.getStats().getMedianOfPixels()), HttpStatus.OK);
 	}
 
 	/**
@@ -166,7 +160,7 @@ public class AppController {
 	 */
 	@RequestMapping(value = "getAverageOfHashtag", method = RequestMethod.GET)
 	public ResponseEntity<Object> getAverageOfHashtag() {
-		return new ResponseEntity<>(String.valueOf(dati.getStats().AverageOfHashtag()), HttpStatus.OK);
+		return new ResponseEntity<>(String.valueOf(dati.getStats().getAverageOfHashtag()), HttpStatus.OK);
 	}
 	/**
 	 * Method that reply to the request GET/getMedianOfBytes.
@@ -176,7 +170,7 @@ public class AppController {
 	 */
 	@RequestMapping(value = "getMedianOfBytes", method = RequestMethod.GET)
 	public ResponseEntity<Object> getMedianOfBytes() {
-		return new ResponseEntity<>(String.valueOf((int)dati.getStats().MedianOfBytes()), HttpStatus.OK);
+		return new ResponseEntity<>(String.valueOf((int)dati.getStats().getMedianOfBytes()), HttpStatus.OK);
 	}
 
 	/**
@@ -187,7 +181,7 @@ public class AppController {
 	 */
 	@RequestMapping(value = "getTotHashtag", method = RequestMethod.GET)
 	public ResponseEntity<Object> getTotHashtag() {
-		return new ResponseEntity<>(String.valueOf(dati.getStats().TotHashtag()), HttpStatus.OK);
+		return new ResponseEntity<>(String.valueOf(dati.getStats().getTotHashtag()), HttpStatus.OK);
 	}
 
 	/**
