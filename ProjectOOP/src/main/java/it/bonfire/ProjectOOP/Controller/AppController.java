@@ -25,6 +25,13 @@ public class AppController {
 	 * Object of DataBase.
 	 */
 	DataBase dati = new DataBase();
+//  int scelta;
+//  String dir = JOptionPane.showInputDialog("Inserisci una directory");
+//  String path="";
+//  scelta=JOptionPane.showConfirmDialog(null ,"IL sistema operativo Windows?", "Scelta",JOptionPane.YES_NO_OPTION);
+//  if( JOptionPane.YES_OPTION==scelta ) path="\\" ;
+//  else if(JOptionPane.NO_OPTION==scelta) path= "/" ;
+//  else JOptionPane.showMessageDialog(null, "scelta non valida");
 
 	/**
 	 * Method that reply to the request GET/metadata

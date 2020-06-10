@@ -39,8 +39,8 @@ public class Parsing {
 	/**
 	 * Directory for the downloaded images.
 	 */
-	private String dir = "C:\\Users\\arian\\OneDrive\\Immagini";
-	private String path = "\\";
+	private String dir = "/Users/sarasantini/Desktop/Esame";
+	private String path = "/";
 
 	/**
 	 * Method which sets a value to attribute to dir.
@@ -107,19 +107,19 @@ public class Parsing {
 			}
 		}
 
-		if (urlString != null) {
-			try {
-				Downloader DOW = new Downloader();
-
-				JSONObject ciao = DOW.getJSONbyURL(urlString);
-				GetAPIInstagramFromJson(ciao);
-			} catch (IOException | ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-
-			}
-
-		}
+//		if (urlString != null) {
+//			try {
+//				Downloader DOW = new Downloader();
+//
+//				JSONObject ciao = DOW.getJSONbyURL(urlString);
+//				GetAPIInstagramFromJson(ciao);
+//			} catch (IOException | ParseException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//
+//			}
+//
+//		}
 		return collezione1;
 	}
 

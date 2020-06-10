@@ -3,6 +3,8 @@
  *******************************************************************************/
 package it.bonfire.ProjectOOP.Filters;
 
+import java.lang.reflect.Field;
+import java.security.PublicKey;
 import java.util.HashSet;
 
 import it.bonfire.ProjectOOP.Model.API_Instagram;
@@ -76,6 +78,7 @@ public class FilterService {
 		if (field.equals("!")) {
 			api = filter.photosUnder100Kb(api, a);
 		}
-
+		 
+	
 	}
 }
