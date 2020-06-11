@@ -23,12 +23,14 @@ import it.bonfire.ProjectOOP.Others.Downloader;
 import it.bonfire.ProjectOOP.Others.Parsing;
 import it.bonfire.ProjectOOP.Statistics.StatisticService;
 import it.bonfire.ProjectOOP.Statistics.Statistics;
+
 /**
-	 * Class that represents the DataSet's initialization.
-	 * @author Sara Santini.
-	 * @author Francesco Voto.
-	 * @author Arianna Nazzarelli.
-	 */
+ * Class that represents the DataSet's initialization.
+ * 
+ * @author Sara Santini.
+ * @author Francesco Voto.
+ * @author Arianna Nazzarelli.
+ */
 
 public class DataBase {
 	/**
@@ -38,23 +40,23 @@ public class DataBase {
 	/**
 	 * Object of Statistics.
 	 */
-	private StatisticService statsService ;
+	private StatisticService statsService;
 	/**
 	 * Object of FilterService.
 	 */
-	private  FilterService filterService;
-		
-	
-/**
- * The Constructor.
- * @see Downloader
- * @see Parsing
- * @see Statistics
- * @exception IOException Error that is thrown if there is any problem in the
-	 *                        process of input/output.
- * @exception ParseException MalformedURLException which is thrown if there is any problem in
-	 *                                  the input of an URL.
- */ 
+	private FilterService filterService;
+
+	/**
+	 * The Constructor.
+	 * 
+	 * @see Downloader
+	 * @see Parsing
+	 * @see Statistics
+	 * @exception IOException    Error that is thrown if there is any problem in the
+	 *                           process of input/output.
+	 * @exception ParseException MalformedURLException which is thrown if there is
+	 *                           any problem in the input of an URL.
+	 */
 	public DataBase() {
 		Downloader iooDownloader = new Downloader();
 //		int scelta;
@@ -70,48 +72,54 @@ public class DataBase {
 			api = parsing.GetAPIInstagramFromJson(iooDownloader.getJSONbyURL(urlString));
 			iooDownloader.getImageAlbumUrl(api);
 			parsing.DownloadImage(api);
-		 statsService= new StatisticService(api);
+			statsService = new StatisticService(api);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.getMessage();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.getMessage();
-		} catch (StatsNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		}catch(StatsNotFoundException e){
+e.printStackTrace();
+}
 
 	}
-/**
- * The Constructor.
- * @param api A collection of API_Instagram.
- */
+
+	/**
+	 * The Constructor.
+	 * 
+	 * @param api A collection of API_Instagram.
+	 */
 	public DataBase(HashSet<API_Instagram> api) {
 		this.api = api;
 	}
 
 	/**
 	 * Method that gives back the collection of API_Instagram.
+	 * 
 	 * @return HashSet<API_Instagram>
 	 */
 	public HashSet<API_Instagram> getApi() {
 		return api;
 	}
-/**
- *  Method which sets a value to attribute to the collection of API_Instagram.
- * @param api
- */
+
+	/**
+	 * Method which sets a value to attribute to the collection of API_Instagram.
+	 * 
+	 * @param api
+	 */
 	public void setApi(HashSet<API_Instagram> api) {
 		this.api = api;
 	}
 
 	/**
 	 * Method that add an image to the collection of API_Instragram.
+	 * 
 	 * @see Image
 	 * @see API_Instagram
 	 * @param image The image that the user wants to add to the collection.
-	 * @throws ResponseStatusException if the image is existing in the collection yet.
+	 * @throws ResponseStatusException if the image is existing in the collection
+	 *                                 yet.
 	 */
 	public void addApi(Image image) {
 		if (api.contains((API_Instagram) image)) {
@@ -119,192 +127,201 @@ public class DataBase {
 		}
 		api.add((API_Instagram) image);
 	}
-	
-/**
- * Method that deletes an image or an album of the API_Instragram's collection.
- * @param id Identify the photos.
- * @return true or false if the image is found and deleted.
- * @see API_Instagram
- * @throws ResponseStatusException if the image or the album is not present in the API.
- */
+
+	/**
+	 * Method that deletes an image or an album of the API_Instragram's collection.
+	 * 
+	 * @param id Identify the photos.
+	 * @return true or false if the image is found and deleted.
+	 * @see API_Instagram
+	 * @throws ResponseStatusException if the image or the album is not present in
+	 *                                 the API.
+	 */
 	public boolean deleteApi(String id) {
 		Iterator<API_Instagram> p = api.iterator();
-		boolean i=false;
-		while (p.hasNext() && i==false) {
+		boolean i = false;
+		while (p.hasNext() && i == false) {
 			API_Instagram ap = p.next();
 			if (ap.getMedia_type().equals("CAROUSEL_ALBUM")) {
-			
+
 			}
 			if (ap.getId().equals(id)) {
 
 				api.remove(ap);
-				i=true;
+				i = true;
 			}
 		}
-			if(i==false) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "non presente");
-			return i;
-				
+		if (i == false)
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "non presente");
+		return i;
+
 	}
-/**
- * Method that add an album to the collection of API_Instragram.
- * @param album that the user wants to add to the collection.
- * @see Album
- * @see API_Instagram
- * @throws ResponseStatusException if the Album is existing yet.
- * 
- */
+
+	/**
+	 * Method that add an album to the collection of API_Instragram.
+	 * 
+	 * @param album that the user wants to add to the collection.
+	 * @see Album
+	 * @see API_Instagram
+	 * @throws ResponseStatusException if the Album is existing yet.
+	 * 
+	 */
 	public void addApi(Album album) {
 		if (api.contains((API_Instagram) album))
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "già esistente");
 		api.add((API_Instagram) album);
 	}
-	
+
 	/**
 	 * Method that gives back the photos with a hashtag in their caption.
+	 * 
 	 * @see Filter
 	 * @exception IOException Error that is thrown if there is any problem in the
 	 *                        process of input/output.
 	 */
-	public void getPhotoHashtag()  {
+	public void getPhotoHashtag() {
 		Filter filter = new Filter();
 		try {
 			filter.dowPhotosWithHashtag(filter.photosWithHashtag(api));
 		} catch (IOException e) {
 
-			FilterNotFoundException a= (FilterNotFoundException) e;
-			 a.getMessage();
-		}}
-	
-		/**
-		 * Method that gives back the photos with more and less than 100KB of bytes and organizes them.
-		 * @see Filter
-		 * @exception IOException Error that is thrown if there is any problem in the
-	 *                        process of input/output.
-		 */
-		public void getSortPhotos() {
-			Filter filter = new Filter();
-			try {
-				filter.sortPhotos(filter.photosMore100Kb(api,102400), filter.photosUnder100Kb(api,102400));
-			} catch (IOException e) {
-				
-				FilterNotFoundException a= (FilterNotFoundException) e;
-				 a.getMessage();
-			}
-	     
+			FilterNotFoundException a = (FilterNotFoundException) e;
+			a.getMessage();
+		}
 	}
-		
-		/**
-		 * Method that manage the call of filter by using jolly character.
-		 * @param json String of a JsonObject
-		 * @see FilterService
-		 * @return  a FilterService
-		 * @throws ParseException Error that is thrown if there is any problem on the
+
+	/**
+	 * Method that gives back the photos with more and less than 100KB of bytes and
+	 * organizes them.
+	 * 
+	 * @see Filter
+	 * @exception IOException Error that is thrown if there is any problem in the
+	 *                        process of input/output.
+	 */
+	public void getSortPhotos() {
+		Filter filter = new Filter();
+		try {
+			filter.sortPhotos(filter.photosMore100Kb(api, 102400), filter.photosUnder100Kb(api, 102400));
+		} catch (IOException e) {
+
+			FilterNotFoundException a = (FilterNotFoundException) e;
+			a.getMessage();
+		}
+
+	}
+
+	/**
+	 * Method that manage the call of filter by using jolly character.
+	 * 
+	 * @param json String of a JsonObject
+	 * @see FilterService
+	 * @return a FilterService
+	 * @throws ParseException Error that is thrown if there is any problem on the
 	 *                        conversion of a string into an object.
-		 */
-		public FilterService filterservice(String json) throws ParseException {
-			JSONParser parser = new JSONParser();
-			Object obj = new Object();
-				obj = parser.parse(json);
-				JSONObject jsonObj = (JSONObject) obj;
-			filterService=new FilterService(api);
-			JSONArray nfilter=(JSONArray) jsonObj.get("filter");
-			for (int i = 0; i < nfilter.size(); i++) {
-				JSONObject jsonObject = (JSONObject) nfilter.get(i);
-				String field = (String) jsonObject.get("field");
-				String param= (String) jsonObject.get("param");
-				if(param.isEmpty())param="0";
-				try {
-					filterService.Operator(field,(int)Integer.valueOf(param));
-				} catch (NumberFormatException | FilterNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				}
-			return filterService;
+	 * @throws FilterNotFoundException 
+	 * @throws NumberFormatException 
+	 */
+	public FilterService filterservice(String json) throws ParseException, NumberFormatException, FilterNotFoundException {
+		JSONParser parser = new JSONParser();
+		Object obj = new Object();
+		obj = parser.parse(json);
+		JSONObject jsonObj = (JSONObject) obj;
+		filterService = new FilterService(api);
+		JSONArray nfilter = (JSONArray) jsonObj.get("filter");
+		for (int i = 0; i < nfilter.size(); i++) {
+			JSONObject jsonObject = (JSONObject) nfilter.get(i);
+			String field = (String) jsonObject.get("field");
+			String param = (String) jsonObject.get("param");
+			if (param == null)
+				param = "0";
+			filterService.Operator(field, (int) Integer.valueOf(param));
+		}
+		return filterService;
+	}
+
+	/**
+	 * Method that search a photo in the collection of API_Instagram by using an id
+	 * passed by the user.
+	 * 
+	 * @param id Identify the photo to search.
+	 * @return a Photo.
+	 * @see Photos.
+	 * @see API_Instagram
+	 * @see Album.
+	 * @see Image.
+	 */
+	public Photos SearchPhotos(String id) {
+		Iterator<API_Instagram> iter = api.iterator();
+		Photos photos = new Photos();
+		boolean b = false;
+		while (iter.hasNext() && b == false) {
+			API_Instagram im = iter.next();
+			if (im.getClass().equals(Image.class) && im.getId().equals(id)) {
+
+				Image image = (Image) im;
+				photos = image.getPhotos();
+				b = true;
 			}
 
-		/**
-		 * Method that search a photo in the collection of API_Instagram by using an id passed by the user.
-		 * @param id Identify the photo to search.
-		 * @return a Photo.
-		 * @see Photos.
-		 * @see API_Instagram
-		 * @see Album.
-		 * @see Image.
-		 */
-		public Photos SearchPhotos(String id) {
-			Iterator<API_Instagram> iter= api.iterator();
-			Photos photos =new Photos();
-			boolean b=false;
-			while(iter.hasNext() && b==false) {
-				API_Instagram im = iter.next();
-			if (im.getClass().equals(Image.class) && im.getId().equals(id))
-				{
-				
-				Image image= (Image) im;
-				photos=image.getPhotos();
-				b=true;
-				}
-			
-			else if (im.getClass().equals(Album.class)){
-				
+			else {
+
 				Album album = (Album) im;
-				
+
 				Iterator<Photos> a = album.getPhotos().iterator();
 				while (a.hasNext()) {
 					Photos appoggio1 = a.next();
-					if (appoggio1.getId_Photos().equals(id)) 
-						{photos=appoggio1;
-						b=true;
-						}
+					if (appoggio1.getId_Photos().equals(id)) {
+						photos = appoggio1;
+						b = true;
+					}
 				}
-			
-		}
-			}
-			
-			if(!b) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "foto non trovata");
-			return photos;
-			
-			}
-		
-		/**
-		 * Method that gives back all the statistics that the user can make on the collection.
-		 * @return String.
-		 * @see Statistics.
-		 */
-		public String getStatistics () {
-			Statistics stat1= new Statistics(api);
-			return stat1.toString();
-			
-			
-		}
-		
-		/**
-		 * Method that gives back the statistics of filtered images.
-		 * @see Statistics.
-		 * @return String.
-		 * @throws StatsNotFoundException 
-		 */
-		public String getStatisticsFilter () throws StatsNotFoundException {
-			StatisticService stats= new StatisticService(filterService.getApi());
-			return stats.toString();
-			
-			
-		}
 
-		/**
-		 * Method that gives back the statistics.
-		 * @return the statistics.
-		 */
-		public StatisticService getStats() {
-			return statsService;
+			}
 		}
+		return photos;
+	}
 
-		/**
-		 * @param stats the statistics to set
-		 */
-		public void setStats(StatisticService stats) {
-			this.statsService = stats;
-		}
+//	/**
+//	 * Method that gives back all the statistics that the user can make on the
+//	 * collection.
+//	 * 
+//	 * @return String.
+//	 * @see Statistics.
+//	 */
+//	public String getStatistics() {
+//		Statistics stat1 = new Statistics(api);
+//		return stat1.toString();
+//
+//	}
+
+	/**
+	 * Method that gives back the statistics of filtered images.
+	 * 
+	 * @see StatisticService.
+	 * @return StatisticService.
+	 * @throws StatsNotFoundException 
+	 */
+	public StatisticService getStatisticsFilter() throws StatsNotFoundException {
+		StatisticService stats = new StatisticService(filterService.getApi());
+		return stats;
+
+	}
+
+	/**
+	 * Method that gives back the statistics.
+	 * 
+	 * @return the statistics.
+	 */
+	public StatisticService getStats() {
+		return statsService;
+	}
+
+	/**
+	 * @param stats the statistics to set
+	 */
+	public void setStats(StatisticService stats) {
+		this.statsService = stats;
+	}
 
 }
+

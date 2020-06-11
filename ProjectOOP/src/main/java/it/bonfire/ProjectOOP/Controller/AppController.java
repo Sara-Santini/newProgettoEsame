@@ -1,6 +1,9 @@
 /*******************************************************************************
  * 2020, All rights reserved.
  *******************************************************************************/
+/*******************************************************************************
+ * 2020, All rights reserved.
+ *******************************************************************************/
 package it.bonfire.ProjectOOP.Controller;
 
 import org.json.simple.parser.ParseException;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.bonfire.ProjectOOP.Exceptions.FilterNotFoundException;
 import it.bonfire.ProjectOOP.Exceptions.StatsNotFoundException;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Image;
@@ -81,6 +85,7 @@ public class AppController {
 	 */
 	@RequestMapping(value = "postCarouselAlbum", method = RequestMethod.POST)
 	public ResponseEntity<Object> postCarouselAlbum(@RequestBody Album album) {
+
 		dati.addApi(album);
 		return new ResponseEntity<>("album is created", HttpStatus.CREATED);
 	}
@@ -104,7 +109,7 @@ public class AppController {
 	 * Method that reply to the request GET/getAllStatistics.
 	 * 
 	 * @see DataBase
-	 * @return all statistics as string.
+	 * @return all statistics as JSON.
 	 */
 	@RequestMapping(value = "getAllStatistics", method = RequestMethod.GET)
 	public ResponseEntity<Object> getstats() {
@@ -113,13 +118,13 @@ public class AppController {
 	/**
 	 * Method that reply to the request GET/getAllStatisticsofFilter.
 	 * @see DataBase
-	 * @return all the statistics of filtered's images as string.
+	 * @return all the statistics of filtered's images as JSON.
 	 * @throws StatsNotFoundException 
 	 */
 	
-	@RequestMapping(value = "getAllStatisticsofFilter", method = RequestMethod.GET)
+	@RequestMapping(value = "getAllStatisticsofFilter", method = RequestMethod.GET) 
 	public ResponseEntity<Object> getstatsfilter() throws StatsNotFoundException {
-		return new ResponseEntity<>((String) dati.getStatisticsFilter(), HttpStatus.OK);
+		return new ResponseEntity<>(dati.getStatisticsFilter(), HttpStatus.OK);
 	}
 
 	/**
@@ -206,9 +211,11 @@ public class AppController {
 	 * @return the filter that the user request with jolly character.
 	 * @throws ParseException which is thrown if there is any problem in the process
 	 *                        of parsing.
+	 * @throws FilterNotFoundException 
+	 * @throws NumberFormatException 
 	 */
 	@RequestMapping(value = "getFilters", method = RequestMethod.GET)
-	public ResponseEntity<Object> getSomeFilters2(@RequestBody String json) throws ParseException {
+	public ResponseEntity<Object> getSomeFilters2(@RequestBody String json) throws ParseException, NumberFormatException, FilterNotFoundException {
 
 		return new ResponseEntity<>(dati.filterservice(json).getApi(), HttpStatus.OK);
 	}
@@ -225,3 +232,5 @@ public class AppController {
 	}
 
 }
+
+
