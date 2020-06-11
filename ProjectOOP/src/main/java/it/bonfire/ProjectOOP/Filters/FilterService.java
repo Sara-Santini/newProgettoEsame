@@ -5,6 +5,8 @@ package it.bonfire.ProjectOOP.Filters;
 
 
 import java.util.HashSet;
+
+import it.bonfire.ProjectOOP.Exceptions.FilterNotFoundException;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 
 /**
@@ -60,7 +62,7 @@ public class FilterService {
 	 * @see Filter
 	 */
 
-	public void Operator(String field, int a) {
+	public void Operator(String field, int a) throws FilterNotFoundException{
 		
 		if (field.equals("#")) {
 			api = filter.photosWithHashtag(api);

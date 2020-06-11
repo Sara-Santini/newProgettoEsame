@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import it.bonfire.ProjectOOP.Exceptions.FilterNotFoundException;
+import it.bonfire.ProjectOOP.Exceptions.StatsNotFoundException;
 import it.bonfire.ProjectOOP.Filters.Filter;
 import it.bonfire.ProjectOOP.Filters.FilterService;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
@@ -76,6 +77,9 @@ public class DataBase {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.getMessage();
+		} catch (StatsNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}
@@ -209,7 +213,12 @@ public class DataBase {
 				String field = (String) jsonObject.get("field");
 				String param= (String) jsonObject.get("param");
 				if(param==null)param="0";
-				filterService.Operator(field,(int)Integer.valueOf(param));
+				try {
+					filterService.Operator(field,(int)Integer.valueOf(param));
+				} catch (NumberFormatException | FilterNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				}
 			return filterService;
 			}
@@ -252,7 +261,10 @@ public class DataBase {
 			
 		}
 			}
+			
+			if(!b) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "foto non trovata");
 			return photos;
+			
 			}
 		
 		/**
@@ -271,8 +283,9 @@ public class DataBase {
 		 * Method that gives back the statistics of filtered images.
 		 * @see Statistics.
 		 * @return String.
+		 * @throws StatsNotFoundException 
 		 */
-		public String getStatisticsFilter () {
+		public String getStatisticsFilter () throws StatsNotFoundException {
 			StatisticService stats= new StatisticService(filterService.getApi());
 			return stats.toString();
 			

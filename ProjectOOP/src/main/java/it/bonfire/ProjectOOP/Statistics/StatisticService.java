@@ -2,6 +2,7 @@ package it.bonfire.ProjectOOP.Statistics;
 
 import java.util.HashSet;
 
+import it.bonfire.ProjectOOP.Exceptions.StatsNotFoundException;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 
 
@@ -17,7 +18,7 @@ public class StatisticService {
     
 
 
-	public StatisticService(HashSet<API_Instagram> api ) {
+	public StatisticService(HashSet<API_Instagram> api ) throws StatsNotFoundException {
 		Statistics stats= new Statistics(api);
 		AverageOfBytes= stats.AverageOfBytes();
 		AverageOfPixel= stats.AverageOfPixel();

@@ -11,6 +11,7 @@ import org.json.simple.parser.ParseException;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import it.bonfire.ProjectOOP.Exceptions.WrongURLException;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Photos;
@@ -32,7 +33,7 @@ public class Downloader {
 	 * @throws ParseException Error that is thrown if there is any problem on the
 	 *                        conversion of a string into an object.
 	 */
-	public JSONObject getJSONbyURL(String url) throws IOException, ParseException {
+	public JSONObject getJSONbyURL(String url) throws IOException, ParseException,WrongURLException {
 		String totdata = "";
 		String lines = "";
 
@@ -61,7 +62,7 @@ public class Downloader {
 	 * @param collezione It is a collection of API_Instagram
 	 * @return HashSet<API_Instagram>
 	 */
-	public HashSet<API_Instagram> getImageAlbumUrl(HashSet<API_Instagram> collezione) {
+	public HashSet<API_Instagram> getImageAlbumUrl(HashSet<API_Instagram> collezione) throws WrongURLException {
 		Iterator<API_Instagram> r = collezione.iterator();
 		while (r.hasNext()) {
 			API_Instagram appoggio = r.next();
@@ -88,7 +89,7 @@ public class Downloader {
 	 * @param id Identify the photo.
 	 * @return URL.
 	 */
-	public String getURL(String id) {
+	public String getURL(String id) throws WrongURLException{
 		String url = "https://graph.instagram.com/" + id
 				+ "?fields=media_url&access_token=IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD";
 

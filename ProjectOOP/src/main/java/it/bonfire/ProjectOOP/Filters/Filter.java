@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
+import it.bonfire.ProjectOOP.Exceptions.WrongURLException;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Photos;
@@ -50,7 +51,7 @@ public class Filter {
 	 * @see Parsing
 	 * @see DownloadImage
 	 */
-	public void sortPhotos(HashSet<API_Instagram> more100, HashSet<API_Instagram> under100) throws IOException {
+	public void sortPhotos(HashSet<API_Instagram> more100, HashSet<API_Instagram> under100) throws IOException,WrongURLException {
 		new File(par.getDir() + par.getPath() + "FotoMeno100kb").mkdir();
 		new File(par.getDir() + par.getPath() + "FotoPiu100kb").mkdir();
 		par = new Parsing();
@@ -72,7 +73,7 @@ public class Filter {
 	 * @throws IOException which is thrown if there is any problem in the process of
 	 *                     input/output.
 	 */
-	public void dowPhotosWithHashtag(HashSet<API_Instagram> collezione) throws IOException {
+	public void dowPhotosWithHashtag(HashSet<API_Instagram> collezione) throws IOException, WrongURLException{
 
 		Parsing pars = new Parsing();
 		new File(par.getDir() + pars.getPath() + "PhotosWithHashtag").mkdir();

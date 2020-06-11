@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import it.bonfire.ProjectOOP.Exceptions.StatsNotFoundException;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Image;
 
@@ -79,7 +81,6 @@ public class AppController {
 	 */
 	@RequestMapping(value = "postCarouselAlbum", method = RequestMethod.POST)
 	public ResponseEntity<Object> postCarouselAlbum(@RequestBody Album album) {
-
 		dati.addApi(album);
 		return new ResponseEntity<>("album is created", HttpStatus.CREATED);
 	}
@@ -113,10 +114,11 @@ public class AppController {
 	 * Method that reply to the request GET/getAllStatisticsofFilter.
 	 * @see DataBase
 	 * @return all the statistics of filtered's images as string.
+	 * @throws StatsNotFoundException 
 	 */
 	
 	@RequestMapping(value = "getAllStatisticsofFilter", method = RequestMethod.GET)
-	public ResponseEntity<Object> getstatsfilter() {
+	public ResponseEntity<Object> getstatsfilter() throws StatsNotFoundException {
 		return new ResponseEntity<>((String) dati.getStatisticsFilter(), HttpStatus.OK);
 	}
 

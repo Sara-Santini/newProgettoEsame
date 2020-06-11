@@ -20,4 +20,11 @@ public class WrongURLException extends MalformedURLException {
 		System.out.println("Attenzione: URL errato.");
 
 	}
+	/**
+	 * Method that gives back the message that the URL isn't right.
+	 */
+	public String getMessage() {
+		return "Attenzione: URL errato.";
+		
+	}
 }

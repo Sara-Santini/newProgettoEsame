@@ -16,7 +16,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
-
+import it.bonfire.ProjectOOP.Exceptions.PhotoNotFoundException;
+import it.bonfire.ProjectOOP.Exceptions.WrongURLException;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Photos;
@@ -40,9 +41,9 @@ public class Parsing {
 	/**
 	 * Directory for the downloaded images.
 	 */
-	private  String dir = "C:\\Users\\39346\\Pictures";
+	private  String dir = "/Users/sarasantini/Desktop/Esame";
 	public String dirOk;
-	private  String  path = "\\";
+	private  String  path = "/";
 
 	/**
 	 * Method which sets a value to attribute to dir.
@@ -54,6 +55,7 @@ public class Parsing {
 		this.path = path;
 	}
 	public Parsing() {
+	 dirOk=dir;
 	    
 	}
 
@@ -117,19 +119,19 @@ public class Parsing {
 			}
 		}
 
-//		if (urlString != null) {
-//			try {
-//				Downloader DOW = new Downloader();
-//
-//				JSONObject ciao = DOW.getJSONbyURL(urlString);
-//				GetAPIInstagramFromJson(ciao);
-//			} catch (IOException | ParseException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//
-//			}
-//
-//		}
+		if (urlString != null) {
+			try {
+				Downloader DOW = new Downloader();
+
+				JSONObject ciao = DOW.getJSONbyURL(urlString);
+				GetAPIInstagramFromJson(ciao);
+			} catch (IOException | ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+
+			}
+
+		}
 		return collezione1;
 	}
 
@@ -173,10 +175,13 @@ public class Parsing {
 
 				}
 			}
-		} catch (MalformedURLException e) {
+		} catch (WrongURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (IOException  e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (PhotoNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -210,11 +215,14 @@ public class Parsing {
 				File file2 = new File(file.getPath() + path + a.getId_Photos() + ".jpg");
 				ImageIO.write(image, "jpg", file2);
 				extractBytePixel(file2, a);
-			} catch (MalformedURLException e) {
+			} catch (WrongURLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 
 			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (PhotoNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -234,7 +242,7 @@ public class Parsing {
 	 * @throws IOException which is thrown if there is any problem in the process of
 	 *                     input/output.
 	 */
-	public void Download(Image image, File file) throws IOException {
+	public void Download(Image image, File file) throws IOException, PhotoNotFoundException {
 		String IO = image.getPhotos().getMedia_Url();
 		URL url = new URL(IO);
 		BufferedImage image1 = ImageIO.read(url);
@@ -252,7 +260,7 @@ public class Parsing {
 	 * @throws IOException which is thrown if there is any problem in the process of
 	 *                     input/output.
 	 */
-	public void extractBytePixel(File file, Photos foto) throws IOException {
+	public void extractBytePixel(File file, Photos foto) throws IOException,PhotoNotFoundException {
 		BufferedImage image1 = ImageIO.read(file);
 		byte[] fileContent = Files.readAllBytes(file.toPath());
 		int bytes = fileContent.length;
