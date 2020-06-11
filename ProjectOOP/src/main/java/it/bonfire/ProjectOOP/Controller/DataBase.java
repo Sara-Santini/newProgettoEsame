@@ -59,13 +59,6 @@ public class DataBase {
 	 */
 	public DataBase() {
 		Downloader iooDownloader = new Downloader();
-//		int scelta;
-//		String dir = JOptionPane.showInputDialog("Inserisci una directory");
-//		String path="";
-//		scelta=JOptionPane.showConfirmDialog(null ,"IL sistema operativo Windows?", "Scelta",JOptionPane.YES_NO_OPTION);
-//        if( JOptionPane.YES_OPTION==scelta ) path="\\" ;
-//		else if(JOptionPane.NO_OPTION==scelta) path= "/" ;
-//		else JOptionPane.showMessageDialog(null, "scelta non valida");
 		Parsing parsing = new Parsing();
 		String urlString = "https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,children&access_token=IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD";
 		try {
@@ -245,12 +238,13 @@ e.printStackTrace();
 	 * 
 	 * @param id Identify the photo to search.
 	 * @return a Photo.
+	 * @throws FilterNotFoundException 
 	 * @see Photos.
 	 * @see API_Instagram
 	 * @see Album.
 	 * @see Image.
 	 */
-	public Photos SearchPhotos(String id) {
+	public Photos SearchPhotos(String id) throws FilterNotFoundException {
 		Iterator<API_Instagram> iter = api.iterator();
 		Photos photos = new Photos();
 		boolean b = false;
@@ -263,7 +257,7 @@ e.printStackTrace();
 				b = true;
 			}
 
-			else {
+			else if (im.getClass().equals(Album.class)){
 
 				Album album = (Album) im;
 
@@ -278,6 +272,7 @@ e.printStackTrace();
 
 			}
 		}
+		if(!b) throw new FilterNotFoundException();
 		return photos;
 	}
 

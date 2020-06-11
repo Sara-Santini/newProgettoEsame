@@ -55,10 +55,17 @@ public class Parsing {
 		Parsing.path = path;
 		dirOk=dir;
 	}
+	/**
+	 * The Constructor
+	 */
 	public Parsing() {
 	 dirOk=dir;
 	    
 	}
+	/**
+	 * Method which sets a value to attribute to dir.
+	 * @param dir
+	 */
 
 	public void setDir(String dir) {
 		Parsing.dir = dir;
@@ -126,7 +133,10 @@ public class Parsing {
 
 				JSONObject ciao = DOW.getJSONbyURL(urlString);
 				GetAPIInstagramFromJson(ciao);
-			} catch (IOException | ParseException e) {
+			}catch (WrongURLException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}catch (IOException | ParseException  e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 
@@ -201,6 +211,8 @@ public class Parsing {
 	 *                           process of input/output.
 	 * @exception ParseException which is thrown if there is any problem in the
 	 *                           process of parsing.
+	 *@exception PhotoNotFoundException which is thrown if there is any problem in the
+	 *                           process of .
 	 */
 	public void Download(Album album, File file) {
 
@@ -299,6 +311,7 @@ public class Parsing {
 		return path;
 	}
 	/**
+	 * Method which sets a value to attribute to dirOk
 	 * @param dirOk the dirOk to set
 	 */
 	public void setDirOk(String dirOk) {

@@ -67,19 +67,22 @@ public class FilterService {
 		if (field.equals("#")) {
 			api = filter.photosWithHashtag(api);
 		}
-		if (field.equals("|")) {
+		
+		else if (field.equals("|")) {
 			api = filter.PhotosHeight(api, a);
 
 		}
-		if (field.equals("-")) {
+		else if (field.equals("-")) {
 			api = filter.PhotosWide(api, a);
 		}
-		if (field.equals("?")) {
+		else if (field.equals("?")) {
 			api = filter.photosMore100Kb(api, a);
 		}
-		if (field.equals("!")) {
+		else if (field.equals("!")) {
 			api = filter.photosUnder100Kb(api, a);
 		}
+		else throw new FilterNotFoundException();
+		
  
 }
 

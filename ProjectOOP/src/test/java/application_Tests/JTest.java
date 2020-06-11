@@ -85,11 +85,11 @@ class JTest {
 	}
 	@Test
 	void test7() {
-		assertThrows(FilterNotFoundException.class,()->data.getPhotoHashtag());
+		assertThrows(FilterNotFoundException.class,()->data.SearchPhotos("178842938318964"));
 	}
 	@Test
 	void test8() {
-		assertThrows(FilterNotFoundException.class,()->data.getSortPhotos());
+		assertThrows(FilterNotFoundException.class,()->data.filterservice("{ \"filter\": [ { \"field\": \"%\", \"param\": \"5\" }]}"));
 	}
 }
 

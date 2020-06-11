@@ -1,9 +1,6 @@
 /*******************************************************************************
  * 2020, All rights reserved.
  *******************************************************************************/
-/*******************************************************************************
- * 2020, All rights reserved.
- *******************************************************************************/
 package it.bonfire.ProjectOOP.Controller;
 
 import org.json.simple.parser.ParseException;
@@ -85,7 +82,6 @@ public class AppController {
 	 */
 	@RequestMapping(value = "postCarouselAlbum", method = RequestMethod.POST)
 	public ResponseEntity<Object> postCarouselAlbum(@RequestBody Album album) {
-
 		dati.addApi(album);
 		return new ResponseEntity<>("album is created", HttpStatus.CREATED);
 	}
@@ -109,7 +105,7 @@ public class AppController {
 	 * Method that reply to the request GET/getAllStatistics.
 	 * 
 	 * @see DataBase
-	 * @return all statistics as JSON.
+	 * @return all statistics as string.
 	 */
 	@RequestMapping(value = "getAllStatistics", method = RequestMethod.GET)
 	public ResponseEntity<Object> getstats() {
@@ -118,13 +114,13 @@ public class AppController {
 	/**
 	 * Method that reply to the request GET/getAllStatisticsofFilter.
 	 * @see DataBase
-	 * @return all the statistics of filtered's images as JSON.
+	 * @return all the statistics of filtered's images as string.
 	 * @throws StatsNotFoundException 
 	 */
 	
-	@RequestMapping(value = "getAllStatisticsofFilter", method = RequestMethod.GET) 
+	@RequestMapping(value = "getAllStatisticsofFilter", method = RequestMethod.GET)
 	public ResponseEntity<Object> getstatsfilter() throws StatsNotFoundException {
-		return new ResponseEntity<>(dati.getStatisticsFilter(), HttpStatus.OK);
+		return new ResponseEntity<>( dati.getStatisticsFilter(), HttpStatus.OK);
 	}
 
 	/**
@@ -225,12 +221,11 @@ public class AppController {
 	 * 
 	 * @param id Identify the photo to search.
 	 * @return the photo requested by the user.
+	 * @throws FilterNotFoundException 
 	 */
 	@RequestMapping(value = "searchPhoto", method = RequestMethod.GET)
-	public ResponseEntity<Object> SearchPhoto(@RequestParam(name = "id") String id) {
+	public ResponseEntity<Object> SearchPhoto(@RequestParam(name = "id") String id) throws FilterNotFoundException {
 		return new ResponseEntity<>(dati.SearchPhotos(id), HttpStatus.OK);
 	}
 
 }
-
-
