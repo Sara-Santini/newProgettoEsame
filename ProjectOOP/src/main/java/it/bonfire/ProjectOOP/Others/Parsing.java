@@ -41,9 +41,9 @@ public class Parsing {
 	/**
 	 * Directory for the downloaded images.
 	 */
-	private  String dir = "/Users/sarasantini/Desktop/Esame";
-	public String dirOk;
-	private  String  path = "/";
+	private  static String dir = "/Users/sarasantini/Desktop/Esame";
+	private String dirOk;
+	private static String  path = "/";
 
 	/**
 	 * Method which sets a value to attribute to dir.
@@ -51,8 +51,9 @@ public class Parsing {
 	 * @param dir
 	 */
 	public Parsing(String dir,String path) {
-	   this.dir=dir;
-		this.path = path;
+	   Parsing.dir=dir;
+		Parsing.path = path;
+		dirOk=dir;
 	}
 	public Parsing() {
 	 dirOk=dir;
@@ -60,7 +61,7 @@ public class Parsing {
 	}
 
 	public void setDir(String dir) {
-		this.dir = dir;
+		Parsing.dir = dir;
 	}
 
 	/**
@@ -161,8 +162,8 @@ public class Parsing {
 				if (appoggio.getMedia_type().equals("CAROUSEL_ALBUM")) {
 					Album util = (Album) appoggio;
 					if (!util.getPhotos().isEmpty()) {
-						new File(dir + path + "Album" + N).mkdir();
-						File file = new File(dir + path + "Album" + N);
+						new File(dirOk + path + "Album" + N).mkdir();
+						File file = new File(dirOk + path + "Album" + N);
 						Download(util, file);
 					}
 
@@ -170,7 +171,7 @@ public class Parsing {
 
 				else {
 					Image util1 = (Image) appoggio;
-					File file = new File(dir + path + util1.getId() + ".jpg");
+					File file = new File(dirOk + path + util1.getId() + ".jpg");
 					Download(util1, file);
 
 				}
@@ -296,5 +297,11 @@ public class Parsing {
 	 */
 	public String getPath() {
 		return path;
+	}
+	/**
+	 * @param dirOk the dirOk to set
+	 */
+	public void setDirOk(String dirOk) {
+		this.dirOk = dirOk;
 	}
 }

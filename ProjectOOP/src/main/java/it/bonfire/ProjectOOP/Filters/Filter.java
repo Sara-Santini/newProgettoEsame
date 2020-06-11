@@ -55,11 +55,11 @@ public class Filter {
 		new File(par.getDir() + par.getPath() + "FotoMeno100kb").mkdir();
 		new File(par.getDir() + par.getPath() + "FotoPiu100kb").mkdir();
 		par = new Parsing();
-		par.setDir(par.getDir() + par.getPath() + "FotoMeno100kb");
+		par.setDirOk(par.getDir() + par.getPath() + "FotoMeno100kb");
 
 		par.DownloadImage(under100);
 		par = new Parsing();
-		par.setDir(par.getDir() + par.getPath() + "FotoPiu100kb");
+		par.setDirOk(par.getDir() + par.getPath() + "FotoPiu100kb");
 		par.DownloadImage(more100);
 
 	}
@@ -77,8 +77,8 @@ public class Filter {
 
 		Parsing pars = new Parsing();
 		new File(par.getDir() + pars.getPath() + "PhotosWithHashtag").mkdir();
-		pars.setDir(pars.getDir() + pars.getPath() + "PhotosWithHashtag");
-		pars.DownloadImage(collezione);
+		pars.setDirOk(pars.getDir() + pars.getPath() + "PhotosWithHashtag");
+		pars.DownloadImage(collezione); 
 
 	}
 
@@ -94,7 +94,7 @@ public class Filter {
 		Iterator<API_Instagram> iter = api.iterator();
 		while (iter.hasNext()) {
 			API_Instagram im = iter.next();
-			if (!im.getCaption().contains("#"))
+			if (im.getCaption()==null || !im.getCaption().contains("#"))
 				iter.remove();
 
 		}

@@ -212,7 +212,7 @@ public class DataBase {
 				JSONObject jsonObject = (JSONObject) nfilter.get(i);
 				String field = (String) jsonObject.get("field");
 				String param= (String) jsonObject.get("param");
-				if(param==null)param="0";
+				if(param.isEmpty())param="0";
 				try {
 					filterService.Operator(field,(int)Integer.valueOf(param));
 				} catch (NumberFormatException | FilterNotFoundException e) {
@@ -246,7 +246,7 @@ public class DataBase {
 				b=true;
 				}
 			
-			else {
+			else if (im.getClass().equals(Album.class)){
 				
 				Album album = (Album) im;
 				
