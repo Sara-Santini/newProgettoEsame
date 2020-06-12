@@ -119,8 +119,8 @@ AppController crea un oggetto di tipo Database, il quale inizializza un Hashset 
 ## Autori e Contributi
 •	**Arianna Nazzarelli:** JunitTests, UML Class Diagram, JavaDoc, Exception,Image,getJSON, Statistics, StatisticsService, DataBase
 
-•	**Francesco Voto:** JunitTests, UML Sequence Diagram, Controller, Exceptions, Album, 
-getImageAlbumURL, Statistics, StatisticService, Database
+•	**Francesco Voto:** JParsing, API_Instagram, Fotogafia, UML Use Case Diagram, Filter, FilterService, getURL, DataBase, GUI
 
-•	**Sara Santini:** Parsing, API_Instagram, Fotogafia, UML Use Case Diagram, Filter, FilterService, getURL, DataBase, GUI
+•	**Sara Santini:** JunitTests, UML Sequence Diagram, Controller, Exceptions, Album, 
+getImageAlbumURL, Statistics, StatisticService, Database
 
