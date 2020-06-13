@@ -33,23 +33,27 @@ public class Downloader {
 	 * @throws ParseException Error that is thrown if there is any problem on the
 	 *                        conversion of a string into an object.
 	 */
-	public JSONObject getJSONbyURL(String url) throws IOException, ParseException,WrongURLException {
+	public JSONObject getJSONbyURL(String url) throws ParseException, IOException {
 		String totdata = "";
 		String lines = "";
-
 		try (InputStream imput = new URL(url).openStream()) {
 			BufferedReader buffer = new BufferedReader(new InputStreamReader(imput));
-			while ((lines = buffer.readLine()) != null) {
+			try {
+				while ((lines = buffer.readLine()) != null) {
 				totdata += lines;
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-
+			finally {
+				buffer.close();
+			}
 			JSONParser parser = new JSONParser();
 			Object obj = parser.parse(totdata);
-
 			JSONObject jsonObject = (JSONObject) obj;
 			return jsonObject;
 		}
-
 	}
 
 	@JsonIgnore
@@ -89,7 +93,7 @@ public class Downloader {
 	 * @param id Identify the photo.
 	 * @return URL.
 	 */
-	public String getURL(String id) throws WrongURLException{
+	public String getURL(String id) throws WrongURLException {
 		String url = "https://graph.instagram.com/" + id
 				+ "?fields=media_url&access_token=IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD";
 
