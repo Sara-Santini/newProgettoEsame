@@ -248,4 +248,6 @@ public class Statistics {
 				+ "Pixel variance: "
 				+ PixelVariance() + "Bytes variance: " + BytesVariance()+"]}";
 	}
+
+	
 }
