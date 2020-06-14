@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"it.bonfire.ProjectOOP.Controller"},{"l":"it.bonfire.ProjectOOP.Exceptions"},{"l":"it.bonfire.ProjectOOP.Filters"},{"l":"it.bonfire.ProjectOOP.Model"},{"l":"it.bonfire.ProjectOOP.Others"},{"l":"it.bonfire.ProjectOOP.Statistics"}]
