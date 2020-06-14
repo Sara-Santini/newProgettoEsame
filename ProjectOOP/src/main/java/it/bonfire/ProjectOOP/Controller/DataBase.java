@@ -216,7 +216,7 @@ e.printStackTrace();
 			JSONObject jsonObject = (JSONObject) nfilter.get(i);
 			String field = (String) jsonObject.get("field");
 			String param = (String) jsonObject.get("param");
-			if (param == null)
+			if (param.isEmpty())
 				param = "0";
 			filterService.Operator(field, (int) Integer.valueOf(param));
 		}
