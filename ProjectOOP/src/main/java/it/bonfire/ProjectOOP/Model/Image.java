@@ -25,7 +25,11 @@ public class Image extends API_Instagram {
 	}
 
 	/**
-	 * The constructor.
+	 * 
+	 * @param id id of photo
+	 * @param caption description of photo
+	 * @param media_type type of photo
+	 * @param photos the photo
 	 */
 	public Image(String id, String caption, String media_type, Photos photos) {
 		super(id, caption, media_type);
@@ -33,7 +37,9 @@ public class Image extends API_Instagram {
 	}
 
 	/**
-	 * The constructor.
+	 * the constructor
+	 * @param api HashSet 
+	 * @param photos the photo
 	 */
 	public Image(API_Instagram api, Photos photos) {
 		super(api.getId(), api.getCaption(), api.getMedia_type());

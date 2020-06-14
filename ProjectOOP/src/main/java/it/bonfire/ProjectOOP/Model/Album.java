@@ -29,7 +29,8 @@ public class Album extends API_Instagram {
 	 * @param media_type Type of the media.
 	 * @param photos Photos of an album.
 	 * 
-	 * @see API_Instagram,Photos.
+	 * @see API_Instagram
+	 * @see Photos photos
 	 */
 	public Album(String id, String caption, String media_type, HashSet<Photos> photos) {
 		super(id, caption, media_type);
@@ -41,7 +42,8 @@ public class Album extends API_Instagram {
 	 */
 	/**
 	 * @param a Album 
-	 * @see API_Instagram, Photos.
+	 * @see API_Instagram api
+	 * @see Photos photos
 	 * 
 	 */
 	public Album(Album a) {
@@ -62,7 +64,7 @@ public class Album extends API_Instagram {
 	/**
 	 * Method which sets a value to attribute to photos.
 	 * 
-	 * @see Photos.
+	 * @see Photos photos.
 	 * @param photos the photos to set
 	 */
 	public void setPhotos(HashSet<Photos> photos) {
@@ -72,7 +74,7 @@ public class Album extends API_Instagram {
 	/**
 	 * Methods which gives back the string of the Album.
 	 * 
-	 * @see photos.
+	 * @see Photos photos.
 	 * @return String.
 	 */
 	@Override

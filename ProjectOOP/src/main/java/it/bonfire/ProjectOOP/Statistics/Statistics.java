@@ -38,10 +38,10 @@ public class Statistics {
 	/**
 	 * The Constructor.
 	 * 
-	 * @see API_Instagram.
-	 * @see Image.
-	 * @see Photos.
-	 * @see Album.
+	 * @see API_Instagram api.
+	 * @see Image image.
+	 * @see Photos photos.
+	 * @see Album album.
 	 * @param collezione New collection of API_Instagram.
 	 */
 	public Statistics(HashSet<API_Instagram> collezione) {
@@ -74,7 +74,7 @@ public class Statistics {
 	/**
 	 * Method that gives back the collection of API_Instagram.
 	 * 
-	 * @return HashSet<API_Instagram>
+	 * @return HashSet
 	 */
 	public HashSet<API_Instagram> getCollezione() {
 		return collezione;
@@ -188,7 +188,7 @@ public class Statistics {
 	/**
 	 * Method that gives back the total number of hashtag in the collection.
 	 * 
-	 * @see API_Instagram
+	 * @see API_Instagram api
 	 * @return Integer
 	 */
 	public int TotHashtag() {
@@ -208,7 +208,7 @@ public class Statistics {
 	/**
 	 * Method that gives back the variance of pixels.
 	 * 
-	 * @see AverageOfPixel.
+	 * @see AverageOfPixel average of pixel.
 	 * @return float.
 	 */
 	public double PixelVariance() {
@@ -223,7 +223,7 @@ public class Statistics {
 	/**
 	 * Method that gives back the variance of bytes.
 	 * 
-	 * @see AverageOfBytes
+	 * @see AverageOfBytes average of bytes
 	 * @return float.
 	 */
 	public float BytesVariance() {

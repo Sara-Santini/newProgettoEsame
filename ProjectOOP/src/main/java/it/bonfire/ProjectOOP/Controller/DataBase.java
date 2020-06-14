@@ -52,11 +52,8 @@ public class DataBase {
 	 * @see Downloader
 	 * @see Parsing
 	 * @see Statistics
-	 * @exception IOException    Error that is thrown if there is any problem in the
-	 *                           process of input/output.
-	 * @exception ParseException MalformedURLException which is thrown if there is
-	 *                           any problem in the input of an URL.
 	 */
+	
 	public DataBase() {
 		Downloader iooDownloader = new Downloader();
 		Parsing parsing = new Parsing();
@@ -66,13 +63,13 @@ public class DataBase {
 			iooDownloader.getImageAlbumUrl(api);
 			parsing.DownloadImage(api);
 			statsService = new StatisticService(api);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.getMessage();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.getMessage();
-		}catch(StatsNotFoundException e){
+		}catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.getMessage();
+		} catch(StatsNotFoundException e){
 e.printStackTrace();
 }
 
@@ -89,8 +86,7 @@ e.printStackTrace();
 
 	/**
 	 * Method that gives back the collection of API_Instagram.
-	 * 
-	 * @return HashSet<API_Instagram>
+	 * @return HashSet.
 	 */
 	public HashSet<API_Instagram> getApi() {
 		return api;
@@ -98,8 +94,7 @@ e.printStackTrace();
 
 	/**
 	 * Method which sets a value to attribute to the collection of API_Instagram.
-	 * 
-	 * @param api
+	 * @param api new Hashset of API_Instagram
 	 */
 	public void setApi(HashSet<API_Instagram> api) {
 		this.api = api;
@@ -169,8 +164,6 @@ e.printStackTrace();
 	 * Method that gives back the photos with a hashtag in their caption.
 	 * 
 	 * @see Filter
-	 * @exception IOException Error that is thrown if there is any problem in the
-	 *                        process of input/output.
 	 */
 	public void getPhotoHashtag() {
 		Filter filter = new Filter();
@@ -188,8 +181,6 @@ e.printStackTrace();
 	 * organizes them.
 	 * 
 	 * @see Filter
-	 * @exception IOException Error that is thrown if there is any problem in the
-	 *                        process of input/output.
 	 */
 	public void getSortPhotos() {
 		Filter filter = new Filter();
@@ -211,8 +202,8 @@ e.printStackTrace();
 	 * @return a FilterService
 	 * @throws ParseException Error that is thrown if there is any problem on the
 	 *                        conversion of a string into an object.
-	 * @throws FilterNotFoundException 
-	 * @throws NumberFormatException 
+	 * @throws FilterNotFoundException It is thrown when the filter doesn't exists.
+	 * @throws NumberFormatException It is thrown when the format of number isn't correct.
 	 */
 	public FilterService filterservice(String json) throws ParseException, NumberFormatException, FilterNotFoundException {
 		JSONParser parser = new JSONParser();
@@ -238,11 +229,11 @@ e.printStackTrace();
 	 * 
 	 * @param id Identify the photo to search.
 	 * @return a Photo.
-	 * @throws FilterNotFoundException 
-	 * @see Photos.
+	 * @throws FilterNotFoundException It is thrown when the filter doesn't exists.
+	 * @see Photos
 	 * @see API_Instagram
-	 * @see Album.
-	 * @see Image.
+	 * @see Album
+	 * @see Image
 	 */
 	public Photos SearchPhotos(String id) throws FilterNotFoundException {
 		Iterator<API_Instagram> iter = api.iterator();
@@ -276,25 +267,11 @@ e.printStackTrace();
 		return photos;
 	}
 
-//	/**
-//	 * Method that gives back all the statistics that the user can make on the
-//	 * collection.
-//	 * 
-//	 * @return String.
-//	 * @see Statistics.
-//	 */
-//	public String getStatistics() {
-//		Statistics stat1 = new Statistics(api);
-//		return stat1.toString();
-//
-//	}
-
 	/**
 	 * Method that gives back the statistics of filtered images.
 	 * 
-	 * @see StatisticService.
 	 * @return StatisticService.
-	 * @throws StatsNotFoundException 
+	 * @throws StatsNotFoundException It is thrown when the statistic doesn't exists. 
 	 */
 	public StatisticService getStatisticsFilter() throws StatsNotFoundException {
 		StatisticService stats = new StatisticService(filterService.getApi());

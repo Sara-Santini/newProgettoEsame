@@ -92,6 +92,7 @@ public class Downloader {
 	 * 
 	 * @param id Identify the photo.
 	 * @return URL.
+	 * @throws WrongURLException error is thrown when the url is wrong
 	 */
 	public String getURL(String id) throws WrongURLException {
 		String url = "https://graph.instagram.com/" + id

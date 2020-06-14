@@ -46,7 +46,7 @@ public class Photos {
 	/**
 	 * The constructor.
 	 * 
-	 * @param id_photos
+	 * @param id_photos id of photo
 	 */
 	public Photos(String id_photos) {
 		this.id_photos = id_photos;
@@ -54,8 +54,8 @@ public class Photos {
 
 	/**
 	 * The constructor.
-	 * @param media_url
-	 * @param id_photos
+	 * @param media_url url of photo
+	 * @param id_photos id of photo
 	 */
 	public Photos(String id_photos, String media_url) {
 
@@ -66,7 +66,7 @@ public class Photos {
 	/**
 	 *  Method which sets a value to attribute to Id_Photos.
 	 * 
-	 * @param id_photos
+	 * @param id_photos id of photos
 	 */
 	public void setId_Photos(String id_photos) {
 		this.id_photos = id_photos;
@@ -92,7 +92,7 @@ public class Photos {
 	/**
 	 *  Method which sets a value to attribute to PixelHeight.
 	 * 
-	 * @param PixelHeight
+	 * @param PixelHeight height of pixel
 	 */
 	public void setPixelHeight(int PixelHeight) {
 		this.pixelHeight = PixelHeight;
@@ -109,7 +109,7 @@ public class Photos {
 	/**
 	 *  Method which sets a value to attribute to Media_Url.
 	 * 
-	 * @param Media_url
+	 * @param Media_url url of photo
 	 */
 	public void setMedia_Url(String Media_url) {
 		this.media_url = Media_url;
@@ -126,7 +126,7 @@ public class Photos {
 	/**
 	 * Method which sets a value to attribute to PixelWide.
 	 * 
-	 * @param PixelWide
+	 * @param PixelWide the pixel wide
 	 */
 	public void setPixelWide(int PixelWide) {
 		this.pixelWide = PixelWide;
@@ -134,7 +134,7 @@ public class Photos {
 
 	/**
 	 * Method that gives back the byte.
-	 * @return byte
+	 * @return byte 
 	 */
 	public int getnByte() {
 		return nbyte;
@@ -143,7 +143,7 @@ public class Photos {
 	/**
 	 * Method which sets a value to attribute to byte.
 	 * 
-	 * @param Byte
+	 * @param Byte byte of photo
 	 */
 	public void setnByte(int Byte) {
 		this.nbyte = Byte;

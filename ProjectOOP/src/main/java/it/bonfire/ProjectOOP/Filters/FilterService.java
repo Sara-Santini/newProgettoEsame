@@ -38,8 +38,8 @@ public class FilterService {
 
 	/**
 	 * Method that gives the collection.
-	 * 
-	 * @return HashSet<API_Instagram>
+	 * @see API_Instagram api
+	 * @return HashSet
 	 */
 	public HashSet<API_Instagram> getApi() {
 		return api;
@@ -59,7 +59,8 @@ public class FilterService {
 	 * 
 	 * @param field The jolly character that gives the requested filter by the user.
 	 * @param a     The value the user wants.
-	 * @see Filter
+	 * @see Filter filter
+	 * @throws FilterNotFoundException It is thrown when the filter doesn't exists. 
 	 */
 
 	public void Operator(String field, int a) throws FilterNotFoundException{

@@ -22,7 +22,7 @@ public class PhotoNotFoundException extends Exception {
 
 	/**
 	 * Method that gives back the message to the user that the statistic isn't founded.
-	 * 
+	 * @return message.
 	 */
 	public String geMessage() {
 		return "photo not founded!";

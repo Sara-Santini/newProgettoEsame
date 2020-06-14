@@ -48,8 +48,8 @@ public class Filter {
 	 * @param under100 Collection of images with under than 100Kb
 	 * @throws IOException which is thrown if there is any problem in the process of
 	 *                     input/output.
+	 * @throws WrongURLException error when the URL is wrong.
 	 * @see Parsing
-	 * @see DownloadImage
 	 */
 	public void sortPhotos(HashSet<API_Instagram> more100, HashSet<API_Instagram> under100) throws IOException,WrongURLException {
 		new File(par.getDir() + par.getPath() + "FotoMeno100kb").mkdir();
@@ -69,9 +69,9 @@ public class Filter {
 	 * 
 	 * @param collezione New collection of API_Instagram.
 	 * @see Parsing
-	 * @see DownloadImage
 	 * @throws IOException which is thrown if there is any problem in the process of
 	 *                     input/output.
+	 * @throws WrongURLException error when the URL is wrong.
 	 */
 	public void dowPhotosWithHashtag(HashSet<API_Instagram> collezione) throws IOException, WrongURLException{
 
@@ -87,7 +87,7 @@ public class Filter {
 	 * 
 	 * @see API_Instagram
 	 * @param collezione  collection of API_Instagram.
-	 * @return HashSet<API_Instagram>
+	 * @return HashSet
 	 */
 	public HashSet<API_Instagram> photosWithHashtag(HashSet<API_Instagram> collezione) {
 		HashSet<API_Instagram> api = new HashSet<API_Instagram>(collezione);
@@ -110,7 +110,7 @@ public class Filter {
 	 * @see Image
 	 * @see Album
 	 * @see Photos
-	 * @return HashSet<API_Instagram>
+	 * @return HashSet
 	 */
 	public HashSet<API_Instagram> photosMore100Kb(HashSet<API_Instagram> collezione, int Bt) {
 
@@ -150,7 +150,7 @@ public class Filter {
 	 * @see Image
 	 * @see Album
 	 * @see Photos
-	 * @return HashSet<API_Instagram>
+	 * @return HashSet
 	 */
 	public HashSet<API_Instagram> photosUnder100Kb(HashSet<API_Instagram> collezione, int Bt) {
 
@@ -185,10 +185,10 @@ public class Filter {
 	 * 
 	 * @param collezione New collection of API_Instagram
 	 * @param H          Height of a photo's pixels.
-	 * @see API_Instagram.
-	 * @see Image.
-	 * @see Album.
-	 * @return HashSet<API_Instagram>
+	 * @see API_Instagram api_instagram
+	 * @see Image image
+	 * @see Album album
+	 * @return HashSet
 	 */
 
 	public HashSet<API_Instagram> PhotosHeight(HashSet<API_Instagram> collezione, int H) {
@@ -225,10 +225,10 @@ public class Filter {
 	 * 
 	 * @param collezione New collection of API_Instagram.
 	 * @param W          Wide of a photo's pixels.
-	 * @see API_Instagram.
-	 * @see Image.
-	 * @see Album.
-	 * @return HashSet<API_Instagram>
+	 * @see API_Instagram api_instagram
+	 * @see Image image
+	 * @see Album album
+	 * @return HashSet
 	 */
 	public HashSet<API_Instagram> PhotosWide(HashSet<API_Instagram> collezione, int W) {
 

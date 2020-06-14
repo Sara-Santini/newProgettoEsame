@@ -28,7 +28,10 @@ public abstract class API_Instagram {
 	private String media_type = null;
 
 	/**
-	 * The constructor.
+	 * The constructor
+	 * @param id id of photos
+	 * @param caption description of photos
+	 * @param media_type type of photos
 	 */
 
 	public API_Instagram(String id, String caption, String media_type) {

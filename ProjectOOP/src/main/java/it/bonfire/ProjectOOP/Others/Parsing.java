@@ -41,30 +41,40 @@ public class Parsing {
 	/**
 	 * Directory for the downloaded images.
 	 */
-	private  static String dir = "/Users/sarasantini/Desktop/Esame";
+	private static String dir = "/Users/sarasantini/Desktop/Esame";
+	/**
+	 * The directory
+	 */
 	private String dirOk;
-	private static String  path = "/";
+	/**
+	 * the path of the computer.
+	 */
+	private static String path = "/";
 
 	/**
 	 * Method which sets a value to attribute to dir.
 	 * 
-	 * @param dir
+	 * @param dir  the directory
+	 * @param path the path
 	 */
-	public Parsing(String dir,String path) {
-	   Parsing.dir=dir;
+	public Parsing(String dir, String path) {
+		Parsing.dir = dir;
 		Parsing.path = path;
-		dirOk=dir;
+		dirOk = dir;
 	}
+
 	/**
 	 * The Constructor
 	 */
 	public Parsing() {
-	 dirOk=dir;
-	    
+		dirOk = dir;
+
 	}
+
 	/**
 	 * Method which sets a value to attribute to dir.
-	 * @param dir
+	 * 
+	 * @param dir the directory
 	 */
 
 	public void setDir(String dir) {
@@ -73,6 +83,7 @@ public class Parsing {
 
 	/**
 	 * Method that gives back the dir.
+	 * @return  the directory.
 	 */
 	public String getDir() {
 		return dir;
@@ -82,16 +93,12 @@ public class Parsing {
 	 * It is a method which adds to the collection the photos of Instagram from a
 	 * JSONObject.
 	 * 
-	 * @see API_Instagram
-	 * @see Downloader
-	 * @see Photos
-	 * @see Album
-	 * @see getJSONbyURL
-	 * @exception IOException    which is thrown if there is any problem in the
-	 *                           process of input/output.
-	 * @exception ParseException which is thrown if there is any problem in the
-	 *                           process of parsing.
-	 * @param jsonObject
+	 * @see API_Instagram api
+	 * @see Downloader downloader
+	 * @see Photos photo
+	 * @see Album album
+	 * @param jsonObject the json of the object.
+	 * @return HashSet.
 	 */
 	public HashSet<API_Instagram> GetAPIInstagramFromJson(JSONObject jsonObject) {
 
@@ -133,10 +140,10 @@ public class Parsing {
 
 				JSONObject ciao = DOW.getJSONbyURL(urlString);
 				GetAPIInstagramFromJson(ciao);
-			}catch (WrongURLException e) {
+			} catch (WrongURLException e) {
 				// TODO: handle exception
 				e.printStackTrace();
-			}catch (IOException | ParseException  e) {
+			} catch (IOException | ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 
@@ -150,17 +157,14 @@ public class Parsing {
 	 * It is a method which places images, that are already downloaded, of the
 	 * collection on a specific directory.
 	 * 
-	 * @see API_Instagram.
-	 * @see Album.
-	 * @see Download.
-	 * @see Image.
+	 * @see API_Instagram api.
+	 * @see Album album.
+	 * @see Download download.
+	 * @see Image image.
 	 * @param collezione which is a collection of API_Instagram and it contains all
 	 *                   the photos of the API.
-	 * @exception IOException           which is thrown if there is any problem in
-	 *                                  the process of input/output.
-	 * @exception MalformedURLException which is thrown if there is any problem in
-	 *                                  the input of an URL.
-	 * 
+	 
+	
 	 */
 	public void DownloadImage(HashSet<API_Instagram> collezione) {
 
@@ -189,7 +193,7 @@ public class Parsing {
 		} catch (WrongURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException  e) {
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (PhotoNotFoundException e) {
@@ -202,17 +206,10 @@ public class Parsing {
 	/**
 	 * Method that downloads the images of an album of the API.
 	 * 
-	 * @see extractPixelBytes
-	 * @see Album.
-	 * @see File.
-	 * @param album
-	 * @param file
-	 * @exception IOException    which is thrown if there is any problem in the
-	 *                           process of input/output.
-	 * @exception ParseException which is thrown if there is any problem in the
-	 *                           process of parsing.
-	 *@exception PhotoNotFoundException which is thrown if there is any problem in the
-	 *                           process of .
+	 * @see Album album.
+	 * @see File file.
+	 * @param album the album
+	 * @param file  the file
 	 */
 	public void Download(Album album, File file) {
 
@@ -232,12 +229,13 @@ public class Parsing {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			} catch (PhotoNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+
 			}
 		}
 		N++;
@@ -250,10 +248,11 @@ public class Parsing {
 	 * @param image The image that the method downloads.
 	 * @param file  The file in which the user wants to be used to download the
 	 *              image.
-	 * @see Image.
-	 * @see extractBytePixel.
-	 * @throws IOException which is thrown if there is any problem in the process of
-	 *                     input/output.
+	 * @see Image image.
+	 * @see extractBytePixel bytepixel.
+	 * @throws IOException            which is thrown if there is any problem in the
+	 *                                process of input/output.
+	 * @throws PhotoNotFoundException it is thrown when the photo does not exist
 	 */
 	public void Download(Image image, File file) throws IOException, PhotoNotFoundException {
 		String IO = image.getPhotos().getMedia_Url();
@@ -270,10 +269,11 @@ public class Parsing {
 	 * 
 	 * @param file The file which is occupy by the image.
 	 * @param foto The photo from which the user wants to know about pixels.
-	 * @throws IOException which is thrown if there is any problem in the process of
-	 *                     input/output.
+	 * @throws IOException            which is thrown if there is any problem in the
+	 *                                process of input/output.
+	 * @throws PhotoNotFoundException it is thrown when the photo does not exist
 	 */
-	public void extractBytePixel(File file, Photos foto) throws IOException,PhotoNotFoundException {
+	public void extractBytePixel(File file, Photos foto) throws IOException, PhotoNotFoundException {
 		BufferedImage image1 = ImageIO.read(file);
 		byte[] fileContent = Files.readAllBytes(file.toPath());
 		int bytes = fileContent.length;
@@ -310,8 +310,10 @@ public class Parsing {
 	public String getPath() {
 		return path;
 	}
+
 	/**
 	 * Method which sets a value to attribute to dirOk
+	 * 
 	 * @param dirOk the dirOk to set
 	 */
 	public void setDirOk(String dirOk) {

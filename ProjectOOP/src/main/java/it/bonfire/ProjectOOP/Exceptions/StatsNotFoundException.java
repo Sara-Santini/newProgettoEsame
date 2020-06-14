@@ -24,8 +24,7 @@ public class StatsNotFoundException extends ClassNotFoundException {
 
 	/**
 	 * The constructor.
-	 * 
-	 * @param string
+	 * @param string message to return.
 	 */
 	public StatsNotFoundException(String string) {
 		super(string);

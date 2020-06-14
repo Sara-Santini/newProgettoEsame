@@ -51,6 +51,7 @@ public class StatisticService {
 /**
  * The Constructor.
  * @param api Collection of API_Instagram.
+ * @throws StatsNotFoundException error is thrown when the statistics does not exist
  */
 	public StatisticService(HashSet<API_Instagram> api ) throws StatsNotFoundException{
 		Statistics stats= new Statistics(api);
