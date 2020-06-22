@@ -57,7 +57,7 @@ public class DataBase {
 	public DataBase() {
 		Downloader iooDownloader = new Downloader();
 		Parsing parsing = new Parsing();
-		String urlString = "https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,children&access_token=IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD";
+		String urlString = "https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,children&access_token="+ Parsing.getToken();
 		try {
 			api = parsing.GetAPIInstagramFromJson(iooDownloader.getJSONbyURL(urlString));
 			iooDownloader.getImageAlbumUrl(api);

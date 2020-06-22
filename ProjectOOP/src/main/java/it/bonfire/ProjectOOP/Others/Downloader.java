@@ -96,7 +96,7 @@ public class Downloader {
 	 */
 	public String getURL(String id) throws WrongURLException {
 		String url = "https://graph.instagram.com/" + id
-				+ "?fields=media_url&access_token=IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD";
+				+ "?fields=media_url&access_token="+ Parsing.getToken();
 
 		try {
 			JSONObject fotoAlbum = getJSONbyURL(url);

@@ -49,9 +49,29 @@ public class Parsing {
 	 * the path of the computer.
 	 */
 	private static String path = "/";
+	/**
+	 * The token of your Instagram account.
+	 */
+private static String token="";
+	/**
+	 * Method that gives back the Token.
+	 * @return the token
+	 */
+	public static String getToken() {
+		return token;
+	}
 
 	/**
-	 * Method which sets a value to attribute to dir.
+	 * Method which sets a value to attribute to dirOk
+	 * @param token the token to set
+	 */
+	public static void setToken(String token) {
+		Parsing.token = token;
+	}
+
+	
+	/**
+	 * The constructor.
 	 * 
 	 * @param dir  the directory
 	 * @param path the path
