@@ -110,8 +110,12 @@ e.printStackTrace();
 	 *                                 yet.
 	 */
 	public void addApi(Image image) {
-		if (api.contains((API_Instagram) image)) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "già esistente");
+//		if (api.contains((API_Instagram) image)) {
+//			
+//			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "già esistente");
+//		}
+		for(API_Instagram a: api) {
+     if (a.getId().equals(image.getId())) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "già esistente");
 		}
 		api.add((API_Instagram) image);
 	}

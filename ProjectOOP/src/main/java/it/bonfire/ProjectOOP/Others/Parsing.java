@@ -4,7 +4,6 @@ package it.bonfire.ProjectOOP.Others;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.HashSet;
@@ -41,7 +40,7 @@ public class Parsing {
 	/**
 	 * Directory for the downloaded images.
 	 */
-	private static String dir = "/Users/sarasantini/Desktop/Esame";
+	private static String dir = "";
 	/**
 	 * The directory
 	 */

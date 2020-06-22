@@ -11,7 +11,7 @@ package it.bonfire.ProjectOOP.Model;
  * @author Sara Santini
  */
 
-public abstract class API_Instagram {
+public class API_Instagram {
 	/**
 	 * It is the identity of a photo.
 	 */
@@ -26,6 +26,8 @@ public abstract class API_Instagram {
 	 * It is the media_type of a photo.
 	 */
 	private String media_type = null;
+
+
 
 	/**
 	 * The constructor
