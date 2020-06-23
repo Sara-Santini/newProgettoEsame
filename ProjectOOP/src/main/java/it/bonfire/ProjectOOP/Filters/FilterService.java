@@ -112,7 +112,7 @@ import it.bonfire.ProjectOOP.Model.API_Instagram;
 		private static String dir="it.bonfire.ProjectOOP.Filters.Filter";
 		
 		/**
-		 * Methods which generates the filter's class. 
+		 * Methods that generates the filter's class. 
 		 * @param field It is the field that the user given.
 		 * @param a It is a param passed by the user.
 		 * @exception ClassNotFoundException It is thrown when the class doesn't exists.

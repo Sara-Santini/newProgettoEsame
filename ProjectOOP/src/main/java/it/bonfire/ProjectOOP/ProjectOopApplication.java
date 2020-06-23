@@ -13,7 +13,7 @@ public class ProjectOopApplication {
 	public static void main(String[] args) {
 		int scelta;
 		  String dir = JOptionPane.showInputDialog("Inserisci una directory");
-		    String token=JOptionPane.showInputDialog("Inserisci un token");
+		    String token=JOptionPane.showInputDialog("Inserisci il token");
 		    String path="";
 		  scelta=JOptionPane.showConfirmDialog(null ,"IL sistema operativo Windows?", "Scelta",JOptionPane.YES_NO_OPTION);
 		  if( JOptionPane.YES_OPTION==scelta ) path="\\" ;

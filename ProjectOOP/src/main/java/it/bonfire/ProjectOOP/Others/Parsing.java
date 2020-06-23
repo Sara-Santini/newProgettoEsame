@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
+
 
 import it.bonfire.ProjectOOP.Exceptions.PhotoNotFoundException;
 import it.bonfire.ProjectOOP.Exceptions.WrongURLException;
@@ -73,7 +73,7 @@ private static String token="IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1
 	
 	/**
 	 * The constructor.
-	 * 
+	 * @param token the token.
 	 * @param dir  the directory
 	 * @param path the path
 	 */
@@ -98,7 +98,7 @@ private static String token="IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1
 	 * @param dir the directory
 	 */
 
-	public void setDir(String dir) {
+	public static void setDir(String dir) {
 		Parsing.dir = dir;
 	}
 
@@ -328,7 +328,7 @@ private static String token="IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1
 	 * 
 	 * @return the path
 	 */
-	public String getPath() {
+	public static String getPath() {
 		return path;
 	}
 

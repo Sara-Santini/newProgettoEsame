@@ -88,7 +88,7 @@ class JTest {
 	}
 	@Test
 	void test7() {
-		assertThrows(FilterNotFoundException.class,()->data.SearchPhotos("178842938318964"));
+		assertThrows(FilterNotFoundException.class,()->data.SearchPhotos("178842938318963"));
 	}
 	@Test
 	void test8() {
