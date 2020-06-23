@@ -8,7 +8,9 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashSet;
 
+import org.springframework.aop.ThrowsAdvice;
 
+import it.bonfire.ProjectOOP.Exceptions.FilterNotFoundException;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 
 /**
@@ -164,8 +166,10 @@ import it.bonfire.ProjectOOP.Model.API_Instagram;
 		/**
 		 * Method that gives back a collection of API_Instagram.
 		 * @return Hashset
+		 * @throws FilterNotFoundException 
 		 */
-		public  HashSet<API_Instagram> getApi() {
+		public  HashSet<API_Instagram> getApi() throws FilterNotFoundException {
+			if(api.isEmpty()) throw new FilterNotFoundException();
 			return api;
 		}
 		}
