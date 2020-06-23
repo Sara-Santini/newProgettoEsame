@@ -14,7 +14,9 @@ import org.springframework.web.server.ResponseStatusException;
 import it.bonfire.ProjectOOP.Exceptions.FilterNotFoundException;
 import it.bonfire.ProjectOOP.Exceptions.StatsNotFoundException;
 import it.bonfire.ProjectOOP.Filters.Filter;
+import it.bonfire.ProjectOOP.Filters.FilterMo;
 import it.bonfire.ProjectOOP.Filters.FilterService;
+import it.bonfire.ProjectOOP.Filters.FilterUn;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Image;
@@ -187,9 +189,12 @@ e.printStackTrace();
 	 * @see Filter
 	 */
 	public void getSortPhotos() {
-		Filter filter = new Filter();
+		FilterMo filtermo = new FilterMo(api,102400);
+		FilterUn filterUn=new FilterUn(api, 102400);
+		Filter filterr=new Filter();
 		try {
-			filter.sortPhotos(filter.photosMore100Kb(api, 102400), filter.photosUnder100Kb(api, 102400));
+			
+			filterr.sortPhotos(filtermo.getApi(), filterUn.getApi());
 		} catch (IOException e) {
 
 			FilterNotFoundException a = (FilterNotFoundException) e;
@@ -222,7 +227,7 @@ e.printStackTrace();
 			String param = (String) jsonObject.get("param");
 			if (param.isEmpty())
 				param = "0";
-			filterService.Operator(field, (int) Integer.valueOf(param));
+			filterService.filtering(field, Integer.valueOf(param));
 		}
 		return filterService;
 	}

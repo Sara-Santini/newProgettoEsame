@@ -41,6 +41,7 @@ public class Parsing {
 	 * Directory for the downloaded images.
 	 */
 	private static String dir = "";
+
 	/**
 	 * The directory
 	 */
@@ -52,7 +53,7 @@ public class Parsing {
 	/**
 	 * The token of your Instagram account.
 	 */
-private static String token="";
+private static String token="IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD";
 	/**
 	 * Method that gives back the Token.
 	 * @return the token
@@ -104,7 +105,7 @@ private static String token="";
 	 * Method that gives back the dir.
 	 * @return  the directory.
 	 */
-	public String getDir() {
+	public static String getDir() {
 		return dir;
 	}
 
@@ -153,22 +154,22 @@ private static String token="";
 			}
 		}
 
-		if (urlString != null) {
-			try {
-				Downloader DOW = new Downloader();
-
-				JSONObject ciao = DOW.getJSONbyURL(urlString);
-				GetAPIInstagramFromJson(ciao);
-			} catch (WrongURLException e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			} catch (IOException | ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-
-			}
-
-		}
+//		if (urlString != null) {
+//			try {
+//				Downloader DOW = new Downloader();
+//
+//				JSONObject ciao = DOW.getJSONbyURL(urlString);
+//				GetAPIInstagramFromJson(ciao);
+//			} catch (WrongURLException e) {
+//				// TODO: handle exception
+//				e.printStackTrace();
+//			} catch (IOException | ParseException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//
+//			}
+//
+//		}
 		return collezione1;
 	}
 
@@ -338,4 +339,5 @@ private static String token="";
 	public void setDirOk(String dirOk) {
 		this.dirOk = dirOk;
 	}
+
 }

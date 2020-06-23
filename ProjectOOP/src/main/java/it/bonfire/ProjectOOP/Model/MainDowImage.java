@@ -11,7 +11,7 @@ import it.bonfire.ProjectOOP.Others.Downloader;
 import it.bonfire.ProjectOOP.Others.Parsing;
 
 
-public class Prova {
+public class MainDowImage {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -31,8 +31,8 @@ public class Prova {
 			load.getImageAlbumUrl(api_insta);
 			pars.DownloadImage(api_insta);
 			Filter filter=new Filter();
-			filter.dowPhotosWithHashtag(api_insta);
-			filter.sortPhotos(filter.photosMore100Kb(api_insta, 102400),filter.photosUnder100Kb(api_insta, 102400));
+//			filter.dowPhotosWithHashtag(api_insta);
+			
 		} catch (IOException | ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -141,43 +141,7 @@ public class Filter {
 		return api;
 	}
 
-	/**
-	 * Method that downloads photos with under than 100Kb.
-	 * 
-	 * @param collezione New collection of API_Instagram.
-	 * @param Bt         Bytes of the image.
-	 * @see API_Instagram
-	 * @see Image
-	 * @see Album
-	 * @see Photos
-	 * @return HashSet
-	 */
-	public HashSet<API_Instagram> photosUnder100Kb(HashSet<API_Instagram> collezione, int Bt) {
 
-		HashSet<API_Instagram> api1 = new HashSet<API_Instagram>(collezione);
-		Iterator<API_Instagram> iter = api1.iterator();
-		while (iter.hasNext()) {
-			API_Instagram im = iter.next();
-			if (im.getClass().equals(Image.class)) {
-				Image image = (Image) im;
-				if (image.getPhotos().getnByte() > Bt)
-					iter.remove();
-			} else {
-				Album album = new Album((Album) im);
-				Iterator<Photos> a = album.getPhotos().iterator();
-				while (a.hasNext()) {
-					Photos appoggio1 = a.next();
-					if (appoggio1.getnByte() > Bt)
-						a.remove();
-
-				}
-				if (album.getPhotos().isEmpty())
-					iter.remove();
-			}
-
-		}
-		return api1;
-	}
 
 	/**
 	 * Method that deletes photos that have a height of pixel minor than the one
