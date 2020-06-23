@@ -77,9 +77,10 @@ private static String token="IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1
 	 * @param dir  the directory
 	 * @param path the path
 	 */
-	public Parsing(String dir, String path) {
+	public Parsing(String dir, String path, String token) {
 		Parsing.dir = dir;
 		Parsing.path = path;
+		Parsing.token=token;
 		dirOk = dir;
 	}
 

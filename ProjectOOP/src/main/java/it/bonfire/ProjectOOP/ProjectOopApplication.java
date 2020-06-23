@@ -13,12 +13,13 @@ public class ProjectOopApplication {
 	public static void main(String[] args) {
 		int scelta;
 		  String dir = JOptionPane.showInputDialog("Inserisci una directory");
-		  String path="";
+		    String token=JOptionPane.showInputDialog("Inserisci un token");
+		    String path="";
 		  scelta=JOptionPane.showConfirmDialog(null ,"IL sistema operativo Windows?", "Scelta",JOptionPane.YES_NO_OPTION);
 		  if( JOptionPane.YES_OPTION==scelta ) path="\\" ;
 		  else if(JOptionPane.NO_OPTION==scelta) path= "/" ;
 		  else JOptionPane.showMessageDialog(null, "scelta non valida");
-		  Parsing parsing=new Parsing(dir,path);
+		  Parsing parsing=new Parsing(dir,path,token);
 		SpringApplication.run(ProjectOopApplication.class, args);
 	}
 

@@ -81,7 +81,10 @@ class JTest {
 	}
 	@Test
 	void test6() {
-		assertNotSame(album, image);
+		assertAll("valori",()->assertNotSame(album.getClass(),image.getClass()),
+				()->assertNotSame(album.getId(),image.getId()),
+				()->assertNotSame(album.getCaption(),image.getCaption()),
+		        ()->assertNotSame(album.getMedia_type(), image.getMedia_type()));
 	}
 	@Test
 	void test7() {
