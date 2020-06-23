@@ -7,17 +7,23 @@ import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Image;
 import it.bonfire.ProjectOOP.Model.Photos;
-
+/**
+ * Class that downloads photos with less than a number of bytes given by the user.
+ * @author Francesco Voto
+ * @author Sara Santini
+ * @author Arianna Nazzarelli
+ *
+ */
 public class FilterUn extends Filters {
 	/**
-	 * Method that downloads photos with under than 100Kb.
+	 * Method that downloads photos with less than a number of bytes given by the user.
 	 * 
 	 * @param collezione New collection of API_Instagram.
 	 * @param Bt         Bytes of the image.
-	 * @see API_Instagram
-	 * @see Image
-	 * @see Album
-	 * @see Photos
+	 * @see API_Instagram api
+	 * @see Image image
+	 * @see Album album
+	 * @see Photos photos
 	 * @return HashSet
 	 */
 	public FilterUn(HashSet<API_Instagram> collezione, Integer Bt) {

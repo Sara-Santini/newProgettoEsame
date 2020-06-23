@@ -43,6 +43,7 @@ class JTest {
 		photos2.setnByte(94343);
 		photos.add(photos2);	
 		album= new Album("18038680510033530","Il più grande spreco nel mondo è la differenza tra ciò che siamo e ciò che potremmo diventare.\\n#ancona" , "ALBUM", photos);
+		
 	}
 
 	@AfterEach
@@ -93,6 +94,11 @@ class JTest {
 	@Test
 	void test8() {
 		assertThrows(FilterNotFoundException.class,()->data.filterservice("{ \"filter\": [ { \"field\": \"%\", \"param\": \"5\" }]}"));
+	}
+	
+	@Test
+	void test9() {
+		assertThrows();
 	}
 }
 

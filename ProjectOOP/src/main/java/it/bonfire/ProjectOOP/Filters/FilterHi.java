@@ -3,20 +3,28 @@ package it.bonfire.ProjectOOP.Filters;
 import java.util.HashSet;
 import java.util.Iterator;
 
+
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Image;
 import it.bonfire.ProjectOOP.Model.Photos;
 
+/**
+ * Class that implements a function to delete photo with a number of pixels minor than the one passed by the user.
+ * @author Francesco Voto
+ * @author Sara Santini
+ * @author Arianna Nazzarelli
+ * 
+ *
+ */
 public class FilterHi extends Filters {
 	/**
-	 * Method that deletes photos that have a height of pixel minor than the one
-	 * passed by the user.
-	 * 
+	 * Method that deletes photos that have a height of pixel minor than the one passed by the user.
 	 * @param collezione New collection of API_Instagram
 	 * @param H          Height of a photo's pixels.
 	 * @see API_Instagram api_instagram
 	 * @see Image image
+	 * @see Photos photos
 	 * @see Album album
 	 * @return HashSet
 	 */

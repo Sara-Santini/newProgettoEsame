@@ -11,6 +11,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+import it.bonfire.ProjectOOP.Exceptions.EmptyCollectionException;
 import it.bonfire.ProjectOOP.Exceptions.FilterNotFoundException;
 import it.bonfire.ProjectOOP.Exceptions.StatsNotFoundException;
 import it.bonfire.ProjectOOP.Filters.Filter;
@@ -185,10 +186,11 @@ e.printStackTrace();
 	/**
 	 * Method that gives back the photos with more and less than 100KB of bytes and
 	 * organizes them.
+	 * @throws EmptyCollectionException 
 	 * 
 	 * @see Filter
 	 */
-	public void getSortPhotos() {
+	public void getSortPhotos() throws EmptyCollectionException {
 		FilterMo filtermo = new FilterMo(api,102400);
 		FilterUn filterUn=new FilterUn(api, 102400);
 		Filter filterr=new Filter();
@@ -213,8 +215,9 @@ e.printStackTrace();
 	 *                        conversion of a string into an object.
 	 * @throws FilterNotFoundException It is thrown when the filter doesn't exists.
 	 * @throws NumberFormatException It is thrown when the format of number isn't correct.
+	 * @throws EmptyCollectionException 
 	 */
-	public FilterService filterservice(String json) throws ParseException, NumberFormatException, FilterNotFoundException {
+	public FilterService filterservice(String json) throws ParseException, NumberFormatException, FilterNotFoundException, EmptyCollectionException {
 		JSONParser parser = new JSONParser();
 		Object obj = new Object();
 		obj = parser.parse(json);
@@ -281,8 +284,10 @@ e.printStackTrace();
 	 * 
 	 * @return StatisticService.
 	 * @throws StatsNotFoundException It is thrown when the statistic doesn't exists. 
+	 * @throws EmptyCollectionException 
+	 * @throws FilterNotFoundException It is thrown when the filter doesn't exists.
 	 */
-	public StatisticService getStatisticsFilter() throws StatsNotFoundException {
+	public StatisticService getStatisticsFilter() throws StatsNotFoundException, EmptyCollectionException {
 		StatisticService stats = new StatisticService(filterService.getApi());
 		return stats;
 
