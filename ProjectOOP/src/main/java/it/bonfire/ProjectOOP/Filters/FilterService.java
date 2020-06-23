@@ -8,6 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashSet;
 
 import it.bonfire.ProjectOOP.Exceptions.EmptyCollectionException;
+import it.bonfire.ProjectOOP.Exceptions.FilterNotFoundException;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 
 /**
@@ -113,6 +114,7 @@ public class FilterService {
 	 * @param field It is the field that the user given.
 	 * @param a     It is a param passed by the user.
 	 * @throws EmptyCollectionException
+	 * @throws FilterNotFoundException It is thrown when the filter doesn't exists.
 	 * @exception ClassNotFoundException    It is thrown when the class doesn't
 	 *                                      exists.
 	 * @exception NoSuchMethodException     It is thrown when a particular method
@@ -138,7 +140,7 @@ public class FilterService {
 	 *                                      constructor.
 	 */
 
-	public void filtering(String field, int a) throws EmptyCollectionException {
+	public void filtering(String field, int a) throws EmptyCollectionException, FilterNotFoundException {
 
 		try {
 			Class<?> classe = Class.forName(dir + field);
@@ -148,8 +150,8 @@ public class FilterService {
 			api = filter.getApi();
 
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+			throw new FilterNotFoundException();
 		}
 
 		catch (NoSuchMethodException e) {
@@ -176,7 +178,7 @@ public class FilterService {
 	/**
 	 * Method that gives back a collection of API_Instagram.
 	 * 
-	 * @throws EmptyCollectionException 
+	 * @throws EmptyCollectionException It is thrown when the user wants to do a filter but the collection is empty.
 	 * @return Hashset
 	 */
 

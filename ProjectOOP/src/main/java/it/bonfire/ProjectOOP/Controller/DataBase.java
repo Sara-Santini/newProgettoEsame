@@ -14,9 +14,10 @@ import org.springframework.web.server.ResponseStatusException;
 import it.bonfire.ProjectOOP.Exceptions.EmptyCollectionException;
 import it.bonfire.ProjectOOP.Exceptions.FilterNotFoundException;
 import it.bonfire.ProjectOOP.Exceptions.StatsNotFoundException;
-import it.bonfire.ProjectOOP.Filters.Filter;
+import it.bonfire.ProjectOOP.Filters.FilterHa;
 import it.bonfire.ProjectOOP.Filters.FilterMo;
 import it.bonfire.ProjectOOP.Filters.FilterService;
+import it.bonfire.ProjectOOP.Filters.FilterSort;
 import it.bonfire.ProjectOOP.Filters.FilterUn;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
@@ -169,13 +170,14 @@ e.printStackTrace();
 
 	/**
 	 * Method that gives back the photos with a hashtag in their caption.
+	 * @throws EmptyCollectionException 
 	 * 
 	 * @see Filter
 	 */
-	public void getPhotoHashtag() {
-		Filter filter = new Filter();
+	public void getPhotoHashtag() throws EmptyCollectionException {
+		FilterSort filter = new FilterSort();
 		try {
-			filter.dowPhotosWithHashtag(filter.photosWithHashtag(api));
+			filter.dowPhotosWithHashtag(new FilterHa(api, 0).getApi());
 		} catch (IOException e) {
 
 			FilterNotFoundException a = (FilterNotFoundException) e;
@@ -191,17 +193,8 @@ e.printStackTrace();
 	 * @see Filter
 	 */
 	public void getSortPhotos() throws EmptyCollectionException {
-		FilterMo filtermo = new FilterMo(api,102400);
-		FilterUn filterUn=new FilterUn(api, 102400);
-		Filter filterr=new Filter();
-		try {
-			
-			filterr.sortPhotos(filtermo.getApi(), filterUn.getApi());
-		} catch (IOException e) {
-
-			FilterNotFoundException a = (FilterNotFoundException) e;
-			a.getMessage();
-		}
+		FilterSort filter=new FilterSort();
+		filter.sortPhotos(new FilterMo(api,102400).getApi(), new FilterUn(api, 102400).getApi());
 
 	}
 
@@ -215,7 +208,7 @@ e.printStackTrace();
 	 *                        conversion of a string into an object.
 	 * @throws FilterNotFoundException It is thrown when the filter doesn't exists.
 	 * @throws NumberFormatException It is thrown when the format of number isn't correct.
-	 * @throws EmptyCollectionException 
+	 * @throws EmptyCollectionException It is thrown when the user wants to do a filter but the collection is empty.
 	 */
 	public FilterService filterservice(String json) throws ParseException, NumberFormatException, FilterNotFoundException, EmptyCollectionException {
 		JSONParser parser = new JSONParser();
@@ -242,10 +235,10 @@ e.printStackTrace();
 	 * @param id Identify the photo to search.
 	 * @return a Photo.
 	 * @throws FilterNotFoundException It is thrown when the filter doesn't exists.
-	 * @see Photos
-	 * @see API_Instagram
-	 * @see Album
-	 * @see Image
+	 * @see Photos photo
+	 * @see API_Instagram api
+	 * @see Album album
+	 * @see Image image
 	 */
 	public Photos SearchPhotos(String id) throws FilterNotFoundException {
 		Iterator<API_Instagram> iter = api.iterator();
@@ -284,10 +277,10 @@ e.printStackTrace();
 	 * 
 	 * @return StatisticService.
 	 * @throws StatsNotFoundException It is thrown when the statistic doesn't exists. 
-	 * @throws EmptyCollectionException 
 	 * @throws FilterNotFoundException It is thrown when the filter doesn't exists.
+	 * @throws EmptyCollectionException It is thrown when the user wants to do a filter but the collection is empty.
 	 */
-	public StatisticService getStatisticsFilter() throws StatsNotFoundException, EmptyCollectionException {
+	public StatisticService getStatisticsFilter() throws StatsNotFoundException, FilterNotFoundException, EmptyCollectionException {
 		StatisticService stats = new StatisticService(filterService.getApi());
 		return stats;
 
@@ -310,4 +303,3 @@ e.printStackTrace();
 	}
 
 }
-

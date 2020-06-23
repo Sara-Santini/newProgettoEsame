@@ -120,11 +120,12 @@ public class AppController {
 	 * @return all the statistics of filtered's images as string.
 	 * @throws StatsNotFoundException It is thrown when the statistic doesn't
 	 *                                exists.
-	 * @throws EmptyCollectionException 
+	 * @throws EmptyCollectionException It is thrown when the user wants to do a filter but the collection is empty.
+	 * @throws FilterNotFoundException It is thrown when the filter doesn't exists. 
 	 */
 
 	@RequestMapping(value = "getAllStatisticsofFilter", method = RequestMethod.GET)
-	public ResponseEntity<Object> getstatsfilter() throws StatsNotFoundException, EmptyCollectionException {
+	public ResponseEntity<Object> getstatsfilter() throws StatsNotFoundException, EmptyCollectionException, FilterNotFoundException {
 		return new ResponseEntity<>(dati.getStatisticsFilter(), HttpStatus.OK);
 	}
 
@@ -194,7 +195,7 @@ public class AppController {
 	 * Method that reply to the request GET/getAllFilters
 	 * 
 	 * @return all the filters as string.
-	 * @throws EmptyCollectionException 
+	 * @throws EmptyCollectionException It is thrown when the user wants to do a filter but the collection is empty.
 	 */
 	@RequestMapping(value = "getAllFilters", method = RequestMethod.GET)
 	public ResponseEntity<Object> getfilters() throws EmptyCollectionException {
@@ -213,7 +214,7 @@ public class AppController {
 	 * @throws FilterNotFoundException It is thrown when the filter doesn't exists.
 	 * @throws NumberFormatException   It is thrown when the format of number isn't
 	 *                                 correct.
-	 * @throws EmptyCollectionException 
+	 * @throws EmptyCollectionException It is thrown when the user wants to do a filter but the collection is empty.
 	 */
 	@RequestMapping(value = "getFilters", method = RequestMethod.GET)
 	public ResponseEntity<Object> getSomeFilters2(@RequestBody String json)

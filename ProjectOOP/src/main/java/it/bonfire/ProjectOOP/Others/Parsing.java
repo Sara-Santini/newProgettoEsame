@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
+import org.json.simple.parser.ParseException;
 
 import it.bonfire.ProjectOOP.Exceptions.PhotoNotFoundException;
 import it.bonfire.ProjectOOP.Exceptions.WrongURLException;
@@ -155,22 +155,22 @@ private static String token="IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1
 			}
 		}
 
-//		if (urlString != null) {
-//			try {
-//				Downloader DOW = new Downloader();
-//
-//				JSONObject ciao = DOW.getJSONbyURL(urlString);
-//				GetAPIInstagramFromJson(ciao);
-//			} catch (WrongURLException e) {
-//				// TODO: handle exception
-//				e.printStackTrace();
-//			} catch (IOException | ParseException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//
-//			}
-//
-//		}
+		if (urlString != null) {
+			try {
+				Downloader DOW = new Downloader();
+
+				JSONObject ciao = DOW.getJSONbyURL(urlString);
+				GetAPIInstagramFromJson(ciao);
+			} catch (WrongURLException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} catch (ParseException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+
+			}
+
+		}
 		return collezione1;
 	}
 

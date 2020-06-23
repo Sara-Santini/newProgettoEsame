@@ -17,8 +17,6 @@ import it.bonfire.ProjectOOP.Model.Photos;
 public class FilterWi extends Filters{
 	
 	/**
-	 * Method that deletes photos that have a wide of pixel greater than the one
-	 * passed by the user.
 	 * 
 	 * @param collezione New collection of API_Instagram.
 	 * @param W          Wide of a photo's pixels.

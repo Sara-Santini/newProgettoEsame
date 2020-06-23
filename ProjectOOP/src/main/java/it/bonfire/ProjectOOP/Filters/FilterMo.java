@@ -2,8 +2,6 @@ package it.bonfire.ProjectOOP.Filters;
 
 import java.util.HashSet;
 import java.util.Iterator;
-
-import it.bonfire.ProjectOOP.Exceptions.EmptyCollectionException;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Image;
@@ -11,7 +9,6 @@ import it.bonfire.ProjectOOP.Model.Photos;
 
 public class FilterMo extends Filters {
 	/**
-	 * Method that downloads photos with more than a number of bytes given by the user.
 	 * 
 	 * @param collezione New collection of API_Instagram.
 	 * @param Bt         Bytes of the image.
@@ -19,10 +16,9 @@ public class FilterMo extends Filters {
 	 * @see Image image
 	 * @see Album album
 	 * @see Photos photos
-	 * @throws EmptyCollectionException It is thrown when the user wants to do the filter but the collection is empty.
 	 * @return HashSet
 	 */
-	public FilterMo(HashSet<API_Instagram> collezione, Integer Bt) throws EmptyCollectionException  {
+	public FilterMo(HashSet<API_Instagram> collezione, Integer Bt) {
 	
 		super(collezione);
 			Iterator<API_Instagram> iter = super.api.iterator();

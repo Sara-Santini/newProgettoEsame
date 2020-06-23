@@ -19,7 +19,6 @@ import it.bonfire.ProjectOOP.Model.Photos;
  */
 public class FilterHi extends Filters {
 	/**
-	 * Method that deletes photos that have a height of pixel minor than the one passed by the user.
 	 * @param collezione New collection of API_Instagram
 	 * @param H          Height of a photo's pixels.
 	 * @see API_Instagram api_instagram

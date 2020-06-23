@@ -16,8 +16,6 @@ import it.bonfire.ProjectOOP.Model.Photos;
  */
 public class FilterUn extends Filters {
 	/**
-	 * Method that downloads photos with less than a number of bytes given by the user.
-	 * 
 	 * @param collezione New collection of API_Instagram.
 	 * @param Bt         Bytes of the image.
 	 * @see API_Instagram api
