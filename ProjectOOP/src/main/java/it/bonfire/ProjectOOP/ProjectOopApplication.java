@@ -12,8 +12,8 @@ public class ProjectOopApplication {
 
 	public static void main(String[] args) {
 		int scelta;
-		  String dir = JOptionPane.showInputDialog("Inserisci una directory");
-		    String token=JOptionPane.showInputDialog("Inserisci il token");
+		  String dir = JOptionPane.showInputDialog("Inserisci una directory","C:\\Users\\39346\\Pictures");
+		    String token=JOptionPane.showInputDialog("Inserisci il token","IGQVJYcF9aRXNPN1FXVUxnaFptSTZAZAWDdGc19XYk03ajRTOU1PbTJGMFdJb2xmdlR1aV9rVmxfU3BTaUJJd0s5MlNqYlZAxTVV5a1J6cHBXdGpraFhUdDJCR283cmdlYVlGRE55S1g3ZAGRHV3ZATWDNjbwZDZD");
 		    String path="";
 		  scelta=JOptionPane.showConfirmDialog(null ,"IL sistema operativo Windows?", "Scelta",JOptionPane.YES_NO_OPTION);
 		  if( JOptionPane.YES_OPTION==scelta ) path="\\" ;

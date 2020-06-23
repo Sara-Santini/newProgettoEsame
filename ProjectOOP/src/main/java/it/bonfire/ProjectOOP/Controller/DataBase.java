@@ -227,7 +227,7 @@ e.printStackTrace();
 			String param = (String) jsonObject.get("param");
 			if (param.isEmpty())
 				param = "0";
-			filterService.filtering(field, Integer.valueOf(param));
+			filterService.filtering(field.substring(0, 2), Integer.valueOf(param));
 		}
 		return filterService;
 	}
