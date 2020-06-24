@@ -16,7 +16,7 @@ import it.bonfire.ProjectOOP.Others.Parsing;
  * @throws IOException which is thrown if there is any problem in the process of
  *                     input/output.
  * @throws WrongURLException error when the URL is wrong.
- * @see Parsing
+ * @see Parsing parsing 
  */
 public class FilterSort {
 	Parsing par;

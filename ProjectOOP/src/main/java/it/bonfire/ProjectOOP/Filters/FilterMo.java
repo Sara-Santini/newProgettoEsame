@@ -7,6 +7,14 @@ import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Image;
 import it.bonfire.ProjectOOP.Model.Photos;
 
+/**
+ * Class that deletes photo with a number of bytes minor than the one passed by the user.
+ * @author Francesco Voto
+ * @author Sara Santini
+ * @author Arianna Nazzarelli
+ * 
+ *
+ */
 public class FilterMo extends Filters {
 	/**
 	 * 

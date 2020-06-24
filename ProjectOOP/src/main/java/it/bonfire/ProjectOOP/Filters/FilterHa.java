@@ -7,7 +7,7 @@ import java.util.Iterator;
 import it.bonfire.ProjectOOP.Model.API_Instagram;
 
 /**
- * Class that implements the function to download image with hashtag.
+ * Class that downloads image with hashtag.
  * @author Francesco Voto
  * @author Sara Santini
  * @author Arianna Nazzarelli

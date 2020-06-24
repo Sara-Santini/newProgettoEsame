@@ -10,7 +10,7 @@ import it.bonfire.ProjectOOP.Model.Image;
 import it.bonfire.ProjectOOP.Model.Photos;
 
 /**
- * Class that implements a function to delete photo with a number of pixels minor than the one passed by the user.
+ * Class that deletes photos with a number of pixels minor than the one passed by the user.
  * @author Francesco Voto
  * @author Sara Santini
  * @author Arianna Nazzarelli

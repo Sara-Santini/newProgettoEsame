@@ -8,7 +8,7 @@ import it.bonfire.ProjectOOP.Model.Album;
 import it.bonfire.ProjectOOP.Model.Image;
 import it.bonfire.ProjectOOP.Model.Photos;
 /**
- * Class that downloads photos with less than a number of bytes given by the user.
+ * Class that downloads photos with a minor number of bytes given by the user.
  * @author Francesco Voto
  * @author Sara Santini
  * @author Arianna Nazzarelli
