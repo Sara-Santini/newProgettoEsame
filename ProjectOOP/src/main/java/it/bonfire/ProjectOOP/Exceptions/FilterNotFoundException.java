@@ -23,10 +23,4 @@ public class FilterNotFoundException extends IOException{
 		System.out.println("failed filter");
 		
 	}
-	/**
-	 * Method that gives back the message to the user that the filter doesn't exists.
-	 */
-	public String getMessage(){
-	return "failed filter";
-	}
 }

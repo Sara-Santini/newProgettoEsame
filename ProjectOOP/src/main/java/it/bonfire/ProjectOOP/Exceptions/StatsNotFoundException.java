@@ -10,7 +10,6 @@ package it.bonfire.ProjectOOP.Exceptions;
  *
  */
 public class StatsNotFoundException extends ClassNotFoundException {
-	private String message = "Attenzione: statistica non esistente";
 
 	private static final long serialVersionUID = 1L;
 
@@ -19,23 +18,9 @@ public class StatsNotFoundException extends ClassNotFoundException {
 	 */
 	public StatsNotFoundException() {
 		super();
+		System.out.println("Attenzione: statistica non esistente");
 
 	}
 
-	/**
-	 * The constructor.
-	 * @param string message to return.
-	 */
-	public StatsNotFoundException(String string) {
-		super(string);
-
-	}
-
-	/**
-	 * Method that gives back the message that the statistics doesn't exists.
-	 */
-	public String getMessage() {
-		return message;
-	}
 
 }
