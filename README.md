@@ -19,7 +19,7 @@ Attraverso l’ambiente Eclipse si possono eseguire le seguenti operazioni:
 
 •	Eseguire il codice come SpringBoot application;
 
-•	Aprire un API testing come ad esempio Postman.
+•	Aprire un API testing come ad esempio Postman (https://www.postman.com/downloads/).
 
 L’applicazione ora è pronta ed è in ascolto alla porta http://localhost8080.
 
