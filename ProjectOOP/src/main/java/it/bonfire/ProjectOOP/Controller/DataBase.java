@@ -114,10 +114,7 @@ e.printStackTrace();
 	 *                                 yet.
 	 */
 	public void addApi(Image image) {
-//		if (api.contains((API_Instagram) image)) {
-//			
-//			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "già esistente");
-//		}
+
 		for(API_Instagram a: api) {
      if (a.getId().equals(image.getId())) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "già esistente");
 		}
@@ -163,16 +160,17 @@ e.printStackTrace();
 	 * 
 	 */
 	public void addApi(Album album) {
-		if (api.contains((API_Instagram) album))
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "già esistente");
+		for(API_Instagram a: api) {
+		     if (a.getId().equals(album.getId())) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "già esistente");
+				}
 		api.add((API_Instagram) album);
 	}
 
 	/**
 	 * Method that gives back the photos with a hashtag in their caption.
-	 * @throws EmptyCollectionException 
+	 * @throws EmptyCollectionException  It is thrown when the user wants to do a filter but the collection is empty.
 	 * 
-	 * @see Filter
+	 * @see FilterSort filter
 	 */
 	public void getPhotoHashtag() throws EmptyCollectionException {
 		FilterSort filter = new FilterSort();
@@ -188,9 +186,9 @@ e.printStackTrace();
 	/**
 	 * Method that gives back the photos with more and less than 100KB of bytes and
 	 * organizes them.
-	 * @throws EmptyCollectionException 
+	 * @throws EmptyCollectionException   It is thrown when the user wants to do a filter but the collection is empty.
 	 * 
-	 * @see Filter
+	 * @see FilterSort filter.
 	 */
 	public void getSortPhotos() throws EmptyCollectionException {
 		FilterSort filter=new FilterSort();

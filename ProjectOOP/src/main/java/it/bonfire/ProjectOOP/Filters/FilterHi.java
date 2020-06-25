@@ -25,7 +25,7 @@ public class FilterHi extends Filters {
 	 * @see Image image
 	 * @see Photos photos
 	 * @see Album album
-	 * @return HashSet
+	 *
 	 */
 
 	public FilterHi(HashSet<API_Instagram> collezione, Integer H) {

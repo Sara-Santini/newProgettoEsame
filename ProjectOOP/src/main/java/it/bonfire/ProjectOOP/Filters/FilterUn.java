@@ -22,7 +22,6 @@ public class FilterUn extends Filters {
 	 * @see Image image
 	 * @see Album album
 	 * @see Photos photos
-	 * @return HashSet
 	 */
 	public FilterUn(HashSet<API_Instagram> collezione, Integer Bt) {
 		   super(collezione);

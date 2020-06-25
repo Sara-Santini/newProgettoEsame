@@ -44,31 +44,8 @@ public class FilterService {
 	 * 
 	 * @param field It is the field that the user given.
 	 * @param a     It is a param passed by the user.
-	 * @throws EmptyCollectionException
-	 * @throws FilterNotFoundException It is thrown when the filter doesn't exists.
-	 * @exception ClassNotFoundException    It is thrown when the class doesn't
-	 *                                      exists.
-	 * @exception NoSuchMethodException     It is thrown when a particular method
-	 *                                      cannot be found.
-	 * @exception SecurityException         It is thrown to indicate a security
-	 *                                      violation.
-	 * @exception InstantiationException    It is thrown when the application tries
-	 *                                      to create an instance of a class using
-	 *                                      the newInstance method in class, but the
-	 *                                      specified class object cannot be
-	 *                                      instantiated.
-	 * @exception IllegalAccessException    It is thrown when an application tries
-	 *                                      to reflectively create an instance, set
-	 *                                      or get a field, or invoke a method, but
-	 *                                      the currently executing method does not
-	 *                                      have access to the definition of the
-	 *                                      specified class, field, method or
-	 *                                      constructor.
-	 * @exception IllegalArgumentException  It is thrown to indicate that a method
-	 *                                      has been passed an illegal or
-	 *                                      inappropriate argument.
-	 * @exception InvocationTargetException It is thrown by an invoked method or
-	 *                                      constructor.
+	 * @throws EmptyCollectionException  It is thrown when the user wants to do a filter but the collection is empty.
+	 * @throws FilterNotFoundException It is thrown when the filter doesn't exists.                      
 	 */
 
 	public void filtering(String field, int a) throws EmptyCollectionException, FilterNotFoundException {
@@ -80,27 +57,32 @@ public class FilterService {
 
 			api = filter.getApi();
 
-		} catch (ClassNotFoundException e) {
-		
-			throw new FilterNotFoundException();
-		}
+		} 
 
-		catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
+		catch (IllegalArgumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			
+			throw new FilterNotFoundException();
+		}
+		 catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		 catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		catch (SecurityException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -129,3 +111,21 @@ public class FilterService {
 		this.api = api;
 	}
 }
+//* @exception SecurityException         It is thrown to indicate a security
+//*                                      violation.
+//* @exception InstantiationException    It is thrown when the application tries
+//*                                      to create an instance of a class using
+//*                                      the newInstance method in class, but the
+//*                                      specified class object cannot be
+//*                                      instantiated.
+//* @exception IllegalAccessException    It is thrown when an application tries
+//*                                      to reflectively create an instance, set
+//*                                      or get a field, or invoke a method, but
+//*                                      the currently executing method does not
+//*                                      have access to the definition of the
+//*                                      specified class, field, method or
+//*                                      constructor.
+//* @exception IllegalArgumentException  It is thrown to indicate that a method
+//*                                      has been passed an illegal or
+//*                                      inappropriate argument.
+//       

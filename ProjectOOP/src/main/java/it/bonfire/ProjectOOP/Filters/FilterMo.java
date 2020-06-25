@@ -24,7 +24,7 @@ public class FilterMo extends Filters {
 	 * @see Image image
 	 * @see Album album
 	 * @see Photos photos
-	 * @return HashSet
+	 *
 	 */
 	public FilterMo(HashSet<API_Instagram> collezione, Integer Bt) {
 	

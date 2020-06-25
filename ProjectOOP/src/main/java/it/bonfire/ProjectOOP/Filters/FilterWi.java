@@ -22,7 +22,7 @@ public class FilterWi extends Filters{
 	 * @see API_Instagram api_instagram
 	 * @see Image image
 	 * @see Album album
-	 * @return HashSet
+	 *
 	 */
 	public FilterWi(HashSet<API_Instagram> collezione,Integer W) {
 		    super(collezione);

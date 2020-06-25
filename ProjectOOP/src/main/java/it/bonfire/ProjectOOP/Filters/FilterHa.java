@@ -17,7 +17,7 @@ public class FilterHa extends Filters {
 	/**
 	 * @see API_Instagram api
 	 * @param collezione  collection of API_Instagram.
-	 * @return HashSet
+	 * @param a Unused.
 	 */
  public FilterHa(HashSet<API_Instagram> collezione,Integer a){
 	 super(collezione);
