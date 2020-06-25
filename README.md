@@ -60,15 +60,20 @@ Ha#| Filtra le foto con gli hashtag | **{ “filter”: [{"field": "Ha#",param":
 
 Inoltre, è possibile combinare più filtri. Per fare questo, è sufficiente specificare il modo in cui si vogliono combinare aggiungendo vettori di chiave/valore in formato JSON.
 Ad esempio, se volessimo filtrare le foto in base a una data altezza e a una data lunghezza dovremmo scrivere come riportato in seguito:
+
 **{ "filter": [ { "field": "Hi|", "param": "1000"} ,{"field": "Wi-", "param": "1000"}]}**
 
 ## Statistiche
 
 È possibile effettuare le seguenti statistiche sulle foto del nostro profilo Instagram:
 •	Media dei byte, dei pixel e degli hashtag;
+
 •	Mediana dei byte e dei pixel;
+
 •	Varianza dei byte e dei pixel;
+
 •	Totale degli hashtag.
+
 Inoltre, è possibile effettuare le statistiche sulle immagini filtrate.
 
 ## UML
