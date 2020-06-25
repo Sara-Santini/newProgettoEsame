@@ -23,6 +23,8 @@ Attraverso l’ambiente Eclipse si possono eseguire le seguenti operazioni:
 
 L’applicazione ora è pronta ed è in ascolto alla porta http://localhost8080.
 
+All'avvio dell'applicazione compariranno tre finestre pop-up in cui si chiederà di specificare la directory nella quale salvare le immagini, il token di accesso del profilo Instagram eil sistema operativo del dispositivo. Inoltre, verranno suggeriti nelle caselle di testo degli esempi.
+
 **Richieste:**
 Attraverso delle API REST (GET, POST o DELETE) si possono eseguire delle richieste che differiscono in base alle rotte elencate di seguito:
 
@@ -83,8 +85,8 @@ Inoltre, è possibile effettuare le statistiche sulle immagini filtrate.
 ![NewModel Use Case Diagram](https://user-images.githubusercontent.com/64470414/84430752-77fe9b80-ac2a-11ea-963f-b19d36e2ee5e.jpg)
 
 ## UML Class Diagram
-**Package Model**
 
+**Package Model**
 ![MODEL-2](https://user-images.githubusercontent.com/64470414/85554945-b2523a80-b625-11ea-92ff-cb6de913e358.jpg)
 
 **Package Others**
@@ -144,8 +146,7 @@ La suddivisione del lavoro è indicativa in quanto il gruppo ha collaborato per 
 
 •	**Arianna Nazzarelli:** JunitTests, UML Class Diagram, JavaDoc, Exception,Image,getJSON, Statistics, StatisticsService, DataBase
 
-•	**Sara Santini:** JunitTests, UML Sequence Diagram, Controller, Exceptions, Album, 
-getImageAlbumURL, Statistics, StatisticService, Database
+•	**Sara Santini:** JunitTests, UML Sequence Diagram, Controller, Exceptions, Album, getImageAlbumURL, Statistics, StatisticService, Database
 
 •	**Francesco Voto:** Parsing, API_Instagram, Fotogafia, UML Use Case Diagram, Filter, FilterService, getURL, DataBase, GUI
 
