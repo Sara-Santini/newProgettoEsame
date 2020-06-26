@@ -39,8 +39,6 @@ public class Album extends API_Instagram {
 
 	/**
 	 * The constructor.
-	 */
-	/**
 	 * @param a Album 
 	 * @see API_Instagram api
 	 * @see Photos photos

@@ -98,7 +98,7 @@ public class FilterService {
 	public HashSet<API_Instagram> getApi() throws EmptyCollectionException {
 		if (api.isEmpty())
 			throw new EmptyCollectionException();
-		;
+		
 		return api;
 	}
 	
@@ -111,21 +111,5 @@ public class FilterService {
 		this.api = api;
 	}
 }
-//* @exception SecurityException         It is thrown to indicate a security
-//*                                      violation.
-//* @exception InstantiationException    It is thrown when the application tries
-//*                                      to create an instance of a class using
-//*                                      the newInstance method in class, but the
-//*                                      specified class object cannot be
-//*                                      instantiated.
-//* @exception IllegalAccessException    It is thrown when an application tries
-//*                                      to reflectively create an instance, set
-//*                                      or get a field, or invoke a method, but
-//*                                      the currently executing method does not
-//*                                      have access to the definition of the
-//*                                      specified class, field, method or
-//*                                      constructor.
-//* @exception IllegalArgumentException  It is thrown to indicate that a method
-//*                                      has been passed an illegal or
-//*                                      inappropriate argument.
-//       
+
+    
