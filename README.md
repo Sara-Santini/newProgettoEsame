@@ -19,7 +19,7 @@ Attraverso l’ambiente Eclipse si possono eseguire le seguenti operazioni:
 
 •	Eseguire il codice come SpringBoot application;
 
-•	Aprire un API testing come ad esempio Postman (https://www.postman.com/downloads/).
+•	Aprire un API testing come ad esempio [Postman](https://www.postman.com/downloads/).
 
 L’applicazione ora è pronta ed è in ascolto alla porta http://localhost8080.
 
@@ -130,23 +130,23 @@ AppController crea un oggetto di tipo Database. Quest’ultimo, inizializza un H
 ![Filtersfinito](https://user-images.githubusercontent.com/64470414/85543871-c2b0e800-b61a-11ea-9ff2-8ac35630933c.jpg)
 
 ## Software utilizzati
-•	**Eclipse**- ambiente di sviluppo integrato;
+•	**[Eclipse](https://www.eclipse.org/)**- ambiente di sviluppo integrato;
 
-•	**Spring Boot**-framework per sviluppo applicazioni Java;
+•	**[SpringBoot](https://spring.io/projects/spring-boot)**-framework per sviluppo applicazioni Java;
 
-•	**Postman**-API Testing;
+•	**[Postman](https://www.postman.com/downloads/)**-API Testing;
 
-•	**UMLGenerator**-ambiente che genera diagrammi UML;
+•	**[UMLGenerator](http://www.umldesigner.org)**-ambiente che genera diagrammi UML;
 
-•	**Maven**-strumento di gestione di progetti.
+•	**[Maven](https://maven.apache.org/)**-strumento di gestione di progetti.
 
 ## Autori e Contributi
 
 La suddivisione del lavoro è indicativa in quanto il gruppo ha collaborato per lo sviluppo di gran parte del codice.
 
-•	**Arianna Nazzarelli:** JunitTests, UML Class Diagram, JavaDoc, Exception,Image,getJSON, Statistics, StatisticsService, DataBase
+•	**[Arianna Nazzarelli](https://github.com/AriannaNazzarelli):** JunitTests, UML Class Diagram, JavaDoc, Exception,Image,getJSON, Statistics, StatisticsService, DataBase
 
-•	**Sara Santini:** JunitTests, UML Sequence Diagram, Controller, Exceptions, Album, getImageAlbumURL, Statistics, StatisticService, Database
+•	**[Sara Santini](https://github.com/Sara-Santini):** JunitTests, UML Sequence Diagram, Controller, Exceptions, Album, getImageAlbumURL, Statistics, StatisticService, Database
 
-•	**Francesco Voto:** Parsing, API_Instagram, Fotogafia, UML Use Case Diagram, Filter, FilterService, getURL, DataBase, GUI
+•	**[Francesco Voto](https://github.com/FrancescoVoto99):** Parsing, API_Instagram, Fotogafia, UML Use Case Diagram, Filter, FilterService, getURL, DataBase, GUI
 
