@@ -144,9 +144,9 @@ AppController crea un oggetto di tipo Database. Quest’ultimo, inizializza un H
 
 La suddivisione del lavoro è indicativa in quanto il gruppo ha collaborato per lo sviluppo di gran parte del codice.
 
-•	**[Arianna Nazzarelli](https://github.com/AriannaNazzarelli):** JunitTests, UML Class Diagram, JavaDoc, Exception,Image,getJSON, Statistics, StatisticsService, DataBase
+•	**[Arianna Nazzarelli](https://github.com/AriannaNazzarelli):** JunitTests, UML Class Diagram, JavaDoc, Exception,Image,getJSON, Statistics, StatisticsService, DataBase,FilterMo, FilterWi.
 
-•	**[Sara Santini](https://github.com/Sara-Santini):** JunitTests, UML Sequence Diagram, Controller, Exceptions, Album, getImageAlbumURL, Statistics, StatisticService, Database
+•	**[Sara Santini](https://github.com/Sara-Santini):** JunitTests, UML Sequence Diagram, Controller, Exceptions, Album, getImageAlbumURL, Statistics, StatisticService, Database,FilterHa,FilterHi.
 
-•	**[Francesco Voto](https://github.com/FrancescoVoto99):** Parsing, API_Instagram, Fotogafia, UML Use Case Diagram, Filter, FilterService, getURL, DataBase, GUI
+•	**[Francesco Voto](https://github.com/FrancescoVoto99):** Parsing, API_Instagram, Fotogafia, UML Use Case Diagram, Filters, FilterService,FilterSort, FilterUn, getURL, DataBase, GUI.
 
